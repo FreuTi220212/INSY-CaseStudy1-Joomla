@@ -24,12 +24,12 @@ DROP TABLE IF EXISTS `lcoa2_action_log_config`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_action_log_config` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `type_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `type_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `id_holder` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title_holder` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `table_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `text_prefix` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `type_alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `id_holder` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_holder` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `table_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `text_prefix` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -53,19 +53,19 @@ DROP TABLE IF EXISTS `lcoa2_action_logs`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_action_logs` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `message_language_key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message_language_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `log_date` datetime NOT NULL,
-  `extension` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `extension` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `user_id` int NOT NULL DEFAULT '0',
   `item_id` int NOT NULL DEFAULT '0',
-  `ip_address` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0.0.0.0',
+  `ip_address` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0.0.0.0',
   PRIMARY KEY (`id`),
   KEY `idx_user_id` (`user_id`),
   KEY `idx_user_id_logdate` (`user_id`,`log_date`),
   KEY `idx_user_id_extension` (`user_id`,`extension`),
   KEY `idx_extension_item_id` (`extension`,`item_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,7 +74,7 @@ CREATE TABLE `lcoa2_action_logs` (
 
 LOCK TABLES `lcoa2_action_logs` WRITE;
 /*!40000 ALTER TABLE `lcoa2_action_logs` DISABLE KEYS */;
-INSERT INTO `lcoa2_action_logs` VALUES (1,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 07:57:08','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(2,'PLG_ACTIONLOG_JOOMLA_GUIDEDTOURS_TOURCOMPLETED','{\"id\":12,\"title\":\"Welcome to Joomla!\",\"state\":\"completed\",\"step\":6,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 07:57:49','com_guidedtours.state',81,12,'COM_ACTIONLOGS_DISABLED'),(3,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER_GROUP\",\"id\":10,\"title\":\"Club-Redakteur\",\"itemlink\":\"index.php?option=com_users&task=group.edit&id=10\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:00:03','com_users',81,10,'COM_ACTIONLOGS_DISABLED'),(4,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER_GROUP\",\"id\":11,\"title\":\"Club-Administrator\",\"itemlink\":\"index.php?option=com_users&task=group.edit&id=11\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:00:24','com_users',81,11,'COM_ACTIONLOGS_DISABLED'),(5,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":19,\"title\":\"com_content\",\"extension_name\":\"com_content\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=19\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:06:48','com_config.component',81,19,'COM_ACTIONLOGS_DISABLED'),(6,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER\",\"id\":82,\"title\":\"Max Mustermann\",\"itemlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:09:30','com_users',81,82,'COM_ACTIONLOGS_DISABLED'),(7,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER\",\"id\":83,\"title\":\"Club Admin\",\"itemlink\":\"index.php?option=com_users&task=user.edit&id=83\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:11:41','com_users',81,83,'COM_ACTIONLOGS_DISABLED'),(8,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_CATEGORY\",\"id\":8,\"title\":\"Clubs\",\"itemlink\":\"index.php?option=com_categories&task=category.edit&id=8\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:12:32','com_categories.category',81,8,'COM_ACTIONLOGS_DISABLED'),(9,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_CATEGORY\",\"id\":9,\"title\":\"Robotik-Club\",\"itemlink\":\"index.php?option=com_categories&task=category.edit&id=9\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:13:10','com_categories.category',81,9,'COM_ACTIONLOGS_DISABLED'),(10,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_CATEGORY\",\"id\":10,\"title\":\"Theater-Club\",\"itemlink\":\"index.php?option=com_categories&task=category.edit&id=10\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:14:23','com_categories.category',81,10,'COM_ACTIONLOGS_DISABLED'),(11,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_CATEGORY\",\"id\":11,\"title\":\"Berichte\",\"itemlink\":\"index.php?option=com_categories&task=category.edit&id=11\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:15:04','com_categories.category',81,11,'COM_ACTIONLOGS_DISABLED'),(12,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_ARTICLE\",\"id\":1,\"title\":\"Robotik-Club\",\"itemlink\":\"index.php?option=com_content&task=article.edit&id=1\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:16:42','com_content.article',81,1,'COM_ACTIONLOGS_DISABLED'),(13,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_ARTICLE\",\"id\":2,\"title\":\"Theater-Club\",\"itemlink\":\"index.php?option=com_content&task=article.edit&id=2\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:17:42','com_content.article',81,2,'COM_ACTIONLOGS_DISABLED'),(14,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":81,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:18:07','com_users',81,81,'COM_ACTIONLOGS_DISABLED'),(15,'PLG_ACTIONLOG_JOOMLA_USER_LOGIN_FAILED','{\"action\":\"login\",\"id\":82,\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:18:46','com_users',82,82,'COM_ACTIONLOGS_DISABLED'),(16,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:19:40','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(17,'PLG_SYSTEM_ACTIONLOGS_CONTENT_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER_GROUP\",\"id\":\"10\",\"title\":\"Club-Redakteur\",\"itemlink\":\"index.php?option=com_users&task=group.edit&id=10\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:20:17','com_users',81,10,'COM_ACTIONLOGS_DISABLED'),(18,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":22,\"title\":\"com_users\",\"extension_name\":\"com_users\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=22\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:21:33','com_config.component',81,22,'COM_ACTIONLOGS_DISABLED'),(19,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":81,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:21:39','com_users',81,81,'COM_ACTIONLOGS_DISABLED'),(20,'PLG_ACTIONLOG_JOOMLA_USER_LOGIN_FAILED','{\"action\":\"login\",\"id\":82,\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:21:59','com_users',82,82,'COM_ACTIONLOGS_DISABLED'),(21,'PLG_ACTIONLOG_JOOMLA_USER_LOGIN_FAILED','{\"action\":\"login\",\"id\":82,\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:22:32','com_users',82,82,'COM_ACTIONLOGS_DISABLED'),(22,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:23:18','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(23,'PLG_ACTIONLOG_JOOMLA_APPLICATION_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_APPLICATION_CONFIG\",\"extension_name\":\"com_config.application\",\"itemlink\":\"index.php?option=com_config\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:24:18','com_config.application',81,0,'COM_ACTIONLOGS_DISABLED'),(24,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":22,\"title\":\"com_users\",\"extension_name\":\"com_users\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=22\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:25:54','com_config.component',81,22,'COM_ACTIONLOGS_DISABLED'),(25,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":81,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:26:19','com_users',81,81,'COM_ACTIONLOGS_DISABLED'),(26,'PLG_ACTIONLOG_JOOMLA_USER_LOGIN_FAILED','{\"action\":\"login\",\"id\":82,\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:26:32','com_users',82,82,'COM_ACTIONLOGS_DISABLED'),(27,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:26:32','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(28,'PLG_ACTIONLOG_JOOMLA_GUIDEDTOURS_TOURSKIPPED','{\"id\":12,\"title\":\"Welcome to Joomla!\",\"state\":\"skipped\",\"step\":1,\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\"}','2026-01-26 08:26:38','com_guidedtours.state',82,12,'COM_ACTIONLOGS_DISABLED'),(29,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_SITE\"}','2026-01-26 08:31:19','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(30,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":81,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_SITE\"}','2026-01-26 08:32:20','com_users',81,81,'COM_ACTIONLOGS_DISABLED'),(31,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:39:40','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(32,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":19,\"title\":\"com_content\",\"extension_name\":\"com_content\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=19\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:43:16','com_config.component',81,19,'COM_ACTIONLOGS_DISABLED'),(33,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":81,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:43:30','com_users',81,81,'COM_ACTIONLOGS_DISABLED'),(34,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:43:43','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(35,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 09:02:09','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(36,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 09:02:09','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(37,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":19,\"title\":\"com_content\",\"extension_name\":\"com_content\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=19\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 09:15:11','com_config.component',81,19,'COM_ACTIONLOGS_DISABLED'),(38,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":81,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 09:47:28','com_users',81,81,'COM_ACTIONLOGS_DISABLED'),(39,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 09:47:48','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(40,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 10:04:08','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(41,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_SITE\"}','2026-02-01 18:56:44','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(42,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":81,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_SITE\"}','2026-02-01 18:57:06','com_users',81,81,'COM_ACTIONLOGS_DISABLED'),(43,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 18:58:54','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(44,'PLG_SYSTEM_ACTIONLOGS_CONTENT_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER_GROUP\",\"id\":\"10\",\"title\":\"Club-Redakteur\",\"itemlink\":\"index.php?option=com_users&task=group.edit&id=10\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 19:03:29','com_users',81,10,'COM_ACTIONLOGS_DISABLED'),(45,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":19,\"title\":\"com_content\",\"extension_name\":\"com_content\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=19\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 19:05:50','com_config.component',81,19,'COM_ACTIONLOGS_DISABLED'),(46,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_SITE\"}','2026-02-01 19:07:04','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(47,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":82,\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_SITE\"}','2026-02-01 19:07:31','com_users',82,82,'COM_ACTIONLOGS_DISABLED'),(48,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":81,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 19:07:43','com_users',81,81,'COM_ACTIONLOGS_DISABLED'),(49,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 19:08:23','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(50,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 19:11:03','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(51,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_MENU_ITEM\",\"id\":102,\"title\":\"Unsere Clubs\",\"itemlink\":\"index.php?option=com_menus&task=item.edit&id=102\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 19:15:02','com_menus.item',81,102,'COM_ACTIONLOGS_DISABLED'),(52,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 19:23:36','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(53,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_SITE\"}','2026-02-01 19:34:10','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(54,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 19:34:17','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(55,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_SITE\"}','2026-02-01 19:34:37','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(56,'PLG_SYSTEM_ACTIONLOGS_CONTENT_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER\",\"id\":82,\"title\":\"Max Mustermann\",\"itemlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 19:40:15','com_users',81,82,'COM_ACTIONLOGS_DISABLED'),(57,'PLG_SYSTEM_ACTIONLOGS_CONTENT_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER_GROUP\",\"id\":\"10\",\"title\":\"Club-Redakteur\",\"itemlink\":\"index.php?option=com_users&task=group.edit&id=10\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 19:41:21','com_users',81,10,'COM_ACTIONLOGS_DISABLED'),(58,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":19,\"title\":\"com_content\",\"extension_name\":\"com_content\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=19\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 19:42:06','com_config.component',81,19,'COM_ACTIONLOGS_DISABLED'),(59,'PLG_ACTIONLOG_JOOMLA_APPLICATION_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_APPLICATION_CONFIG\",\"extension_name\":\"com_config.application\",\"itemlink\":\"index.php?option=com_config\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 19:42:57','com_config.application',81,0,'COM_ACTIONLOGS_DISABLED'),(60,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 19:43:26','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(61,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER\",\"id\":84,\"title\":\"testredakteur\",\"itemlink\":\"index.php?option=com_users&task=user.edit&id=84\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 19:46:26','com_users',81,84,'COM_ACTIONLOGS_DISABLED'),(62,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":84,\"username\":\"testred\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=84\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 19:47:51','com_users',84,0,'COM_ACTIONLOGS_DISABLED'),(63,'PLG_ACTIONLOG_JOOMLA_GUIDEDTOURS_TOURSKIPPED','{\"id\":12,\"title\":\"Welcome to Joomla!\",\"state\":\"skipped\",\"step\":1,\"userid\":84,\"username\":\"testred\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=84\"}','2026-02-01 19:47:56','com_guidedtours.state',84,12,'COM_ACTIONLOGS_DISABLED'),(64,'PLG_ACTIONLOG_JOOMLA_APPLICATION_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_APPLICATION_CONFIG\",\"extension_name\":\"com_config.application\",\"itemlink\":\"index.php?option=com_config\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 20:10:00','com_config.application',81,0,'COM_ACTIONLOGS_DISABLED'),(65,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 20:10:54','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(66,'PLG_ACTIONLOG_JOOMLA_APPLICATION_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_APPLICATION_CONFIG\",\"extension_name\":\"com_config.application\",\"itemlink\":\"index.php?option=com_config\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 20:13:02','com_config.application',81,0,'COM_ACTIONLOGS_DISABLED'),(67,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 20:13:38','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(68,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":19,\"title\":\"com_content\",\"extension_name\":\"com_content\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=19\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 20:14:50','com_config.component',81,19,'COM_ACTIONLOGS_DISABLED'),(69,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 20:15:29','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(70,'PLG_ACTIONLOG_JOOMLA_APPLICATION_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_APPLICATION_CONFIG\",\"extension_name\":\"com_config.application\",\"itemlink\":\"index.php?option=com_config\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 20:17:47','com_config.application',81,0,'COM_ACTIONLOGS_DISABLED'),(71,'PLG_ACTIONLOG_JOOMLA_USER_CHECKIN','{\"action\":\"checkin\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER\",\"id\":81,\"title\":\"admin\",\"itemlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"table\":\"#__categories\"}','2026-02-01 20:20:05','com_checkin',81,81,'COM_ACTIONLOGS_DISABLED'),(72,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":19,\"title\":\"com_content\",\"extension_name\":\"com_content\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=19\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 20:21:30','com_config.component',81,19,'COM_ACTIONLOGS_DISABLED'),(73,'PLG_ACTIONLOG_JOOMLA_APPLICATION_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_APPLICATION_CONFIG\",\"extension_name\":\"com_config.application\",\"itemlink\":\"index.php?option=com_config\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 20:29:02','com_config.application',81,0,'COM_ACTIONLOGS_DISABLED'),(74,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":19,\"title\":\"com_content\",\"extension_name\":\"com_content\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=19\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 20:36:38','com_config.component',81,19,'COM_ACTIONLOGS_DISABLED'),(75,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 20:37:20','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(76,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 21:05:41','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(77,'PLG_ACTIONLOG_JOOMLA_APPLICATION_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_APPLICATION_CONFIG\",\"extension_name\":\"com_config.application\",\"itemlink\":\"index.php?option=com_config\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 21:06:21','com_config.application',81,0,'COM_ACTIONLOGS_DISABLED'),(78,'PLG_ACTIONLOG_JOOMLA_USER_LOGIN_FAILED','{\"action\":\"login\",\"id\":84,\"userid\":84,\"username\":\"testred\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=84\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 21:06:52','com_users',84,84,'COM_ACTIONLOGS_DISABLED'),(79,'PLG_ACTIONLOG_JOOMLA_USER_LOGIN_FAILED','{\"action\":\"login\",\"id\":84,\"userid\":84,\"username\":\"testred\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=84\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 21:07:04','com_users',84,84,'COM_ACTIONLOGS_DISABLED'),(80,'PLG_ACTIONLOG_JOOMLA_USER_LOGIN_FAILED','{\"action\":\"login\",\"id\":84,\"userid\":84,\"username\":\"testred\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=84\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 21:07:19','com_users',84,84,'COM_ACTIONLOGS_DISABLED'),(81,'PLG_ACTIONLOG_JOOMLA_USER_LOGIN_FAILED','{\"action\":\"login\",\"id\":84,\"userid\":84,\"username\":\"testred\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=84\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 21:07:29','com_users',84,84,'COM_ACTIONLOGS_DISABLED'),(82,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 21:07:44','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(83,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":24,\"title\":\"com_joomlaupdate\",\"extension_name\":\"com_joomlaupdate\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=24\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 21:11:31','com_config.component',81,24,'COM_ACTIONLOGS_DISABLED');
+INSERT INTO `lcoa2_action_logs` VALUES (1,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 07:57:08','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(2,'PLG_ACTIONLOG_JOOMLA_GUIDEDTOURS_TOURCOMPLETED','{\"id\":12,\"title\":\"Welcome to Joomla!\",\"state\":\"completed\",\"step\":6,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 07:57:49','com_guidedtours.state',81,12,'COM_ACTIONLOGS_DISABLED'),(3,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER_GROUP\",\"id\":10,\"title\":\"Club-Redakteur\",\"itemlink\":\"index.php?option=com_users&task=group.edit&id=10\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:00:03','com_users',81,10,'COM_ACTIONLOGS_DISABLED'),(4,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER_GROUP\",\"id\":11,\"title\":\"Club-Administrator\",\"itemlink\":\"index.php?option=com_users&task=group.edit&id=11\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:00:24','com_users',81,11,'COM_ACTIONLOGS_DISABLED'),(5,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":19,\"title\":\"com_content\",\"extension_name\":\"com_content\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=19\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:06:48','com_config.component',81,19,'COM_ACTIONLOGS_DISABLED'),(6,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER\",\"id\":82,\"title\":\"Max Mustermann\",\"itemlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:09:30','com_users',81,82,'COM_ACTIONLOGS_DISABLED'),(7,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER\",\"id\":83,\"title\":\"Club Admin\",\"itemlink\":\"index.php?option=com_users&task=user.edit&id=83\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:11:41','com_users',81,83,'COM_ACTIONLOGS_DISABLED'),(8,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_CATEGORY\",\"id\":8,\"title\":\"Clubs\",\"itemlink\":\"index.php?option=com_categories&task=category.edit&id=8\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:12:32','com_categories.category',81,8,'COM_ACTIONLOGS_DISABLED'),(9,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_CATEGORY\",\"id\":9,\"title\":\"Robotik-Club\",\"itemlink\":\"index.php?option=com_categories&task=category.edit&id=9\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:13:10','com_categories.category',81,9,'COM_ACTIONLOGS_DISABLED'),(10,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_CATEGORY\",\"id\":10,\"title\":\"Theater-Club\",\"itemlink\":\"index.php?option=com_categories&task=category.edit&id=10\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:14:23','com_categories.category',81,10,'COM_ACTIONLOGS_DISABLED'),(11,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_CATEGORY\",\"id\":11,\"title\":\"Berichte\",\"itemlink\":\"index.php?option=com_categories&task=category.edit&id=11\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:15:04','com_categories.category',81,11,'COM_ACTIONLOGS_DISABLED'),(12,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_ARTICLE\",\"id\":1,\"title\":\"Robotik-Club\",\"itemlink\":\"index.php?option=com_content&task=article.edit&id=1\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:16:42','com_content.article',81,1,'COM_ACTIONLOGS_DISABLED'),(13,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_ARTICLE\",\"id\":2,\"title\":\"Theater-Club\",\"itemlink\":\"index.php?option=com_content&task=article.edit&id=2\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:17:42','com_content.article',81,2,'COM_ACTIONLOGS_DISABLED'),(14,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":81,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:18:07','com_users',81,81,'COM_ACTIONLOGS_DISABLED'),(15,'PLG_ACTIONLOG_JOOMLA_USER_LOGIN_FAILED','{\"action\":\"login\",\"id\":82,\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:18:46','com_users',82,82,'COM_ACTIONLOGS_DISABLED'),(16,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:19:40','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(17,'PLG_SYSTEM_ACTIONLOGS_CONTENT_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER_GROUP\",\"id\":\"10\",\"title\":\"Club-Redakteur\",\"itemlink\":\"index.php?option=com_users&task=group.edit&id=10\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:20:17','com_users',81,10,'COM_ACTIONLOGS_DISABLED'),(18,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":22,\"title\":\"com_users\",\"extension_name\":\"com_users\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=22\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:21:33','com_config.component',81,22,'COM_ACTIONLOGS_DISABLED'),(19,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":81,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:21:39','com_users',81,81,'COM_ACTIONLOGS_DISABLED'),(20,'PLG_ACTIONLOG_JOOMLA_USER_LOGIN_FAILED','{\"action\":\"login\",\"id\":82,\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:21:59','com_users',82,82,'COM_ACTIONLOGS_DISABLED'),(21,'PLG_ACTIONLOG_JOOMLA_USER_LOGIN_FAILED','{\"action\":\"login\",\"id\":82,\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:22:32','com_users',82,82,'COM_ACTIONLOGS_DISABLED'),(22,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:23:18','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(23,'PLG_ACTIONLOG_JOOMLA_APPLICATION_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_APPLICATION_CONFIG\",\"extension_name\":\"com_config.application\",\"itemlink\":\"index.php?option=com_config\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:24:18','com_config.application',81,0,'COM_ACTIONLOGS_DISABLED'),(24,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":22,\"title\":\"com_users\",\"extension_name\":\"com_users\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=22\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:25:54','com_config.component',81,22,'COM_ACTIONLOGS_DISABLED'),(25,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":81,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:26:19','com_users',81,81,'COM_ACTIONLOGS_DISABLED'),(26,'PLG_ACTIONLOG_JOOMLA_USER_LOGIN_FAILED','{\"action\":\"login\",\"id\":82,\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:26:32','com_users',82,82,'COM_ACTIONLOGS_DISABLED'),(27,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:26:32','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(28,'PLG_ACTIONLOG_JOOMLA_GUIDEDTOURS_TOURSKIPPED','{\"id\":12,\"title\":\"Welcome to Joomla!\",\"state\":\"skipped\",\"step\":1,\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\"}','2026-01-26 08:26:38','com_guidedtours.state',82,12,'COM_ACTIONLOGS_DISABLED'),(29,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_SITE\"}','2026-01-26 08:31:19','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(30,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":81,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_SITE\"}','2026-01-26 08:32:20','com_users',81,81,'COM_ACTIONLOGS_DISABLED'),(31,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:39:40','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(32,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":19,\"title\":\"com_content\",\"extension_name\":\"com_content\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=19\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 08:43:16','com_config.component',81,19,'COM_ACTIONLOGS_DISABLED'),(33,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":81,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:43:30','com_users',81,81,'COM_ACTIONLOGS_DISABLED'),(34,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 08:43:43','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(35,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 09:02:09','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(36,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 09:02:09','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(37,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":19,\"title\":\"com_content\",\"extension_name\":\"com_content\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=19\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-01-26 09:15:11','com_config.component',81,19,'COM_ACTIONLOGS_DISABLED'),(38,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":81,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 09:47:28','com_users',81,81,'COM_ACTIONLOGS_DISABLED'),(39,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 09:47:48','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(40,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-01-26 10:04:08','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(41,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_SITE\"}','2026-02-01 18:56:44','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(42,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":81,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_SITE\"}','2026-02-01 18:57:06','com_users',81,81,'COM_ACTIONLOGS_DISABLED'),(43,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 18:58:54','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(44,'PLG_SYSTEM_ACTIONLOGS_CONTENT_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER_GROUP\",\"id\":\"10\",\"title\":\"Club-Redakteur\",\"itemlink\":\"index.php?option=com_users&task=group.edit&id=10\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 19:03:29','com_users',81,10,'COM_ACTIONLOGS_DISABLED'),(45,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":19,\"title\":\"com_content\",\"extension_name\":\"com_content\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=19\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 19:05:50','com_config.component',81,19,'COM_ACTIONLOGS_DISABLED'),(46,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_SITE\"}','2026-02-01 19:07:04','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(47,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":82,\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_SITE\"}','2026-02-01 19:07:31','com_users',82,82,'COM_ACTIONLOGS_DISABLED'),(48,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":81,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 19:07:43','com_users',81,81,'COM_ACTIONLOGS_DISABLED'),(49,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 19:08:23','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(50,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 19:11:03','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(51,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_MENU_ITEM\",\"id\":102,\"title\":\"Unsere Clubs\",\"itemlink\":\"index.php?option=com_menus&task=item.edit&id=102\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 19:15:02','com_menus.item',81,102,'COM_ACTIONLOGS_DISABLED'),(52,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 19:23:36','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(53,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_SITE\"}','2026-02-01 19:34:10','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(54,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 19:34:17','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(55,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_SITE\"}','2026-02-01 19:34:37','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(56,'PLG_SYSTEM_ACTIONLOGS_CONTENT_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER\",\"id\":82,\"title\":\"Max Mustermann\",\"itemlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 19:40:15','com_users',81,82,'COM_ACTIONLOGS_DISABLED'),(57,'PLG_SYSTEM_ACTIONLOGS_CONTENT_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER_GROUP\",\"id\":\"10\",\"title\":\"Club-Redakteur\",\"itemlink\":\"index.php?option=com_users&task=group.edit&id=10\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 19:41:21','com_users',81,10,'COM_ACTIONLOGS_DISABLED'),(58,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":19,\"title\":\"com_content\",\"extension_name\":\"com_content\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=19\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 19:42:06','com_config.component',81,19,'COM_ACTIONLOGS_DISABLED'),(59,'PLG_ACTIONLOG_JOOMLA_APPLICATION_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_APPLICATION_CONFIG\",\"extension_name\":\"com_config.application\",\"itemlink\":\"index.php?option=com_config\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 19:42:57','com_config.application',81,0,'COM_ACTIONLOGS_DISABLED'),(60,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 19:43:26','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(61,'PLG_SYSTEM_ACTIONLOGS_CONTENT_ADDED','{\"action\":\"add\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER\",\"id\":84,\"title\":\"testredakteur\",\"itemlink\":\"index.php?option=com_users&task=user.edit&id=84\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 19:46:26','com_users',81,84,'COM_ACTIONLOGS_DISABLED'),(62,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":84,\"username\":\"testred\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=84\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 19:47:51','com_users',84,0,'COM_ACTIONLOGS_DISABLED'),(63,'PLG_ACTIONLOG_JOOMLA_GUIDEDTOURS_TOURSKIPPED','{\"id\":12,\"title\":\"Welcome to Joomla!\",\"state\":\"skipped\",\"step\":1,\"userid\":84,\"username\":\"testred\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=84\"}','2026-02-01 19:47:56','com_guidedtours.state',84,12,'COM_ACTIONLOGS_DISABLED'),(64,'PLG_ACTIONLOG_JOOMLA_APPLICATION_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_APPLICATION_CONFIG\",\"extension_name\":\"com_config.application\",\"itemlink\":\"index.php?option=com_config\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 20:10:00','com_config.application',81,0,'COM_ACTIONLOGS_DISABLED'),(65,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 20:10:54','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(66,'PLG_ACTIONLOG_JOOMLA_APPLICATION_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_APPLICATION_CONFIG\",\"extension_name\":\"com_config.application\",\"itemlink\":\"index.php?option=com_config\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 20:13:02','com_config.application',81,0,'COM_ACTIONLOGS_DISABLED'),(67,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 20:13:38','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(68,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":19,\"title\":\"com_content\",\"extension_name\":\"com_content\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=19\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 20:14:50','com_config.component',81,19,'COM_ACTIONLOGS_DISABLED'),(69,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 20:15:29','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(70,'PLG_ACTIONLOG_JOOMLA_APPLICATION_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_APPLICATION_CONFIG\",\"extension_name\":\"com_config.application\",\"itemlink\":\"index.php?option=com_config\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 20:17:47','com_config.application',81,0,'COM_ACTIONLOGS_DISABLED'),(71,'PLG_ACTIONLOG_JOOMLA_USER_CHECKIN','{\"action\":\"checkin\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER\",\"id\":81,\"title\":\"admin\",\"itemlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"table\":\"#__categories\"}','2026-02-01 20:20:05','com_checkin',81,81,'COM_ACTIONLOGS_DISABLED'),(72,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":19,\"title\":\"com_content\",\"extension_name\":\"com_content\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=19\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 20:21:30','com_config.component',81,19,'COM_ACTIONLOGS_DISABLED'),(73,'PLG_ACTIONLOG_JOOMLA_APPLICATION_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_APPLICATION_CONFIG\",\"extension_name\":\"com_config.application\",\"itemlink\":\"index.php?option=com_config\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 20:29:02','com_config.application',81,0,'COM_ACTIONLOGS_DISABLED'),(74,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":19,\"title\":\"com_content\",\"extension_name\":\"com_content\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=19\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 20:36:38','com_config.component',81,19,'COM_ACTIONLOGS_DISABLED'),(75,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 20:37:20','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(76,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 21:05:41','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(77,'PLG_ACTIONLOG_JOOMLA_APPLICATION_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_APPLICATION_CONFIG\",\"extension_name\":\"com_config.application\",\"itemlink\":\"index.php?option=com_config\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 21:06:21','com_config.application',81,0,'COM_ACTIONLOGS_DISABLED'),(78,'PLG_ACTIONLOG_JOOMLA_USER_LOGIN_FAILED','{\"action\":\"login\",\"id\":84,\"userid\":84,\"username\":\"testred\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=84\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 21:06:52','com_users',84,84,'COM_ACTIONLOGS_DISABLED'),(79,'PLG_ACTIONLOG_JOOMLA_USER_LOGIN_FAILED','{\"action\":\"login\",\"id\":84,\"userid\":84,\"username\":\"testred\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=84\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 21:07:04','com_users',84,84,'COM_ACTIONLOGS_DISABLED'),(80,'PLG_ACTIONLOG_JOOMLA_USER_LOGIN_FAILED','{\"action\":\"login\",\"id\":84,\"userid\":84,\"username\":\"testred\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=84\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 21:07:19','com_users',84,84,'COM_ACTIONLOGS_DISABLED'),(81,'PLG_ACTIONLOG_JOOMLA_USER_LOGIN_FAILED','{\"action\":\"login\",\"id\":84,\"userid\":84,\"username\":\"testred\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=84\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 21:07:29','com_users',84,84,'COM_ACTIONLOGS_DISABLED'),(82,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 21:07:44','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(83,'PLG_ACTIONLOG_JOOMLA_COMPONENT_CONFIG_UPDATED','{\"action\":\"update\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_COMPONENT_CONFIG\",\"id\":24,\"title\":\"com_joomlaupdate\",\"extension_name\":\"com_joomlaupdate\",\"itemlink\":\"index.php?option=com_config&task=component.edit&extension_id=24\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\"}','2026-02-01 21:11:31','com_config.component',81,24,'COM_ACTIONLOGS_DISABLED'),(84,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 22:10:42','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(85,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":81,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 22:16:15','com_users',81,81,'COM_ACTIONLOGS_DISABLED'),(86,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-01 22:16:38','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(87,'PLG_ACTIONLOG_JOOMLA_GUIDEDTOURS_TOURDELAYED','{\"id\":3,\"title\":\"How to create articles?\",\"state\":\"delayed\",\"step\":2,\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\"}','2026-02-01 22:17:30','com_guidedtours.state',82,3,'COM_ACTIONLOGS_DISABLED'),(88,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-02 07:30:33','com_users',81,0,'COM_ACTIONLOGS_DISABLED'),(89,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_OUT','{\"action\":\"logout\",\"id\":81,\"userid\":81,\"username\":\"admin\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=81\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-02 07:32:27','com_users',81,81,'COM_ACTIONLOGS_DISABLED'),(90,'PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN','{\"action\":\"login\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"app\":\"PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR\"}','2026-02-02 07:32:55','com_users',82,0,'COM_ACTIONLOGS_DISABLED'),(91,'PLG_ACTIONLOG_JOOMLA_USER_CHECKIN','{\"action\":\"checkin\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_USER\",\"id\":82,\"title\":\"redakteur\",\"itemlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\",\"table\":\"#__modules\"}','2026-02-02 07:37:37','com_checkin',82,82,'COM_ACTIONLOGS_DISABLED'),(92,'PLG_SYSTEM_ACTIONLOGS_CONTENT_UNPUBLISHED','{\"action\":\"unpublish\",\"type\":\"PLG_ACTIONLOG_JOOMLA_TYPE_MODULE\",\"id\":103,\"title\":\"Site\",\"itemlink\":\"index.php?option=com_modules&task=module.edit&id=103\",\"userid\":82,\"username\":\"redakteur\",\"accountlink\":\"index.php?option=com_users&task=user.edit&id=82\"}','2026-02-02 07:37:37','com_modules.module',82,103,'COM_ACTIONLOGS_DISABLED');
 /*!40000 ALTER TABLE `lcoa2_action_logs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +87,7 @@ DROP TABLE IF EXISTS `lcoa2_action_logs_extensions`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_action_logs_extensions` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `extension` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `extension` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -112,7 +112,7 @@ DROP TABLE IF EXISTS `lcoa2_action_logs_users`;
 CREATE TABLE `lcoa2_action_logs_users` (
   `user_id` int unsigned NOT NULL,
   `notify` tinyint unsigned NOT NULL,
-  `extensions` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `extensions` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`user_id`),
   KEY `idx_notify` (`notify`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -140,9 +140,9 @@ CREATE TABLE `lcoa2_assets` (
   `lft` int NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
   `rgt` int NOT NULL DEFAULT '0' COMMENT 'Nested set rgt.',
   `level` int unsigned NOT NULL COMMENT 'The cached level in the nested tree.',
-  `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The unique name for the asset.',
-  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The descriptive title for the asset.',
-  `rules` varchar(5120) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded access control.',
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The unique name for the asset.',
+  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The descriptive title for the asset.',
+  `rules` varchar(5120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded access control.',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_asset_name` (`name`),
   KEY `idx_lft_rgt` (`lft`,`rgt`),
@@ -169,8 +169,8 @@ DROP TABLE IF EXISTS `lcoa2_associations`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_associations` (
   `id` int NOT NULL COMMENT 'A reference to the associated item.',
-  `context` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The context of the associated item.',
-  `key` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The key for the association computed from an md5 on associated ids.',
+  `context` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The context of the associated item.',
+  `key` char(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The key for the association computed from an md5 on associated ids.',
   PRIMARY KEY (`context`,`id`),
   KEY `idx_key` (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -194,16 +194,16 @@ DROP TABLE IF EXISTS `lcoa2_banner_clients`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_banner_clients` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `contact` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `extrainfo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `contact` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `extrainfo` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `state` tinyint NOT NULL DEFAULT '0',
   `checked_out` int unsigned DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
-  `metakey` text COLLATE utf8mb4_unicode_ci,
+  `metakey` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `own_prefix` tinyint NOT NULL DEFAULT '0',
-  `metakey_prefix` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `metakey_prefix` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `purchase_type` tinyint NOT NULL DEFAULT '-1',
   `track_clicks` tinyint NOT NULL DEFAULT '-1',
   `track_impressions` tinyint NOT NULL DEFAULT '-1',
@@ -261,22 +261,22 @@ CREATE TABLE `lcoa2_banners` (
   `id` int NOT NULL AUTO_INCREMENT,
   `cid` int NOT NULL DEFAULT '0',
   `type` int NOT NULL DEFAULT '0',
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
   `imptotal` int NOT NULL DEFAULT '0',
   `impmade` int NOT NULL DEFAULT '0',
   `clicks` int NOT NULL DEFAULT '0',
-  `clickurl` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `clickurl` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `state` tinyint NOT NULL DEFAULT '0',
   `catid` int unsigned NOT NULL DEFAULT '0',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `custombannercode` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `custombannercode` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `sticky` tinyint unsigned NOT NULL DEFAULT '0',
   `ordering` int NOT NULL DEFAULT '0',
-  `metakey` text COLLATE utf8mb4_unicode_ci,
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `metakey` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `own_prefix` tinyint NOT NULL DEFAULT '0',
-  `metakey_prefix` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `metakey_prefix` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `purchase_type` tinyint NOT NULL DEFAULT '-1',
   `track_clicks` tinyint NOT NULL DEFAULT '-1',
   `track_impressions` tinyint NOT NULL DEFAULT '-1',
@@ -286,9 +286,9 @@ CREATE TABLE `lcoa2_banners` (
   `publish_down` datetime DEFAULT NULL,
   `reset` datetime DEFAULT NULL,
   `created` datetime NOT NULL,
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `created_by` int unsigned NOT NULL DEFAULT '0',
-  `created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `created_by_alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `modified` datetime NOT NULL,
   `modified_by` int unsigned NOT NULL DEFAULT '0',
   `version` int unsigned NOT NULL DEFAULT '1',
@@ -324,26 +324,26 @@ CREATE TABLE `lcoa2_categories` (
   `lft` int NOT NULL DEFAULT '0',
   `rgt` int NOT NULL DEFAULT '0',
   `level` int unsigned NOT NULL DEFAULT '0',
-  `path` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `extension` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `path` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `extension` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `description` mediumtext COLLATE utf8mb4_unicode_ci,
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `published` tinyint NOT NULL DEFAULT '0',
   `checked_out` int unsigned DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `access` int unsigned NOT NULL DEFAULT '0',
-  `params` text COLLATE utf8mb4_unicode_ci,
-  `metadesc` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'The meta description for the page.',
-  `metakey` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'The keywords for the page.',
-  `metadata` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'JSON encoded metadata properties.',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `metadesc` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'The meta description for the page.',
+  `metakey` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'The keywords for the page.',
+  `metadata` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'JSON encoded metadata properties.',
   `created_user_id` int unsigned NOT NULL DEFAULT '0',
   `created_time` datetime NOT NULL,
   `modified_user_id` int unsigned NOT NULL DEFAULT '0',
   `modified_time` datetime NOT NULL,
   `hits` int unsigned NOT NULL DEFAULT '0',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `version` int unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `cat_idx` (`extension`,`published`,`access`),
@@ -375,42 +375,42 @@ DROP TABLE IF EXISTS `lcoa2_contact_details`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_contact_details` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `con_position` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci,
-  `suburb` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `state` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `country` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `postcode` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `telephone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `fax` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `misc` mediumtext COLLATE utf8mb4_unicode_ci,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email_to` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `con_position` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `suburb` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `state` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `postcode` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `telephone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fax` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `misc` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email_to` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `default_con` tinyint unsigned NOT NULL DEFAULT '0',
   `published` tinyint NOT NULL DEFAULT '0',
   `checked_out` int unsigned DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `ordering` int NOT NULL DEFAULT '0',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` int NOT NULL DEFAULT '0',
   `catid` int NOT NULL DEFAULT '0',
   `access` int unsigned NOT NULL DEFAULT '0',
-  `mobile` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `webpage` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `sortname1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `sortname2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `sortname3` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `language` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mobile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `webpage` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `sortname1` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `sortname2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `sortname3` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
   `created_by` int unsigned NOT NULL DEFAULT '0',
-  `created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `created_by_alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `modified` datetime NOT NULL,
   `modified_by` int unsigned NOT NULL DEFAULT '0',
-  `metakey` text COLLATE utf8mb4_unicode_ci,
-  `metadesc` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metadata` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `metakey` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `metadesc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `metadata` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `featured` tinyint unsigned NOT NULL DEFAULT '0' COMMENT 'Set if contact is featured.',
   `publish_up` datetime DEFAULT NULL,
   `publish_down` datetime DEFAULT NULL,
@@ -446,34 +446,34 @@ DROP TABLE IF EXISTS `lcoa2_content`;
 CREATE TABLE `lcoa2_content` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `asset_id` int unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
-  `introtext` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fulltext` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `introtext` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fulltext` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `state` tinyint NOT NULL DEFAULT '0',
   `catid` int unsigned NOT NULL DEFAULT '0',
   `created` datetime NOT NULL,
   `created_by` int unsigned NOT NULL DEFAULT '0',
-  `created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `created_by_alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `modified` datetime NOT NULL,
   `modified_by` int unsigned NOT NULL DEFAULT '0',
   `checked_out` int unsigned DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `publish_up` datetime DEFAULT NULL,
   `publish_down` datetime DEFAULT NULL,
-  `images` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `urls` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `attribs` varchar(5120) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `images` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `urls` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attribs` varchar(5120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `version` int unsigned NOT NULL DEFAULT '1',
   `ordering` int NOT NULL DEFAULT '0',
-  `metakey` text COLLATE utf8mb4_unicode_ci,
-  `metadesc` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `metakey` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `metadesc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `access` int unsigned NOT NULL DEFAULT '0',
   `hits` int unsigned NOT NULL DEFAULT '0',
-  `metadata` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `metadata` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `featured` tinyint unsigned NOT NULL DEFAULT '0' COMMENT 'Set if article is featured.',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The language code for the article.',
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The language code for the article.',
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `idx_access` (`access`),
   KEY `idx_checkout` (`checked_out`),
@@ -492,7 +492,7 @@ CREATE TABLE `lcoa2_content` (
 
 LOCK TABLES `lcoa2_content` WRITE;
 /*!40000 ALTER TABLE `lcoa2_content` DISABLE KEYS */;
-INSERT INTO `lcoa2_content` VALUES (1,104,'Robotik-Club','robotik-club','<p>Der Robotik-Club beschäftigt sich mit der Entwicklung autonomer Roboter und nimmt regelmäßig an Wettbewerben teil.</p>\r\n<p>Treffen: Jeden Mittwoch, 18:00 Uhr<br>Raum: Technikgebäude, Raum 301<br>Kontakt: robotik@campus.de</p>','',1,9,'2026-01-26 08:16:42',81,'','2026-01-26 08:16:42',81,NULL,NULL,'2026-01-26 08:16:42',NULL,'{\"image_intro\":\"\",\"image_intro_alt\":\"\",\"float_intro\":\"\",\"image_intro_caption\":\"\",\"image_fulltext\":\"\",\"image_fulltext_alt\":\"\",\"float_fulltext\":\"\",\"image_fulltext_caption\":\"\"}','{\"urla\":\"\",\"urlatext\":\"\",\"targeta\":\"\",\"urlb\":\"\",\"urlbtext\":\"\",\"targetb\":\"\",\"urlc\":\"\",\"urlctext\":\"\",\"targetc\":\"\"}','{\"article_layout\":\"\",\"show_title\":\"\",\"link_titles\":\"\",\"show_tags\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_hits\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"alternative_readmore\":\"\",\"article_page_title\":\"\",\"show_publishing_options\":\"\",\"show_article_options\":\"\",\"show_urls_images_backend\":\"\",\"show_urls_images_frontend\":\"\"}',1,0,'','',1,0,'{\"robots\":\"\",\"author\":\"\",\"rights\":\"\"}',0,'*',''),(2,105,'Theater-Club','theater-club','<p>Der Theater-Club bringt jedes Semester ein neues Stück auf die Bühne und bietet Workshops für Schauspiel und Regie.</p>\r\n<p>Treffen: Jeden Donnerstag, 19:00 Uhr<br>Raum: Aula, Hauptgebäude<br>Kontakt: theater@campus.de</p>','',1,10,'2026-01-26 08:17:42',81,'','2026-01-26 08:17:42',81,82,'2026-02-01 21:08:01','2026-01-26 08:17:42',NULL,'{\"image_intro\":\"\",\"image_intro_alt\":\"\",\"float_intro\":\"\",\"image_intro_caption\":\"\",\"image_fulltext\":\"\",\"image_fulltext_alt\":\"\",\"float_fulltext\":\"\",\"image_fulltext_caption\":\"\"}','{\"urla\":\"\",\"urlatext\":\"\",\"targeta\":\"\",\"urlb\":\"\",\"urlbtext\":\"\",\"targetb\":\"\",\"urlc\":\"\",\"urlctext\":\"\",\"targetc\":\"\"}','{\"article_layout\":\"\",\"show_title\":\"\",\"link_titles\":\"\",\"show_tags\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_hits\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"alternative_readmore\":\"\",\"article_page_title\":\"\",\"show_publishing_options\":\"\",\"show_article_options\":\"\",\"show_urls_images_backend\":\"\",\"show_urls_images_frontend\":\"\"}',1,0,'','',1,0,'{\"robots\":\"\",\"author\":\"\",\"rights\":\"\"}',0,'*','');
+INSERT INTO `lcoa2_content` VALUES (1,104,'Robotik-Club','robotik-club','<p>Der Robotik-Club beschäftigt sich mit der Entwicklung autonomer Roboter und nimmt regelmäßig an Wettbewerben teil.</p>\r\n<p>Treffen: Jeden Mittwoch, 18:00 Uhr<br>Raum: Technikgebäude, Raum 301<br>Kontakt: robotik@campus.de</p>','',1,9,'2026-01-26 08:16:42',81,'','2026-01-26 08:16:42',81,NULL,NULL,'2026-01-26 08:16:42',NULL,'{\"image_intro\":\"\",\"image_intro_alt\":\"\",\"float_intro\":\"\",\"image_intro_caption\":\"\",\"image_fulltext\":\"\",\"image_fulltext_alt\":\"\",\"float_fulltext\":\"\",\"image_fulltext_caption\":\"\"}','{\"urla\":\"\",\"urlatext\":\"\",\"targeta\":\"\",\"urlb\":\"\",\"urlbtext\":\"\",\"targetb\":\"\",\"urlc\":\"\",\"urlctext\":\"\",\"targetc\":\"\"}','{\"article_layout\":\"\",\"show_title\":\"\",\"link_titles\":\"\",\"show_tags\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_hits\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"alternative_readmore\":\"\",\"article_page_title\":\"\",\"show_publishing_options\":\"\",\"show_article_options\":\"\",\"show_urls_images_backend\":\"\",\"show_urls_images_frontend\":\"\"}',1,0,'','',1,0,'{\"robots\":\"\",\"author\":\"\",\"rights\":\"\"}',0,'*',''),(2,105,'Theater-Club','theater-club','<p>Der Theater-Club bringt jedes Semester ein neues Stück auf die Bühne und bietet Workshops für Schauspiel und Regie.</p>\r\n<p>Treffen: Jeden Donnerstag, 19:00 Uhr<br>Raum: Aula, Hauptgebäude<br>Kontakt: theater@campus.de</p>','',1,10,'2026-01-26 08:17:42',81,'','2026-01-26 08:17:42',81,82,'2026-02-01 21:08:01','2026-01-26 08:17:42',NULL,'{\"image_intro\":\"\",\"image_intro_alt\":\"\",\"float_intro\":\"\",\"image_intro_caption\":\"\",\"image_fulltext\":\"\",\"image_fulltext_alt\":\"\",\"float_fulltext\":\"\",\"image_fulltext_caption\":\"\"}','{\"urla\":\"\",\"urlatext\":\"\",\"targeta\":\"\",\"urlb\":\"\",\"urlbtext\":\"\",\"targetb\":\"\",\"urlc\":\"\",\"urlctext\":\"\",\"targetc\":\"\"}','{\"article_layout\":\"\",\"show_title\":\"\",\"link_titles\":\"\",\"show_tags\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_hits\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"alternative_readmore\":\"\",\"article_page_title\":\"\",\"show_publishing_options\":\"\",\"show_article_options\":\"\",\"show_urls_images_backend\":\"\",\"show_urls_images_frontend\":\"\"}',1,0,'','',1,0,'{\"robots\":\"\",\"author\":\"\",\"rights\":\"\"}',1,'*','');
 /*!40000 ALTER TABLE `lcoa2_content` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -518,6 +518,7 @@ CREATE TABLE `lcoa2_content_frontpage` (
 
 LOCK TABLES `lcoa2_content_frontpage` WRITE;
 /*!40000 ALTER TABLE `lcoa2_content_frontpage` DISABLE KEYS */;
+INSERT INTO `lcoa2_content_frontpage` VALUES (2,1,NULL,NULL);
 /*!40000 ALTER TABLE `lcoa2_content_frontpage` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -532,7 +533,7 @@ CREATE TABLE `lcoa2_content_rating` (
   `content_id` int NOT NULL DEFAULT '0',
   `rating_sum` int unsigned NOT NULL DEFAULT '0',
   `rating_count` int unsigned NOT NULL DEFAULT '0',
-  `lastip` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `lastip` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`content_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -555,13 +556,13 @@ DROP TABLE IF EXISTS `lcoa2_content_types`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_content_types` (
   `type_id` int unsigned NOT NULL AUTO_INCREMENT,
-  `type_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `type_alias` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `table` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `rules` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `field_mappings` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `router` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `content_history_options` varchar(5120) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'JSON string for com_contenthistory options',
+  `type_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `type_alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `table` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `rules` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `field_mappings` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `router` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `content_history_options` varchar(5120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'JSON string for com_contenthistory options',
   PRIMARY KEY (`type_id`),
   KEY `idx_alias` (`type_alias`(100))
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -585,7 +586,7 @@ DROP TABLE IF EXISTS `lcoa2_contentitem_tag_map`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_contentitem_tag_map` (
-  `type_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `type_alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `core_content_id` int unsigned NOT NULL COMMENT 'PK from the core content table',
   `content_item_id` int NOT NULL COMMENT 'PK from the content type table',
   `tag_id` int unsigned NOT NULL COMMENT 'PK from the tag table',
@@ -617,24 +618,24 @@ DROP TABLE IF EXISTS `lcoa2_extensions`;
 CREATE TABLE `lcoa2_extensions` (
   `extension_id` int NOT NULL AUTO_INCREMENT,
   `package_id` int NOT NULL DEFAULT '0' COMMENT 'Parent package ID for extensions installed as a package.',
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `element` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `changelogurl` text COLLATE utf8mb4_unicode_ci,
-  `folder` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `element` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `changelogurl` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `folder` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `client_id` tinyint NOT NULL,
   `enabled` tinyint NOT NULL DEFAULT '0',
   `access` int unsigned NOT NULL DEFAULT '1',
   `protected` tinyint NOT NULL DEFAULT '0' COMMENT 'Flag to indicate if the extension is protected. Protected extensions cannot be disabled.',
   `locked` tinyint NOT NULL DEFAULT '0' COMMENT 'Flag to indicate if the extension is locked. Locked extensions cannot be uninstalled.',
-  `manifest_cache` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `custom_data` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `manifest_cache` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `custom_data` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `checked_out` int unsigned DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `ordering` int DEFAULT '0',
   `state` int DEFAULT '0',
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`extension_id`),
   KEY `element_clientid` (`element`,`client_id`),
   KEY `element_folder_clientid` (`element`,`folder`,`client_id`),
@@ -662,24 +663,24 @@ DROP TABLE IF EXISTS `lcoa2_fields`;
 CREATE TABLE `lcoa2_fields` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `asset_id` int unsigned NOT NULL DEFAULT '0',
-  `context` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `context` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `group_id` int unsigned NOT NULL DEFAULT '0',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `label` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `default_value` text COLLATE utf8mb4_unicode_ci,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'text',
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `label` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `default_value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'text',
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `state` tinyint NOT NULL DEFAULT '0',
   `required` tinyint NOT NULL DEFAULT '0',
   `only_use_in_subform` tinyint NOT NULL DEFAULT '0',
   `checked_out` int unsigned DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `ordering` int NOT NULL DEFAULT '0',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fieldparams` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fieldparams` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `created_time` datetime NOT NULL,
   `created_user_id` int unsigned NOT NULL DEFAULT '0',
   `modified_time` datetime NOT NULL,
@@ -737,16 +738,16 @@ DROP TABLE IF EXISTS `lcoa2_fields_groups`;
 CREATE TABLE `lcoa2_fields_groups` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `asset_id` int unsigned NOT NULL DEFAULT '0',
-  `context` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `context` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `state` tinyint NOT NULL DEFAULT '0',
   `checked_out` int unsigned DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `ordering` int NOT NULL DEFAULT '0',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `created` datetime NOT NULL,
   `created_by` int unsigned NOT NULL DEFAULT '0',
   `modified` datetime NOT NULL,
@@ -780,8 +781,8 @@ DROP TABLE IF EXISTS `lcoa2_fields_values`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_fields_values` (
   `field_id` int unsigned NOT NULL,
-  `item_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Allow references to items which have strings as ids, eg. none db systems.',
-  `value` mediumtext COLLATE utf8mb4_unicode_ci,
+  `item_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Allow references to items which have strings as ids, eg. none db systems.',
+  `value` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   KEY `idx_field_id` (`field_id`),
   KEY `idx_item_id` (`item_id`(191))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -805,19 +806,19 @@ DROP TABLE IF EXISTS `lcoa2_finder_filters`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_finder_filters` (
   `filter_id` int unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `state` tinyint NOT NULL DEFAULT '1',
   `created` datetime NOT NULL,
   `created_by` int unsigned NOT NULL DEFAULT '0',
-  `created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `created_by_alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `modified` datetime NOT NULL,
   `modified_by` int unsigned NOT NULL DEFAULT '0',
   `checked_out` int unsigned DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `map_count` int unsigned NOT NULL DEFAULT '0',
-  `data` text COLLATE utf8mb4_unicode_ci,
-  `params` mediumtext COLLATE utf8mb4_unicode_ci,
+  `data` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `params` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`filter_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -840,16 +841,16 @@ DROP TABLE IF EXISTS `lcoa2_finder_links`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_finder_links` (
   `link_id` int unsigned NOT NULL AUTO_INCREMENT,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `route` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(400) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `route` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `indexdate` datetime NOT NULL,
-  `md5sum` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `md5sum` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `published` tinyint NOT NULL DEFAULT '1',
   `state` int NOT NULL DEFAULT '1',
   `access` int NOT NULL DEFAULT '0',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `publish_start_date` datetime DEFAULT NULL,
   `publish_end_date` datetime DEFAULT NULL,
   `start_date` datetime DEFAULT NULL,
@@ -914,8 +915,8 @@ DROP TABLE IF EXISTS `lcoa2_finder_logging`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_finder_logging` (
-  `searchterm` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `md5sum` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `searchterm` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `md5sum` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `query` blob NOT NULL,
   `hits` int NOT NULL DEFAULT '1',
   `results` int NOT NULL DEFAULT '0',
@@ -946,12 +947,12 @@ CREATE TABLE `lcoa2_finder_taxonomy` (
   `lft` int NOT NULL DEFAULT '0',
   `rgt` int NOT NULL DEFAULT '0',
   `level` int unsigned NOT NULL DEFAULT '0',
-  `path` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `alias` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `path` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `state` tinyint unsigned NOT NULL DEFAULT '1',
   `access` tinyint unsigned NOT NULL DEFAULT '1',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `idx_state` (`state`),
   KEY `idx_access` (`access`),
@@ -1016,7 +1017,7 @@ CREATE TABLE `lcoa2_finder_terms` (
   `weight` float unsigned NOT NULL DEFAULT '0',
   `soundex` varchar(75) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
   `links` int NOT NULL DEFAULT '0',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`term_id`),
   UNIQUE KEY `idx_term_language` (`term`,`language`),
   KEY `idx_stem` (`stem`),
@@ -1046,7 +1047,7 @@ DROP TABLE IF EXISTS `lcoa2_finder_terms_common`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_finder_terms_common` (
   `term` varchar(75) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `custom` int NOT NULL DEFAULT '0',
   UNIQUE KEY `idx_term_language` (`term`,`language`),
   KEY `idx_lang` (`language`)
@@ -1077,7 +1078,7 @@ CREATE TABLE `lcoa2_finder_tokens` (
   `phrase` tinyint unsigned NOT NULL DEFAULT '0',
   `weight` float unsigned NOT NULL DEFAULT '1',
   `context` tinyint unsigned NOT NULL DEFAULT '2',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   KEY `idx_word` (`term`),
   KEY `idx_stem` (`stem`),
   KEY `idx_context` (`context`),
@@ -1111,7 +1112,7 @@ CREATE TABLE `lcoa2_finder_tokens_aggregate` (
   `context` tinyint unsigned NOT NULL DEFAULT '2',
   `context_weight` float unsigned NOT NULL DEFAULT '0',
   `total_weight` float unsigned NOT NULL DEFAULT '0',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   KEY `token` (`term`),
   KEY `keyword_id` (`term_id`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1135,8 +1136,8 @@ DROP TABLE IF EXISTS `lcoa2_finder_types`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_finder_types` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mime` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mime` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `title` (`title`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1162,24 +1163,24 @@ DROP TABLE IF EXISTS `lcoa2_guidedtour_steps`;
 CREATE TABLE `lcoa2_guidedtour_steps` (
   `id` int NOT NULL AUTO_INCREMENT,
   `tour_id` int NOT NULL DEFAULT '0',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `published` tinyint NOT NULL DEFAULT '0',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `ordering` int NOT NULL DEFAULT '0',
-  `position` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `target` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `position` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `target` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` int NOT NULL,
   `interactive_type` int NOT NULL DEFAULT '1',
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
   `created_by` int unsigned NOT NULL DEFAULT '0',
   `modified` datetime NOT NULL,
   `modified_by` int unsigned NOT NULL DEFAULT '0',
   `checked_out_time` datetime DEFAULT NULL,
   `checked_out` int unsigned DEFAULT NULL,
-  `language` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `params` text COLLATE utf8mb4_unicode_ci,
+  `language` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`),
   KEY `idx_tour` (`tour_id`),
   KEY `idx_state` (`published`),
@@ -1206,12 +1207,12 @@ DROP TABLE IF EXISTS `lcoa2_guidedtours`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_guidedtours` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `uid` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `ordering` int NOT NULL DEFAULT '0',
-  `extensions` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `extensions` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
   `created_by` int NOT NULL DEFAULT '0',
   `modified` datetime NOT NULL,
@@ -1219,8 +1220,8 @@ CREATE TABLE `lcoa2_guidedtours` (
   `checked_out_time` datetime DEFAULT NULL,
   `checked_out` int unsigned DEFAULT NULL,
   `published` tinyint NOT NULL DEFAULT '0',
-  `language` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `access` int unsigned NOT NULL DEFAULT '0',
   `autostart` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
@@ -1250,13 +1251,13 @@ DROP TABLE IF EXISTS `lcoa2_history`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_history` (
   `version_id` int unsigned NOT NULL AUTO_INCREMENT,
-  `item_id` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `version_note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Optional version name',
+  `item_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `version_note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Optional version name',
   `save_date` datetime NOT NULL,
   `editor_user_id` int unsigned NOT NULL DEFAULT '0',
   `character_count` int unsigned NOT NULL DEFAULT '0' COMMENT 'Number of characters in this version.',
-  `sha1_hash` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'SHA1 hash of the version_data column.',
-  `version_data` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'json-encoded string of version data',
+  `sha1_hash` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'SHA1 hash of the version_data column.',
+  `version_data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'json-encoded string of version data',
   `keep_forever` tinyint NOT NULL DEFAULT '0' COMMENT '0=auto delete; 1=keep',
   `is_current` tinyint NOT NULL DEFAULT '0',
   `is_legacy` tinyint NOT NULL DEFAULT '0',
@@ -1287,14 +1288,14 @@ CREATE TABLE `lcoa2_languages` (
   `lang_id` int unsigned NOT NULL AUTO_INCREMENT,
   `asset_id` int unsigned NOT NULL DEFAULT '0',
   `lang_code` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `title` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title_native` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sef` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metakey` text COLLATE utf8mb4_unicode_ci,
-  `metadesc` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sitename` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_native` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sef` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `metakey` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `metadesc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sitename` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `published` int NOT NULL DEFAULT '0',
   `access` int unsigned NOT NULL DEFAULT '0',
   `ordering` int NOT NULL DEFAULT '0',
@@ -1324,14 +1325,14 @@ DROP TABLE IF EXISTS `lcoa2_mail_templates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_mail_templates` (
-  `template_id` varchar(127) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `extension` varchar(127) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `htmlbody` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `attachments` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `template_id` varchar(127) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `extension` varchar(127) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `body` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `htmlbody` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attachments` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`template_id`,`language`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1355,13 +1356,13 @@ DROP TABLE IF EXISTS `lcoa2_menu`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_menu` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `menutype` varchar(24) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The type of menu this item belongs to. FK to #__menu_types.menutype',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The display title of the menu item.',
+  `menutype` varchar(24) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The type of menu this item belongs to. FK to #__menu_types.menutype',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The display title of the menu item.',
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT 'The SEF alias of the menu item.',
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `path` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The computed path of the menu item based on the alias field.',
-  `link` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The actually link the menu item refers to.',
-  `type` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The type of link: Component, URL, Alias, Separator',
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `path` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The computed path of the menu item based on the alias field.',
+  `link` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The actually link the menu item refers to.',
+  `type` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The type of link: Component, URL, Alias, Separator',
   `published` tinyint NOT NULL DEFAULT '0' COMMENT 'The published state of the menu link.',
   `parent_id` int unsigned NOT NULL DEFAULT '1' COMMENT 'The parent menu item in the menu tree.',
   `level` int unsigned NOT NULL DEFAULT '0' COMMENT 'The relative level in the tree.',
@@ -1370,13 +1371,13 @@ CREATE TABLE `lcoa2_menu` (
   `checked_out_time` datetime DEFAULT NULL COMMENT 'The time the menu item was checked out.',
   `browserNav` tinyint NOT NULL DEFAULT '0' COMMENT 'The click behaviour of the link.',
   `access` int unsigned NOT NULL DEFAULT '0' COMMENT 'The access level required to view the menu item.',
-  `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The image of the menu item.',
+  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The image of the menu item.',
   `template_style_id` int unsigned NOT NULL DEFAULT '0',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded data for the menu item.',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded data for the menu item.',
   `lft` int NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
   `rgt` int NOT NULL DEFAULT '0' COMMENT 'Nested set rgt.',
   `home` tinyint unsigned NOT NULL DEFAULT '0' COMMENT 'Indicates if this menu item is the home or default page.',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `client_id` tinyint NOT NULL DEFAULT '0',
   `publish_up` datetime DEFAULT NULL,
   `publish_down` datetime DEFAULT NULL,
@@ -1411,9 +1412,9 @@ DROP TABLE IF EXISTS `lcoa2_menu_types`;
 CREATE TABLE `lcoa2_menu_types` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `asset_id` int unsigned NOT NULL DEFAULT '0',
-  `menutype` varchar(24) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(48) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `menutype` varchar(24) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(48) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `client_id` int NOT NULL DEFAULT '0',
   `ordering` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
@@ -1446,8 +1447,8 @@ CREATE TABLE `lcoa2_messages` (
   `date_time` datetime NOT NULL,
   `state` tinyint NOT NULL DEFAULT '0',
   `priority` tinyint unsigned NOT NULL DEFAULT '0',
-  `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`message_id`),
   KEY `useridto_state` (`user_id_to`,`state`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1471,8 +1472,8 @@ DROP TABLE IF EXISTS `lcoa2_messages_cfg`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_messages_cfg` (
   `user_id` int unsigned NOT NULL DEFAULT '0',
-  `cfg_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `cfg_value` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `cfg_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `cfg_value` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   UNIQUE KEY `idx_user_var_name` (`user_id`,`cfg_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1496,22 +1497,22 @@ DROP TABLE IF EXISTS `lcoa2_modules`;
 CREATE TABLE `lcoa2_modules` (
   `id` int NOT NULL AUTO_INCREMENT,
   `asset_id` int unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
-  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `content` text COLLATE utf8mb4_unicode_ci,
+  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `ordering` int NOT NULL DEFAULT '0',
-  `position` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `position` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `checked_out` int unsigned DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `publish_up` datetime DEFAULT NULL,
   `publish_down` datetime DEFAULT NULL,
   `published` tinyint NOT NULL DEFAULT '0',
-  `module` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `module` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `access` int unsigned NOT NULL DEFAULT '0',
   `showtitle` tinyint unsigned NOT NULL DEFAULT '1',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `client_id` tinyint NOT NULL DEFAULT '0',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `published` (`published`,`access`),
   KEY `newsfeeds` (`module`,`published`),
@@ -1525,7 +1526,7 @@ CREATE TABLE `lcoa2_modules` (
 
 LOCK TABLES `lcoa2_modules` WRITE;
 /*!40000 ALTER TABLE `lcoa2_modules` DISABLE KEYS */;
-INSERT INTO `lcoa2_modules` VALUES (1,39,'Main Menu','','',1,'sidebar-right',NULL,NULL,NULL,NULL,1,'mod_menu',1,1,'{\"menutype\":\"mainmenu\",\"startLevel\":\"0\",\"endLevel\":\"0\",\"showAllChildren\":\"1\",\"tag_id\":\"\",\"class_sfx\":\"\",\"window_open\":\"\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"1\",\"cache_time\":\"900\",\"cachemode\":\"itemid\"}',0,'*'),(2,40,'Login','','',1,'login',NULL,NULL,NULL,NULL,1,'mod_login',1,1,'',1,'*'),(3,41,'Popular Articles','','',6,'cpanel',NULL,NULL,NULL,NULL,1,'mod_popular',3,1,'{\"count\":\"5\",\"catid\":\"\",\"user_id\":\"0\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"0\", \"bootstrap_size\": \"12\",\"header_tag\":\"h2\"}',1,'*'),(4,42,'Recently Added Articles','','',4,'cpanel',NULL,NULL,NULL,NULL,1,'mod_latest',3,1,'{\"count\":\"5\",\"ordering\":\"c_dsc\",\"catid\":\"\",\"user_id\":\"0\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"0\", \"bootstrap_size\": \"12\",\"header_tag\":\"h2\"}',1,'*'),(8,43,'Toolbar','','',1,'toolbar',NULL,NULL,NULL,NULL,1,'mod_toolbar',3,1,'',1,'*'),(9,44,'Notifications','','',3,'icon',NULL,NULL,NULL,NULL,1,'mod_quickicon',3,1,'{\"context\":\"update_quickicon\",\"header_icon\":\"icon-sync\",\"show_jupdate\":\"1\",\"show_eupdate\":\"1\",\"show_oupdate\":\"1\",\"show_privacy\":\"1\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":1,\"cache_time\":900,\"style\":\"0\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\"}',1,'*'),(10,45,'Logged-in Users','','',2,'cpanel',NULL,NULL,NULL,NULL,1,'mod_logged',3,1,'{\"count\":\"5\",\"name\":\"1\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"0\", \"bootstrap_size\": \"12\",\"header_tag\":\"h2\"}',1,'*'),(12,46,'Admin Menu','','',1,'menu',NULL,NULL,NULL,NULL,1,'mod_menu',3,1,'{\"layout\":\"\",\"moduleclass_sfx\":\"\",\"shownew\":\"1\",\"showhelp\":\"1\",\"cache\":\"0\"}',1,'*'),(15,49,'Title','','',1,'title',NULL,NULL,NULL,NULL,1,'mod_title',3,1,'',1,'*'),(16,50,'Login Form','','',7,'sidebar-right',NULL,NULL,NULL,NULL,1,'mod_login',1,1,'{\"greeting\":\"1\",\"name\":\"0\"}',0,'*'),(17,51,'Breadcrumbs','','',1,'breadcrumbs',NULL,NULL,NULL,NULL,1,'mod_breadcrumbs',1,1,'{\"moduleclass_sfx\":\"\",\"showHome\":\"1\",\"homeText\":\"\",\"showComponent\":\"1\",\"separator\":\"\",\"cache\":\"0\",\"cache_time\":\"0\",\"cachemode\":\"itemid\"}',0,'*'),(79,52,'Multilanguage status','','',2,'status',NULL,NULL,NULL,NULL,1,'mod_multilangstatus',3,1,'{\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"0\"}',1,'*'),(86,53,'Joomla Version','','',1,'status',NULL,NULL,NULL,NULL,1,'mod_version',3,1,'{\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"0\"}',1,'*'),(87,55,'Sample Data','','',1,'cpanel',NULL,NULL,NULL,NULL,1,'mod_sampledata',6,1,'{\"bootstrap_size\": \"12\",\"header_tag\":\"h2\"}',1,'*'),(88,67,'Latest Actions','','',3,'cpanel',NULL,NULL,NULL,NULL,1,'mod_latestactions',6,1,'{\"bootstrap_size\": \"12\",\"header_tag\":\"h2\"}',1,'*'),(89,68,'Privacy Dashboard','','',5,'cpanel',NULL,NULL,NULL,NULL,1,'mod_privacy_dashboard',6,1,'{\"bootstrap_size\": \"12\",\"header_tag\":\"h2\"}',1,'*'),(90,89,'Login Support','','',1,'sidebar',NULL,NULL,NULL,NULL,1,'mod_loginsupport',1,1,'{\"forum_url\":\"https://forum.joomla.org/\",\"documentation_url\":\"https://docs.joomla.org/\",\"news_url\":\"https://www.joomla.org/announcements.html\",\"automatic_title\":1,\"prepare_content\":1,\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":1,\"cache_time\":900,\"module_tag\":\"div\",\"bootstrap_size\":\"0\",\"header_tag\":\"h3\",\"header_class\":\"\",\"style\":\"0\"}',1,'*'),(91,72,'System Dashboard','','',1,'cpanel-system',NULL,NULL,NULL,NULL,1,'mod_submenu',1,0,'{\"menutype\":\"*\",\"preset\":\"system\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\",\"style\":\"System-none\"}',1,'*'),(92,73,'Content Dashboard','','',1,'cpanel-content',NULL,NULL,NULL,NULL,1,'mod_submenu',1,0,'{\"menutype\":\"*\",\"preset\":\"content\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\",\"style\":\"System-none\"}',1,'*'),(93,74,'Menus Dashboard','','',1,'cpanel-menus',NULL,NULL,NULL,NULL,1,'mod_submenu',1,0,'{\"menutype\":\"*\",\"preset\":\"menus\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\",\"style\":\"System-none\"}',1,'*'),(94,75,'Components Dashboard','','',1,'cpanel-components',NULL,NULL,NULL,NULL,1,'mod_submenu',1,0,'{\"menutype\":\"*\",\"preset\":\"components\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\",\"style\":\"System-none\"}',1,'*'),(95,76,'Users Dashboard','','',1,'cpanel-users',NULL,NULL,NULL,NULL,1,'mod_submenu',1,0,'{\"menutype\":\"*\",\"preset\":\"users\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\",\"style\":\"System-none\"}',1,'*'),(96,86,'Popular Articles','','',3,'cpanel-content',NULL,NULL,NULL,NULL,1,'mod_popular',3,1,'{\"count\":\"5\",\"catid\":\"\",\"user_id\":\"0\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"0\", \"bootstrap_size\": \"12\",\"header_tag\":\"h2\"}',1,'*'),(97,87,'Recently Added Articles','','',4,'cpanel-content',NULL,NULL,NULL,NULL,1,'mod_latest',3,1,'{\"count\":\"5\",\"ordering\":\"c_dsc\",\"catid\":\"\",\"user_id\":\"0\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"0\", \"bootstrap_size\": \"12\",\"header_tag\":\"h2\"}',1,'*'),(98,88,'Logged-in Users','','',2,'cpanel-users',NULL,NULL,NULL,NULL,1,'mod_logged',3,1,'{\"count\":\"5\",\"name\":\"1\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"0\", \"bootstrap_size\": \"12\",\"header_tag\":\"h2\"}',1,'*'),(99,77,'Frontend Link','','',5,'status',NULL,NULL,NULL,NULL,1,'mod_frontend',1,1,'',1,'*'),(100,78,'Messages','','',4,'status',NULL,NULL,NULL,NULL,1,'mod_messages',3,1,'',1,'*'),(101,79,'Post Install Messages','','',3,'status',NULL,NULL,NULL,NULL,1,'mod_post_installation_messages',3,1,'',1,'*'),(102,80,'User Status','','',6,'status',NULL,NULL,NULL,NULL,1,'mod_user',3,1,'',1,'*'),(103,70,'Site','','',1,'icon',NULL,NULL,NULL,NULL,1,'mod_quickicon',1,1,'{\"context\":\"site_quickicon\",\"header_icon\":\"icon-desktop\",\"show_users\":\"1\",\"show_articles\":\"1\",\"show_categories\":\"1\",\"show_media\":\"1\",\"show_menuItems\":\"1\",\"show_modules\":\"1\",\"show_plugins\":\"1\",\"show_templates\":\"1\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":1,\"cache_time\":900,\"style\":\"0\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\"}',1,'*'),(104,71,'System','','',2,'icon',NULL,NULL,NULL,NULL,1,'mod_quickicon',1,1,'{\"context\":\"system_quickicon\",\"header_icon\":\"icon-wrench\",\"show_global\":\"1\",\"show_checkin\":\"1\",\"show_cache\":\"1\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":1,\"cache_time\":900,\"style\":\"0\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\"}',1,'*'),(105,82,'3rd Party','','',4,'icon',NULL,NULL,NULL,NULL,1,'mod_quickicon',1,1,'{\"context\":\"mod_quickicon\",\"header_icon\":\"icon-boxes\",\"load_plugins\":\"1\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":1,\"cache_time\":900,\"style\":\"0\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\"}',1,'*'),(106,83,'Help Dashboard','','',1,'cpanel-help',NULL,NULL,NULL,NULL,1,'mod_submenu',1,0,'{\"menutype\":\"*\",\"preset\":\"help\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"style\":\"System-none\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\"}',1,'*'),(107,84,'Privacy Requests','','',1,'cpanel-privacy',NULL,NULL,NULL,NULL,1,'mod_privacy_dashboard',1,1,'{\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":1,\"cache_time\":900,\"cachemode\":\"static\",\"style\":\"0\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\"}',1,'*'),(108,85,'Privacy Status','','',1,'cpanel-privacy',NULL,NULL,NULL,NULL,1,'mod_privacy_status',1,1,'{\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":1,\"cache_time\":900,\"cachemode\":\"static\",\"style\":\"0\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\"}',1,'*'),(109,96,'Guided Tours','','',1,'status',NULL,NULL,NULL,NULL,1,'mod_guidedtours',1,1,'',1,'*');
+INSERT INTO `lcoa2_modules` VALUES (1,39,'Main Menu','','',1,'sidebar-right',NULL,NULL,NULL,NULL,1,'mod_menu',1,1,'{\"menutype\":\"mainmenu\",\"startLevel\":\"0\",\"endLevel\":\"0\",\"showAllChildren\":\"1\",\"tag_id\":\"\",\"class_sfx\":\"\",\"window_open\":\"\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"1\",\"cache_time\":\"900\",\"cachemode\":\"itemid\"}',0,'*'),(2,40,'Login','','',1,'login',NULL,NULL,NULL,NULL,1,'mod_login',1,1,'',1,'*'),(3,41,'Popular Articles','','',6,'cpanel',NULL,NULL,NULL,NULL,1,'mod_popular',3,1,'{\"count\":\"5\",\"catid\":\"\",\"user_id\":\"0\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"0\", \"bootstrap_size\": \"12\",\"header_tag\":\"h2\"}',1,'*'),(4,42,'Recently Added Articles','','',4,'cpanel',NULL,NULL,NULL,NULL,1,'mod_latest',3,1,'{\"count\":\"5\",\"ordering\":\"c_dsc\",\"catid\":\"\",\"user_id\":\"0\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"0\", \"bootstrap_size\": \"12\",\"header_tag\":\"h2\"}',1,'*'),(8,43,'Toolbar','','',1,'toolbar',NULL,NULL,NULL,NULL,1,'mod_toolbar',3,1,'',1,'*'),(9,44,'Notifications','','',3,'icon',NULL,NULL,NULL,NULL,1,'mod_quickicon',3,1,'{\"context\":\"update_quickicon\",\"header_icon\":\"icon-sync\",\"show_jupdate\":\"1\",\"show_eupdate\":\"1\",\"show_oupdate\":\"1\",\"show_privacy\":\"1\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":1,\"cache_time\":900,\"style\":\"0\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\"}',1,'*'),(10,45,'Logged-in Users','','',2,'cpanel',NULL,NULL,NULL,NULL,1,'mod_logged',3,1,'{\"count\":\"5\",\"name\":\"1\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"0\", \"bootstrap_size\": \"12\",\"header_tag\":\"h2\"}',1,'*'),(12,46,'Admin Menu','','',1,'menu',NULL,NULL,NULL,NULL,1,'mod_menu',3,1,'{\"layout\":\"\",\"moduleclass_sfx\":\"\",\"shownew\":\"1\",\"showhelp\":\"1\",\"cache\":\"0\"}',1,'*'),(15,49,'Title','','',1,'title',NULL,NULL,NULL,NULL,1,'mod_title',3,1,'',1,'*'),(16,50,'Login Form','','',7,'sidebar-right',NULL,NULL,NULL,NULL,1,'mod_login',1,1,'{\"greeting\":\"1\",\"name\":\"0\"}',0,'*'),(17,51,'Breadcrumbs','','',1,'breadcrumbs',NULL,NULL,NULL,NULL,1,'mod_breadcrumbs',1,1,'{\"moduleclass_sfx\":\"\",\"showHome\":\"1\",\"homeText\":\"\",\"showComponent\":\"1\",\"separator\":\"\",\"cache\":\"0\",\"cache_time\":\"0\",\"cachemode\":\"itemid\"}',0,'*'),(79,52,'Multilanguage status','','',2,'status',NULL,NULL,NULL,NULL,1,'mod_multilangstatus',3,1,'{\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"0\"}',1,'*'),(86,53,'Joomla Version','','',1,'status',NULL,NULL,NULL,NULL,1,'mod_version',3,1,'{\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"0\"}',1,'*'),(87,55,'Sample Data','','',1,'cpanel',NULL,NULL,NULL,NULL,1,'mod_sampledata',6,1,'{\"bootstrap_size\": \"12\",\"header_tag\":\"h2\"}',1,'*'),(88,67,'Latest Actions','','',3,'cpanel',NULL,NULL,NULL,NULL,1,'mod_latestactions',6,1,'{\"bootstrap_size\": \"12\",\"header_tag\":\"h2\"}',1,'*'),(89,68,'Privacy Dashboard','','',5,'cpanel',NULL,NULL,NULL,NULL,1,'mod_privacy_dashboard',6,1,'{\"bootstrap_size\": \"12\",\"header_tag\":\"h2\"}',1,'*'),(90,89,'Login Support','','',1,'sidebar',NULL,NULL,NULL,NULL,1,'mod_loginsupport',1,1,'{\"forum_url\":\"https://forum.joomla.org/\",\"documentation_url\":\"https://docs.joomla.org/\",\"news_url\":\"https://www.joomla.org/announcements.html\",\"automatic_title\":1,\"prepare_content\":1,\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":1,\"cache_time\":900,\"module_tag\":\"div\",\"bootstrap_size\":\"0\",\"header_tag\":\"h3\",\"header_class\":\"\",\"style\":\"0\"}',1,'*'),(91,72,'System Dashboard','','',1,'cpanel-system',NULL,NULL,NULL,NULL,1,'mod_submenu',1,0,'{\"menutype\":\"*\",\"preset\":\"system\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\",\"style\":\"System-none\"}',1,'*'),(92,73,'Content Dashboard','','',1,'cpanel-content',NULL,NULL,NULL,NULL,1,'mod_submenu',1,0,'{\"menutype\":\"*\",\"preset\":\"content\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\",\"style\":\"System-none\"}',1,'*'),(93,74,'Menus Dashboard','','',1,'cpanel-menus',NULL,NULL,NULL,NULL,1,'mod_submenu',1,0,'{\"menutype\":\"*\",\"preset\":\"menus\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\",\"style\":\"System-none\"}',1,'*'),(94,75,'Components Dashboard','','',1,'cpanel-components',NULL,NULL,NULL,NULL,1,'mod_submenu',1,0,'{\"menutype\":\"*\",\"preset\":\"components\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\",\"style\":\"System-none\"}',1,'*'),(95,76,'Users Dashboard','','',1,'cpanel-users',NULL,NULL,NULL,NULL,1,'mod_submenu',1,0,'{\"menutype\":\"*\",\"preset\":\"users\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\",\"style\":\"System-none\"}',1,'*'),(96,86,'Popular Articles','','',3,'cpanel-content',NULL,NULL,NULL,NULL,1,'mod_popular',3,1,'{\"count\":\"5\",\"catid\":\"\",\"user_id\":\"0\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"0\", \"bootstrap_size\": \"12\",\"header_tag\":\"h2\"}',1,'*'),(97,87,'Recently Added Articles','','',4,'cpanel-content',NULL,NULL,NULL,NULL,1,'mod_latest',3,1,'{\"count\":\"5\",\"ordering\":\"c_dsc\",\"catid\":\"\",\"user_id\":\"0\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"0\", \"bootstrap_size\": \"12\",\"header_tag\":\"h2\"}',1,'*'),(98,88,'Logged-in Users','','',2,'cpanel-users',NULL,NULL,NULL,NULL,1,'mod_logged',3,1,'{\"count\":\"5\",\"name\":\"1\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"0\", \"bootstrap_size\": \"12\",\"header_tag\":\"h2\"}',1,'*'),(99,77,'Frontend Link','','',5,'status',NULL,NULL,NULL,NULL,1,'mod_frontend',1,1,'',1,'*'),(100,78,'Messages','','',4,'status',NULL,NULL,NULL,NULL,1,'mod_messages',3,1,'',1,'*'),(101,79,'Post Install Messages','','',3,'status',NULL,NULL,NULL,NULL,1,'mod_post_installation_messages',3,1,'',1,'*'),(102,80,'User Status','','',6,'status',NULL,NULL,NULL,NULL,1,'mod_user',3,1,'',1,'*'),(103,70,'Site','','',1,'icon',82,'2026-02-02 07:37:40',NULL,NULL,0,'mod_quickicon',1,1,'{\"context\":\"site_quickicon\",\"header_icon\":\"icon-desktop\",\"show_users\":\"1\",\"show_articles\":\"1\",\"show_categories\":\"1\",\"show_media\":\"1\",\"show_menuItems\":\"1\",\"show_modules\":\"1\",\"show_plugins\":\"1\",\"show_templates\":\"1\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":1,\"cache_time\":900,\"style\":\"0\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\"}',1,'*'),(104,71,'System','','',2,'icon',NULL,NULL,NULL,NULL,1,'mod_quickicon',1,1,'{\"context\":\"system_quickicon\",\"header_icon\":\"icon-wrench\",\"show_global\":\"1\",\"show_checkin\":\"1\",\"show_cache\":\"1\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":1,\"cache_time\":900,\"style\":\"0\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\"}',1,'*'),(105,82,'3rd Party','','',4,'icon',NULL,NULL,NULL,NULL,1,'mod_quickicon',1,1,'{\"context\":\"mod_quickicon\",\"header_icon\":\"icon-boxes\",\"load_plugins\":\"1\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":1,\"cache_time\":900,\"style\":\"0\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\"}',1,'*'),(106,83,'Help Dashboard','','',1,'cpanel-help',NULL,NULL,NULL,NULL,1,'mod_submenu',1,0,'{\"menutype\":\"*\",\"preset\":\"help\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"style\":\"System-none\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\"}',1,'*'),(107,84,'Privacy Requests','','',1,'cpanel-privacy',NULL,NULL,NULL,NULL,1,'mod_privacy_dashboard',1,1,'{\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":1,\"cache_time\":900,\"cachemode\":\"static\",\"style\":\"0\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\"}',1,'*'),(108,85,'Privacy Status','','',1,'cpanel-privacy',NULL,NULL,NULL,NULL,1,'mod_privacy_status',1,1,'{\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":1,\"cache_time\":900,\"cachemode\":\"static\",\"style\":\"0\",\"module_tag\":\"div\",\"bootstrap_size\":\"12\",\"header_tag\":\"h2\",\"header_class\":\"\"}',1,'*'),(109,96,'Guided Tours','','',1,'status',NULL,NULL,NULL,NULL,1,'mod_guidedtours',1,1,'',1,'*');
 /*!40000 ALTER TABLE `lcoa2_modules` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1563,9 +1564,9 @@ DROP TABLE IF EXISTS `lcoa2_newsfeeds`;
 CREATE TABLE `lcoa2_newsfeeds` (
   `catid` int NOT NULL DEFAULT '0',
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
-  `link` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `link` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `published` tinyint NOT NULL DEFAULT '0',
   `numarticles` int unsigned NOT NULL DEFAULT '1',
   `cache_time` int unsigned NOT NULL DEFAULT '3600',
@@ -1574,22 +1575,22 @@ CREATE TABLE `lcoa2_newsfeeds` (
   `ordering` int NOT NULL DEFAULT '0',
   `rtl` tinyint NOT NULL DEFAULT '0',
   `access` int unsigned NOT NULL DEFAULT '0',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
   `created_by` int unsigned NOT NULL DEFAULT '0',
-  `created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `created_by_alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `modified` datetime NOT NULL,
   `modified_by` int unsigned NOT NULL DEFAULT '0',
-  `metakey` text COLLATE utf8mb4_unicode_ci,
-  `metadesc` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metadata` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `metakey` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `metadesc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `metadata` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `publish_up` datetime DEFAULT NULL,
   `publish_down` datetime DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `version` int unsigned NOT NULL DEFAULT '1',
   `hits` int unsigned NOT NULL DEFAULT '0',
-  `images` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `images` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_access` (`access`),
   KEY `idx_checkout` (`checked_out`),
@@ -1618,9 +1619,9 @@ DROP TABLE IF EXISTS `lcoa2_overrider`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_overrider` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
-  `constant` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `string` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `file` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `constant` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `string` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1644,17 +1645,17 @@ DROP TABLE IF EXISTS `lcoa2_postinstall_messages`;
 CREATE TABLE `lcoa2_postinstall_messages` (
   `postinstall_message_id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `extension_id` bigint NOT NULL DEFAULT '700' COMMENT 'FK to #__extensions',
-  `title_key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Lang key for the title',
-  `description_key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Lang key for description',
-  `action_key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `language_extension` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'com_postinstall' COMMENT 'Extension holding lang keys',
+  `title_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Lang key for the title',
+  `description_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Lang key for description',
+  `action_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language_extension` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'com_postinstall' COMMENT 'Extension holding lang keys',
   `language_client_id` tinyint NOT NULL DEFAULT '1',
-  `type` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'link' COMMENT 'Message type - message, link, action',
-  `action_file` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT 'RAD URI to the PHP file containing action method',
-  `action` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT 'Action method name or URL',
-  `condition_file` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'RAD URI to file holding display condition method',
-  `condition_method` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Display condition method, must return boolean',
-  `version_introduced` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '3.2.0' COMMENT 'Version when this message was introduced',
+  `type` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'link' COMMENT 'Message type - message, link, action',
+  `action_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT 'RAD URI to the PHP file containing action method',
+  `action` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT 'Action method name or URL',
+  `condition_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'RAD URI to file holding display condition method',
+  `condition_method` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Display condition method, must return boolean',
+  `version_introduced` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '3.2.0' COMMENT 'Version when this message was introduced',
   `enabled` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`postinstall_message_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1666,7 +1667,7 @@ CREATE TABLE `lcoa2_postinstall_messages` (
 
 LOCK TABLES `lcoa2_postinstall_messages` WRITE;
 /*!40000 ALTER TABLE `lcoa2_postinstall_messages` DISABLE KEYS */;
-INSERT INTO `lcoa2_postinstall_messages` VALUES (1,246,'COM_CPANEL_WELCOME_BEGINNERS_TITLE','COM_CPANEL_WELCOME_BEGINNERS_MESSAGE','','com_cpanel',1,'message','','','','','3.2.0',1),(2,246,'COM_CPANEL_MSG_STATS_COLLECTION_TITLE','COM_CPANEL_MSG_STATS_COLLECTION_BODY','','com_cpanel',1,'message','','','admin://components/com_admin/postinstall/statscollection.php','admin_postinstall_statscollection_condition','3.5.0',1),(3,246,'PLG_SYSTEM_HTTPHEADERS_POSTINSTALL_INTRODUCTION_TITLE','PLG_SYSTEM_HTTPHEADERS_POSTINSTALL_INTRODUCTION_BODY','PLG_SYSTEM_HTTPHEADERS_POSTINSTALL_INTRODUCTION_ACTION','plg_system_httpheaders',1,'action','site://plugins/system/httpheaders/postinstall/introduction.php','httpheaders_postinstall_action','site://plugins/system/httpheaders/postinstall/introduction.php','httpheaders_postinstall_condition','4.0.0',1),(4,246,'COM_USERS_POSTINSTALL_MULTIFACTORAUTH_TITLE','COM_USERS_POSTINSTALL_MULTIFACTORAUTH_BODY','COM_USERS_POSTINSTALL_MULTIFACTORAUTH_ACTION','com_users',1,'action','admin://components/com_users/postinstall/multifactorauth.php','com_users_postinstall_mfa_action','admin://components/com_users/postinstall/multifactorauth.php','com_users_postinstall_mfa_condition','4.2.0',1),(5,246,'COM_JOOMLAUPDATE_POSTINSTALL_MSG_AUTOMATED_UPDATES_TITLE','COM_JOOMLAUPDATE_POSTINSTALL_MSG_AUTOMATED_UPDATES_DESCRIPTION','COM_JOOMLAUPDATE_POSTINSTALL_MSG_AUTOMATED_UPDATES_ACTION','com_joomlaupdate',1,'action','admin://components/com_joomlaupdate/postinstall/autoupdate.php','com_joomlaupdate_postinstall_autoupdate_action','admin://components/com_joomlaupdate/postinstall/autoupdate.php','com_joomlaupdate_postinstall_autoupdate_condition','5.4.0',1);
+INSERT INTO `lcoa2_postinstall_messages` VALUES (1,246,'COM_CPANEL_WELCOME_BEGINNERS_TITLE','COM_CPANEL_WELCOME_BEGINNERS_MESSAGE','','com_cpanel',1,'message','','','','','3.2.0',0),(2,246,'COM_CPANEL_MSG_STATS_COLLECTION_TITLE','COM_CPANEL_MSG_STATS_COLLECTION_BODY','','com_cpanel',1,'message','','','admin://components/com_admin/postinstall/statscollection.php','admin_postinstall_statscollection_condition','3.5.0',0),(3,246,'PLG_SYSTEM_HTTPHEADERS_POSTINSTALL_INTRODUCTION_TITLE','PLG_SYSTEM_HTTPHEADERS_POSTINSTALL_INTRODUCTION_BODY','PLG_SYSTEM_HTTPHEADERS_POSTINSTALL_INTRODUCTION_ACTION','plg_system_httpheaders',1,'action','site://plugins/system/httpheaders/postinstall/introduction.php','httpheaders_postinstall_action','site://plugins/system/httpheaders/postinstall/introduction.php','httpheaders_postinstall_condition','4.0.0',1),(4,246,'COM_USERS_POSTINSTALL_MULTIFACTORAUTH_TITLE','COM_USERS_POSTINSTALL_MULTIFACTORAUTH_BODY','COM_USERS_POSTINSTALL_MULTIFACTORAUTH_ACTION','com_users',1,'action','admin://components/com_users/postinstall/multifactorauth.php','com_users_postinstall_mfa_action','admin://components/com_users/postinstall/multifactorauth.php','com_users_postinstall_mfa_condition','4.2.0',1),(5,246,'COM_JOOMLAUPDATE_POSTINSTALL_MSG_AUTOMATED_UPDATES_TITLE','COM_JOOMLAUPDATE_POSTINSTALL_MSG_AUTOMATED_UPDATES_DESCRIPTION','COM_JOOMLAUPDATE_POSTINSTALL_MSG_AUTOMATED_UPDATES_ACTION','com_joomlaupdate',1,'action','admin://components/com_joomlaupdate/postinstall/autoupdate.php','com_joomlaupdate_postinstall_autoupdate_action','admin://components/com_joomlaupdate/postinstall/autoupdate.php','com_joomlaupdate_postinstall_autoupdate_condition','5.4.0',1);
 /*!40000 ALTER TABLE `lcoa2_postinstall_messages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1682,10 +1683,10 @@ CREATE TABLE `lcoa2_privacy_consents` (
   `user_id` int unsigned NOT NULL DEFAULT '0',
   `state` int NOT NULL DEFAULT '1',
   `created` datetime NOT NULL,
-  `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `body` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `remind` tinyint NOT NULL DEFAULT '0',
-  `token` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `idx_user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1709,11 +1710,11 @@ DROP TABLE IF EXISTS `lcoa2_privacy_requests`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_privacy_requests` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `requested_at` datetime NOT NULL,
   `status` tinyint NOT NULL DEFAULT '0',
-  `request_type` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `confirm_token` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `request_type` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `confirm_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `confirm_token_created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1737,10 +1738,10 @@ DROP TABLE IF EXISTS `lcoa2_redirect_links`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_redirect_links` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `old_url` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `new_url` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `referer` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `comment` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `old_url` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `new_url` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `referer` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `hits` int unsigned NOT NULL DEFAULT '0',
   `published` tinyint NOT NULL,
   `created_date` datetime NOT NULL,
@@ -1770,8 +1771,8 @@ DROP TABLE IF EXISTS `lcoa2_scheduler_logs`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_scheduler_logs` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `taskname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `tasktype` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'unique identifier for job defined by plugin',
+  `taskname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `tasktype` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'unique identifier for job defined by plugin',
   `duration` decimal(5,3) NOT NULL,
   `jobid` int unsigned NOT NULL,
   `taskid` int unsigned NOT NULL,
@@ -1806,10 +1807,10 @@ DROP TABLE IF EXISTS `lcoa2_scheduler_tasks`;
 CREATE TABLE `lcoa2_scheduler_tasks` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `asset_id` int unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `type` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'unique identifier for job defined by plugin',
-  `execution_rules` text COLLATE utf8mb4_unicode_ci COMMENT 'Execution Rules, Unprocessed',
-  `cron_rules` text COLLATE utf8mb4_unicode_ci COMMENT 'Processed execution rules, crontab-like JSON form',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `type` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'unique identifier for job defined by plugin',
+  `execution_rules` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'Execution Rules, Unprocessed',
+  `cron_rules` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'Processed execution rules, crontab-like JSON form',
   `state` tinyint NOT NULL DEFAULT '0',
   `last_exit_code` int NOT NULL DEFAULT '0' COMMENT 'Exit code when job was last run',
   `last_execution` datetime DEFAULT NULL COMMENT 'Timestamp of last run',
@@ -1820,8 +1821,8 @@ CREATE TABLE `lcoa2_scheduler_tasks` (
   `priority` smallint NOT NULL DEFAULT '0',
   `ordering` int NOT NULL DEFAULT '0' COMMENT 'Configurable list ordering',
   `cli_exclusive` smallint NOT NULL DEFAULT '0' COMMENT 'If 1, the task is only accessible via CLI',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `note` text COLLATE utf8mb4_unicode_ci,
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `note` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created` datetime NOT NULL,
   `created_by` int unsigned NOT NULL DEFAULT '0',
   `checked_out` int unsigned DEFAULT NULL,
@@ -1858,9 +1859,9 @@ DROP TABLE IF EXISTS `lcoa2_schemaorg`;
 CREATE TABLE `lcoa2_schemaorg` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `itemId` int unsigned DEFAULT NULL,
-  `context` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `schemaType` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `schema` text COLLATE utf8mb4_unicode_ci,
+  `context` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `schemaType` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `schema` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1883,7 +1884,7 @@ DROP TABLE IF EXISTS `lcoa2_schemas`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_schemas` (
   `extension_id` int NOT NULL,
-  `version_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `version_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`extension_id`,`version_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1910,9 +1911,9 @@ CREATE TABLE `lcoa2_session` (
   `client_id` tinyint unsigned DEFAULT NULL,
   `guest` tinyint unsigned DEFAULT '1',
   `time` int NOT NULL DEFAULT '0',
-  `data` mediumtext COLLATE utf8mb4_unicode_ci,
+  `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `userid` int DEFAULT '0',
-  `username` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `username` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
   PRIMARY KEY (`session_id`),
   KEY `userid` (`userid`),
   KEY `time` (`time`),
@@ -1926,7 +1927,7 @@ CREATE TABLE `lcoa2_session` (
 
 LOCK TABLES `lcoa2_session` WRITE;
 /*!40000 ALTER TABLE `lcoa2_session` DISABLE KEYS */;
-INSERT INTO `lcoa2_session` VALUES (_binary '6b54eb64869fc1e6c7d0a63cc099ef82',1,0,1769980325,'joomla|s:7312:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjU6e3M6Nzoic2Vzc2lvbiI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo3OiJjb3VudGVyIjtpOjI0O3M6NToidGltZXIiO086ODoic3RkQ2xhc3MiOjM6e3M6NToic3RhcnQiO2k6MTc2OTk3OTg4MjtzOjQ6Imxhc3QiO2k6MTc2OTk4MDMyNTtzOjM6Im5vdyI7aToxNzY5OTgwMzI1O31zOjU6InRva2VuIjtzOjMyOiI3NjM5NGUxYjhiM2Q5OTEzZGYzYTVmYjRiODQ5NjhjYiI7fXM6ODoicmVnaXN0cnkiO086MjQ6Ikpvb21sYVxSZWdpc3RyeVxSZWdpc3RyeSI6Mzp7czo3OiIAKgBkYXRhIjtPOjg6InN0ZENsYXNzIjoxOntzOjEwOiJjb21fY29uZmlnIjtPOjg6InN0ZENsYXNzIjoyOntzOjY6ImNvbmZpZyI7Tzo4OiJzdGRDbGFzcyI6MTp7czo2OiJnbG9iYWwiO086ODoic3RkQ2xhc3MiOjE6e3M6NDoiZGF0YSI7YToxMDM6e3M6NzoiY2FjaGluZyI7aTowO3M6MTM6ImNhY2hlX2hhbmRsZXIiO3M6NDoiZmlsZSI7czoyMDoiY2FjaGVfcGxhdGZvcm1wcmVmaXgiO2I6MDtzOjk6ImNhY2hldGltZSI7aToxNTtzOjEwOiJjYWNoZV9wYXRoIjtzOjA6IiI7czoxNzoibWVtY2FjaGVkX3BlcnNpc3QiO2I6MTtzOjE4OiJtZW1jYWNoZWRfY29tcHJlc3MiO2I6MDtzOjIxOiJtZW1jYWNoZWRfc2VydmVyX2hvc3QiO3M6OToibG9jYWxob3N0IjtzOjIxOiJtZW1jYWNoZWRfc2VydmVyX3BvcnQiO2k6MTEyMTE7czoxMzoicmVkaXNfcGVyc2lzdCI7YjoxO3M6MTc6InJlZGlzX3NlcnZlcl9ob3N0IjtzOjk6ImxvY2FsaG9zdCI7czoxNzoicmVkaXNfc2VydmVyX3BvcnQiO2k6NjM3OTtzOjE3OiJyZWRpc19zZXJ2ZXJfYXV0aCI7czowOiIiO3M6MTU6InJlZGlzX3NlcnZlcl9kYiI7aTowO3M6NjoiZGJ0eXBlIjtzOjY6Im15c3FsaSI7czo0OiJob3N0IjtzOjI6ImRiIjtzOjQ6InVzZXIiO3M6Njoiam9vbWxhIjtzOjg6InBhc3N3b3JkIjtzOjY6Impvb21sYSI7czoyOiJkYiI7czo5OiJqb29tbGFfZGIiO3M6ODoiZGJwcmVmaXgiO3M6NjoibGNvYTJfIjtzOjEyOiJkYmVuY3J5cHRpb24iO2k6MDtzOjg6ImRic3Nsa2V5IjtzOjA6IiI7czo5OiJkYnNzbGNlcnQiO3M6MDoiIjtzOjIxOiJkYnNzbHZlcmlmeXNlcnZlcmNlcnQiO2I6MDtzOjc6ImRic3NsY2EiO3M6MDoiIjtzOjExOiJkYnNzbGNpcGhlciI7czowOiIiO3M6NToiZGVidWciO2I6MDtzOjEwOiJkZWJ1Z19sYW5nIjtiOjA7czoxNjoiZGVidWdfbGFuZ19jb25zdCI7YjoxO3M6NDoiY29ycyI7YjowO3M6MTc6ImNvcnNfYWxsb3dfb3JpZ2luIjtzOjE6IioiO3M6MTg6ImNvcnNfYWxsb3dfaGVhZGVycyI7czoyNzoiQ29udGVudC1UeXBlLFgtSm9vbWxhLVRva2VuIjtzOjE4OiJjb3JzX2FsbG93X21ldGhvZHMiO3M6MDoiIjtzOjE5OiJiZWhpbmRfbG9hZGJhbGFuY2VyIjtiOjA7czoxMjoicHJveHlfZW5hYmxlIjtiOjA7czoxMDoicHJveHlfaG9zdCI7czowOiIiO3M6MTA6InByb3h5X3BvcnQiO3M6MDoiIjtzOjEwOiJwcm94eV91c2VyIjtzOjA6IiI7czo2OiJvZmZzZXQiO3M6MzoiVVRDIjtzOjEwOiJtYWlsb25saW5lIjtiOjE7czoxMToibWFzc21haWxvZmYiO2I6MDtzOjg6Im1haWxmcm9tIjtzOjE4OiJhZG1pbkBjYW1wdXMubG9jYWwiO3M6ODoiZnJvbW5hbWUiO3M6MTg6IkNhbXB1cyBDbHViIFBvcnRhbCI7czo3OiJyZXBseXRvIjtzOjA6IiI7czoxMToicmVwbHl0b25hbWUiO3M6MDoiIjtzOjY6Im1haWxlciI7czo0OiJtYWlsIjtzOjg6InNlbmRtYWlsIjtzOjE4OiIvdXNyL3NiaW4vc2VuZG1haWwiO3M6ODoic210cGhvc3QiO3M6OToibG9jYWxob3N0IjtzOjg6InNtdHBwb3J0IjtpOjI1O3M6MTA6InNtdHBzZWN1cmUiO3M6NDoibm9uZSI7czo4OiJzbXRwYXV0aCI7YjowO3M6ODoic210cHVzZXIiO3M6MDoiIjtzOjg6InNtdHBwYXNzIjtzOjA6IiI7czo4OiJNZXRhRGVzYyI7czowOiIiO3M6Njoicm9ib3RzIjtzOjA6IiI7czoxMDoiTWV0YVJpZ2h0cyI7czowOiIiO3M6MTA6Ik1ldGFBdXRob3IiO2I6MTtzOjExOiJNZXRhVmVyc2lvbiI7YjowO3M6Mzoic2VmIjtiOjE7czoxMToic2VmX3Jld3JpdGUiO2I6MDtzOjEwOiJzZWZfc3VmZml4IjtiOjA7czoxMjoidW5pY29kZXNsdWdzIjtiOjA7czoxOToic2l0ZW5hbWVfcGFnZXRpdGxlcyI7aTowO3M6ODoidG1wX3BhdGgiO3M6MTc6Ii92YXIvd3d3L2h0bWwvdG1wIjtzOjQ6Imd6aXAiO2I6MDtzOjE1OiJlcnJvcl9yZXBvcnRpbmciO3M6NzoiZGVmYXVsdCI7czo5OiJmb3JjZV9zc2wiO2k6MDtzOjE1OiJzZXNzaW9uX2hhbmRsZXIiO3M6ODoiZGF0YWJhc2UiO3M6MjM6InNlc3Npb25fZmlsZXN5c3RlbV9wYXRoIjtzOjA6IiI7czoyOToic2Vzc2lvbl9tZW1jYWNoZWRfc2VydmVyX2hvc3QiO3M6OToibG9jYWxob3N0IjtzOjI5OiJzZXNzaW9uX21lbWNhY2hlZF9zZXJ2ZXJfcG9ydCI7aToxMTIxMTtzOjIxOiJzZXNzaW9uX3JlZGlzX3BlcnNpc3QiO2k6MTtzOjI1OiJzZXNzaW9uX3JlZGlzX3NlcnZlcl9ob3N0IjtzOjk6ImxvY2FsaG9zdCI7czoyNToic2Vzc2lvbl9yZWRpc19zZXJ2ZXJfcG9ydCI7aTo2Mzc5O3M6MjU6InNlc3Npb25fcmVkaXNfc2VydmVyX2F1dGgiO3M6MDoiIjtzOjIzOiJzZXNzaW9uX3JlZGlzX3NlcnZlcl9kYiI7aTowO3M6ODoibGlmZXRpbWUiO2k6MTU7czoxNDoic2hhcmVkX3Nlc3Npb24iO2I6MDtzOjE2OiJzZXNzaW9uX21ldGFkYXRhIjtiOjE7czoyNjoic2Vzc2lvbl9tZXRhZGF0YV9mb3JfZ3Vlc3QiO2I6MTtzOjg6InNpdGVuYW1lIjtzOjE4OiJDYW1wdXMgQ2x1YiBQb3J0YWwiO3M6Nzoib2ZmbGluZSI7YjowO3M6MjM6ImRpc3BsYXlfb2ZmbGluZV9tZXNzYWdlIjtpOjE7czoxNToib2ZmbGluZV9tZXNzYWdlIjtzOjY5OiJUaGlzIHNpdGUgaXMgZG93biBmb3IgbWFpbnRlbmFuY2UuPGJyIC8+UGxlYXNlIGNoZWNrIGJhY2sgYWdhaW4gc29vbi4iO3M6MTM6Im9mZmxpbmVfaW1hZ2UiO3M6MDoiIjtzOjEyOiJmcm9udGVkaXRpbmciO2k6MTtzOjY6ImVkaXRvciI7czo3OiJ0aW55bWNlIjtzOjc6ImNhcHRjaGEiO3M6MToiMCI7czo2OiJhY2Nlc3MiO2k6MTtzOjEwOiJsaXN0X2xpbWl0IjtpOjIwO3M6MTA6ImZlZWRfbGltaXQiO2k6MTA7czoxMDoiZmVlZF9lbWFpbCI7czo0OiJub25lIjtzOjg6ImxvZ19wYXRoIjtzOjMyOiIvdmFyL3d3dy9odG1sL2FkbWluaXN0cmF0b3IvbG9ncyI7czoxNDoibG9nX2V2ZXJ5dGhpbmciO2k6MDtzOjE0OiJsb2dfZGVwcmVjYXRlZCI7aTowO3M6MTQ6ImxvZ19wcmlvcml0aWVzIjthOjE6e2k6MDtzOjM6ImFsbCI7fXM6MTQ6ImxvZ19jYXRlZ29yaWVzIjtzOjA6IiI7czoxNzoibG9nX2NhdGVnb3J5X21vZGUiO2k6MDtzOjEzOiJjb29raWVfZG9tYWluIjtzOjA6IiI7czoxMToiY29va2llX3BhdGgiO3M6MDoiIjtzOjU6InJ1bGVzIjthOjEzOntzOjE1OiJjb3JlLmxvZ2luLnNpdGUiO2E6Mzp7aToxMDtiOjE7aTo2O2I6MTtpOjI7YjoxO31zOjE2OiJjb3JlLmxvZ2luLmFkbWluIjthOjI6e2k6MTA7YjoxO2k6NjtiOjE7fXM6MTQ6ImNvcmUubG9naW4uYXBpIjthOjE6e2k6ODtiOjE7fXM6MTg6ImNvcmUubG9naW4ub2ZmbGluZSI7YToxOntpOjY7YjoxO31zOjEwOiJjb3JlLmFkbWluIjthOjE6e2k6ODtiOjE7fXM6MTI6ImNvcmUub3B0aW9ucyI7YTowOnt9czoxMToiY29yZS5tYW5hZ2UiO2E6Mjp7aToxMDtiOjE7aTo3O2I6MTt9czoxMToiY29yZS5jcmVhdGUiO2E6Mzp7aToxMDtiOjE7aTo2O2I6MTtpOjM7YjoxO31zOjExOiJjb3JlLmRlbGV0ZSI7YToxOntpOjY7YjoxO31zOjk6ImNvcmUuZWRpdCI7YTozOntpOjEwO2I6MTtpOjY7YjoxO2k6NDtiOjE7fXM6MTU6ImNvcmUuZWRpdC5zdGF0ZSI7YTozOntpOjEwO2I6MTtpOjY7YjoxO2k6NTtiOjE7fXM6MTM6ImNvcmUuZWRpdC5vd24iO2E6Mzp7aToxMDtiOjE7aTo2O2I6MTtpOjM7YjoxO31zOjE1OiJjb3JlLmVkaXQudmFsdWUiO2E6MDp7fX1zOjc6ImZpbHRlcnMiO2E6MTE6e2k6MTthOjM6e3M6MTE6ImZpbHRlcl90eXBlIjtzOjI6Ik5IIjtzOjExOiJmaWx0ZXJfdGFncyI7czowOiIiO3M6MTc6ImZpbHRlcl9hdHRyaWJ1dGVzIjtzOjA6IiI7fWk6MTA7YTozOntzOjExOiJmaWx0ZXJfdHlwZSI7czoyOiJCTCI7czoxMToiZmlsdGVyX3RhZ3MiO3M6MDoiIjtzOjE3OiJmaWx0ZXJfYXR0cmlidXRlcyI7czowOiIiO31pOjk7YTozOntzOjExOiJmaWx0ZXJfdHlwZSI7czoyOiJOSCI7czoxMToiZmlsdGVyX3RhZ3MiO3M6MDoiIjtzOjE3OiJmaWx0ZXJfYXR0cmlidXRlcyI7czowOiIiO31pOjY7YTozOntzOjExOiJmaWx0ZXJfdHlwZSI7czoyOiJCTCI7czoxMToiZmlsdGVyX3RhZ3MiO3M6MDoiIjtzOjE3OiJmaWx0ZXJfYXR0cmlidXRlcyI7czowOiIiO31pOjc7YTozOntzOjExOiJmaWx0ZXJfdHlwZSI7czoyOiJCTCI7czoxMToiZmlsdGVyX3RhZ3MiO3M6MDoiIjtzOjE3OiJmaWx0ZXJfYXR0cmlidXRlcyI7czowOiIiO31pOjExO2E6Mzp7czoxMToiZmlsdGVyX3R5cGUiO3M6MjoiQkwiO3M6MTE6ImZpbHRlcl90YWdzIjtzOjA6IiI7czoxNzoiZmlsdGVyX2F0dHJpYnV0ZXMiO3M6MDoiIjt9aToyO2E6Mzp7czoxMToiZmlsdGVyX3R5cGUiO3M6MjoiTkgiO3M6MTE6ImZpbHRlcl90YWdzIjtzOjA6IiI7czoxNzoiZmlsdGVyX2F0dHJpYnV0ZXMiO3M6MDoiIjt9aTozO2E6Mzp7czoxMToiZmlsdGVyX3R5cGUiO3M6MjoiQkwiO3M6MTE6ImZpbHRlcl90YWdzIjtzOjA6IiI7czoxNzoiZmlsdGVyX2F0dHJpYnV0ZXMiO3M6MDoiIjt9aTo0O2E6Mzp7czoxMToiZmlsdGVyX3R5cGUiO3M6MjoiQkwiO3M6MTE6ImZpbHRlcl90YWdzIjtzOjA6IiI7czoxNzoiZmlsdGVyX2F0dHJpYnV0ZXMiO3M6MDoiIjt9aTo1O2E6Mzp7czoxMToiZmlsdGVyX3R5cGUiO3M6MjoiQkwiO3M6MTE6ImZpbHRlcl90YWdzIjtzOjA6IiI7czoxNzoiZmlsdGVyX2F0dHJpYnV0ZXMiO3M6MDoiIjt9aTo4O2E6Mzp7czoxMToiZmlsdGVyX3R5cGUiO3M6NDoiTk9ORSI7czoxMToiZmlsdGVyX3RhZ3MiO3M6MDoiIjtzOjE3OiJmaWx0ZXJfYXR0cmlidXRlcyI7czowOiIiO319czo4OiJhc3NldF9pZCI7czoxOiIxIjt9fX1zOjQ6ImVkaXQiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiY29tcG9uZW50IjtPOjg6InN0ZENsYXNzIjoxOntzOjE2OiJjb21fam9vbWxhdXBkYXRlIjtPOjg6InN0ZENsYXNzIjoxOntzOjQ6ImRhdGEiO047fX19fX1zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6MTI6IgAqAHNlcGFyYXRvciI7czoxOiIuIjt9czo0OiJ1c2VyIjtPOjIwOiJKb29tbGFcQ01TXFVzZXJcVXNlciI6MTp7czoyOiJpZCI7aTo4MTt9czo5OiJjb21fdXNlcnMiO086ODoic3RkQ2xhc3MiOjE6e3M6MTE6Im1mYV9jaGVja2VkIjtpOjE7fXM6MTE6ImFwcGxpY2F0aW9uIjtPOjg6InN0ZENsYXNzIjoxOntzOjU6InF1ZXVlIjthOjA6e319fXM6MTQ6IgAqAGluaXRpYWxpemVkIjtiOjA7czoxMjoiACoAc2VwYXJhdG9yIjtzOjE6Ii4iO30=\";',81,'admin'),(_binary '8679ee4d7cfc40cd215f4f106a598a53',1,0,1769981769,'joomla|s:1036:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjU6e3M6Nzoic2Vzc2lvbiI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo3OiJjb3VudGVyIjtpOjE2O3M6NToidGltZXIiO086ODoic3RkQ2xhc3MiOjM6e3M6NToic3RhcnQiO2k6MTc2OTk3OTk4NDtzOjQ6Imxhc3QiO2k6MTc2OTk4MDkzNDtzOjM6Im5vdyI7aToxNzY5OTgxNzY2O31zOjU6InRva2VuIjtzOjMyOiI5Y2Y3MmNmNTRjOGVjNjI1ZmNkOTk3YjBlZDJkOGE3YiI7fXM6ODoicmVnaXN0cnkiO086MjQ6Ikpvb21sYVxSZWdpc3RyeVxSZWdpc3RyeSI6Mzp7czo3OiIAKgBkYXRhIjtPOjg6InN0ZENsYXNzIjoxOntzOjExOiJjb21fY29udGVudCI7Tzo4OiJzdGRDbGFzcyI6MTp7czo0OiJlZGl0IjtPOjg6InN0ZENsYXNzIjoxOntzOjc6ImFydGljbGUiO086ODoic3RkQ2xhc3MiOjI6e3M6MjoiaWQiO2E6MTp7aTowO2k6Mjt9czo0OiJkYXRhIjtOO319fX1zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6MTI6IgAqAHNlcGFyYXRvciI7czoxOiIuIjt9czo0OiJ1c2VyIjtPOjIwOiJKb29tbGFcQ01TXFVzZXJcVXNlciI6MTp7czoyOiJpZCI7aTo4Mjt9czoxMToiYXBwbGljYXRpb24iO086ODoic3RkQ2xhc3MiOjE6e3M6NToicXVldWUiO2E6MDp7fX1zOjk6ImNvbV91c2VycyI7Tzo4OiJzdGRDbGFzcyI6MTp7czoxMToibWZhX2NoZWNrZWQiO2k6MTt9fXM6MTQ6IgAqAGluaXRpYWxpemVkIjtiOjA7czoxMjoiACoAc2VwYXJhdG9yIjtzOjE6Ii4iO30=\";',82,'redakteur'),(_binary '99ad121a9236d32c0a7b488589fd12b6',0,1,1769979801,'joomla|s:628:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjM6e3M6Nzoic2Vzc2lvbiI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo3OiJjb3VudGVyIjtpOjE7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNzY5OTc5ODAwO3M6NDoibGFzdCI7aToxNzY5OTc5ODAwO3M6Mzoibm93IjtpOjE3Njk5Nzk4MDA7fX1zOjg6InJlZ2lzdHJ5IjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjM6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6MDp7fXM6MTQ6IgAqAGluaXRpYWxpemVkIjtiOjA7czoxMjoiACoAc2VwYXJhdG9yIjtzOjE6Ii4iO31zOjQ6InVzZXIiO086MjA6Ikpvb21sYVxDTVNcVXNlclxVc2VyIjoxOntzOjI6ImlkIjtpOjA7fX1zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6MTI6IgAqAHNlcGFyYXRvciI7czoxOiIuIjt9\";',0,''),(_binary 'aee9f93f9150ebca7e49cd0c8924d31e',0,1,1769982320,'joomla|s:632:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjM6e3M6Nzoic2Vzc2lvbiI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNzY5OTc5MjUzO3M6NDoibGFzdCI7aToxNzY5OTgyMTk4O3M6Mzoibm93IjtpOjE3Njk5ODIzMTc7fXM6NzoiY291bnRlciI7aToxNDt9czo4OiJyZWdpc3RyeSI7TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjA6e31zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6MTI6IgAqAHNlcGFyYXRvciI7czoxOiIuIjt9czo0OiJ1c2VyIjtPOjIwOiJKb29tbGFcQ01TXFVzZXJcVXNlciI6MTp7czoyOiJpZCI7aTowO319czoxNDoiACoAaW5pdGlhbGl6ZWQiO2I6MDtzOjEyOiIAKgBzZXBhcmF0b3IiO3M6MToiLiI7fQ==\";',0,''),(_binary 'ffdd51adc4590063fd8f384813dd6bdc',1,1,1769979951,'joomla|s:628:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjM6e3M6Nzoic2Vzc2lvbiI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo3OiJjb3VudGVyIjtpOjE7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNzY5OTc5OTUwO3M6NDoibGFzdCI7aToxNzY5OTc5OTUwO3M6Mzoibm93IjtpOjE3Njk5Nzk5NTA7fX1zOjg6InJlZ2lzdHJ5IjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjM6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6MDp7fXM6MTQ6IgAqAGluaXRpYWxpemVkIjtiOjA7czoxMjoiACoAc2VwYXJhdG9yIjtzOjE6Ii4iO31zOjQ6InVzZXIiO086MjA6Ikpvb21sYVxDTVNcVXNlclxVc2VyIjoxOntzOjI6ImlkIjtpOjA7fX1zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6MTI6IgAqAHNlcGFyYXRvciI7czoxOiIuIjt9\";',0,'');
+INSERT INTO `lcoa2_session` VALUES (_binary '3733d100ec4848016606d3b97b894e03',0,1,1770019921,'joomla|s:700:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjM6e3M6Nzoic2Vzc2lvbiI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo3OiJjb3VudGVyIjtpOjEyO3M6NToidGltZXIiO086ODoic3RkQ2xhc3MiOjM6e3M6NToic3RhcnQiO2k6MTc3MDAxNzMzMTtzOjQ6Imxhc3QiO2k6MTc3MDAxOTQxMDtzOjM6Im5vdyI7aToxNzcwMDE5OTE5O31zOjU6InRva2VuIjtzOjMyOiJlYWZjZWVjZjA2ZTYyYzRjYmExMjE1MzQzN2Q2OWFlYyI7fXM6ODoicmVnaXN0cnkiO086MjQ6Ikpvb21sYVxSZWdpc3RyeVxSZWdpc3RyeSI6Mzp7czo3OiIAKgBkYXRhIjtPOjg6InN0ZENsYXNzIjowOnt9czoxNDoiACoAaW5pdGlhbGl6ZWQiO2I6MDtzOjEyOiIAKgBzZXBhcmF0b3IiO3M6MToiLiI7fXM6NDoidXNlciI7TzoyMDoiSm9vbWxhXENNU1xVc2VyXFVzZXIiOjE6e3M6MjoiaWQiO2k6MDt9fXM6MTQ6IgAqAGluaXRpYWxpemVkIjtiOjA7czoxMjoiACoAc2VwYXJhdG9yIjtzOjE6Ii4iO30=\";',0,''),(_binary '778dd217f4093e533c95c55f5ce0d074',0,1,1769984537,'joomla|s:700:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjM6e3M6Nzoic2Vzc2lvbiI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo3OiJjb3VudGVyIjtpOjk7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNzY5OTgzNjYwO3M6NDoibGFzdCI7aToxNzY5OTg0MjY2O3M6Mzoibm93IjtpOjE3Njk5ODQ1MzU7fXM6NToidG9rZW4iO3M6MzI6IjZhMDY0NDM5OTAwMWU5ZWYwMjQ3ZDRkODJjY2UxMTAyIjt9czo4OiJyZWdpc3RyeSI7TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjA6e31zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6MTI6IgAqAHNlcGFyYXRvciI7czoxOiIuIjt9czo0OiJ1c2VyIjtPOjIwOiJKb29tbGFcQ01TXFVzZXJcVXNlciI6MTp7czoyOiJpZCI7aTowO319czoxNDoiACoAaW5pdGlhbGl6ZWQiO2I6MDtzOjEyOiIAKgBzZXBhcmF0b3IiO3M6MToiLiI7fQ==\";',0,''),(_binary '8679ee4d7cfc40cd215f4f106a598a53',1,0,1769981769,'joomla|s:1036:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjU6e3M6Nzoic2Vzc2lvbiI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo3OiJjb3VudGVyIjtpOjE2O3M6NToidGltZXIiO086ODoic3RkQ2xhc3MiOjM6e3M6NToic3RhcnQiO2k6MTc2OTk3OTk4NDtzOjQ6Imxhc3QiO2k6MTc2OTk4MDkzNDtzOjM6Im5vdyI7aToxNzY5OTgxNzY2O31zOjU6InRva2VuIjtzOjMyOiI5Y2Y3MmNmNTRjOGVjNjI1ZmNkOTk3YjBlZDJkOGE3YiI7fXM6ODoicmVnaXN0cnkiO086MjQ6Ikpvb21sYVxSZWdpc3RyeVxSZWdpc3RyeSI6Mzp7czo3OiIAKgBkYXRhIjtPOjg6InN0ZENsYXNzIjoxOntzOjExOiJjb21fY29udGVudCI7Tzo4OiJzdGRDbGFzcyI6MTp7czo0OiJlZGl0IjtPOjg6InN0ZENsYXNzIjoxOntzOjc6ImFydGljbGUiO086ODoic3RkQ2xhc3MiOjI6e3M6MjoiaWQiO2E6MTp7aTowO2k6Mjt9czo0OiJkYXRhIjtOO319fX1zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6MTI6IgAqAHNlcGFyYXRvciI7czoxOiIuIjt9czo0OiJ1c2VyIjtPOjIwOiJKb29tbGFcQ01TXFVzZXJcVXNlciI6MTp7czoyOiJpZCI7aTo4Mjt9czoxMToiYXBwbGljYXRpb24iO086ODoic3RkQ2xhc3MiOjE6e3M6NToicXVldWUiO2E6MDp7fX1zOjk6ImNvbV91c2VycyI7Tzo4OiJzdGRDbGFzcyI6MTp7czoxMToibWZhX2NoZWNrZWQiO2k6MTt9fXM6MTQ6IgAqAGluaXRpYWxpemVkIjtiOjA7czoxMjoiACoAc2VwYXJhdG9yIjtzOjE6Ii4iO30=\";',82,'redakteur'),(_binary '99ad121a9236d32c0a7b488589fd12b6',0,1,1769979801,'joomla|s:628:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjM6e3M6Nzoic2Vzc2lvbiI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo3OiJjb3VudGVyIjtpOjE7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNzY5OTc5ODAwO3M6NDoibGFzdCI7aToxNzY5OTc5ODAwO3M6Mzoibm93IjtpOjE3Njk5Nzk4MDA7fX1zOjg6InJlZ2lzdHJ5IjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjM6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6MDp7fXM6MTQ6IgAqAGluaXRpYWxpemVkIjtiOjA7czoxMjoiACoAc2VwYXJhdG9yIjtzOjE6Ii4iO31zOjQ6InVzZXIiO086MjA6Ikpvb21sYVxDTVNcVXNlclxVc2VyIjoxOntzOjI6ImlkIjtpOjA7fX1zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6MTI6IgAqAHNlcGFyYXRvciI7czoxOiIuIjt9\";',0,''),(_binary '9d887fe2f268a7cc4703eaf275aecd3f',1,0,1769986248,'joomla|s:3800:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjQ6e3M6Nzoic2Vzc2lvbiI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNzY5OTg0MTc1O3M6NDoibGFzdCI7aToxNzY5OTg1NDA3O3M6Mzoibm93IjtpOjE3Njk5ODYyNDc7fXM6NzoiY291bnRlciI7aToyMDtzOjU6InRva2VuIjtzOjMyOiJmMjhmOTkyNDFjNGZhZGU4NWUyNGQxMTVmMjk2Mzk5NyI7fXM6ODoicmVnaXN0cnkiO086MjQ6Ikpvb21sYVxSZWdpc3RyeVxSZWdpc3RyeSI6Mzp7czo3OiIAKgBkYXRhIjtPOjg6InN0ZENsYXNzIjoyOntzOjk6ImNvbV91c2VycyI7Tzo4OiJzdGRDbGFzcyI6MTp7czo5OiJkZWJ1Z3VzZXIiO086ODoic3RkQ2xhc3MiOjE6e3M6NzoiZGVmYXVsdCI7Tzo4OiJzdGRDbGFzcyI6NDp7czo3OiJ1c2VyX2lkIjtpOjgyO3M6NDoibGlzdCI7YToyOntzOjEyOiJmdWxsb3JkZXJpbmciO3M6OToiYS5sZnQgQVNDIjtzOjU6ImxpbWl0IjtzOjI6IjIwIjt9czo2OiJmaWx0ZXIiO2E6NDp7czo2OiJzZWFyY2giO3M6MDoiIjtzOjk6ImNvbXBvbmVudCI7czowOiIiO3M6MTE6ImxldmVsX3N0YXJ0IjtzOjA6IiI7czo5OiJsZXZlbF9lbmQiO3M6MDoiIjt9czoxMDoibGltaXRzdGFydCI7aTo0MDt9fX1zOjExOiJjb21fY29udGVudCI7Tzo4OiJzdGRDbGFzcyI6MTp7czo0OiJlZGl0IjtPOjg6InN0ZENsYXNzIjoxOntzOjc6ImFydGljbGUiO086ODoic3RkQ2xhc3MiOjE6e3M6NDoiZGF0YSI7YToyOTp7czo1OiJ0aXRsZSI7czo0OiJ0ZXN0IjtzOjU6ImFsaWFzIjtzOjA6IiI7czoxMToiYXJ0aWNsZXRleHQiO3M6MTM6IjxwPmJsYWJsYTwvcD4iO3M6MTA6InRyYW5zaXRpb24iO3M6MDoiIjtzOjU6InN0YXRlIjtzOjE6IjEiO3M6NToiY2F0aWQiO3M6MToiMiI7czo4OiJmZWF0dXJlZCI7czoxOiIxIjtzOjY6ImFjY2VzcyI7czoxOiI2IjtzOjg6Imxhbmd1YWdlIjtzOjE6IioiO3M6NDoibm90ZSI7czowOiIiO3M6MTI6InZlcnNpb25fbm90ZSI7czowOiIiO3M6NjoiaW1hZ2VzIjthOjg6e3M6MTE6ImltYWdlX2ludHJvIjtzOjA6IiI7czoxNToiaW1hZ2VfaW50cm9fYWx0IjtzOjA6IiI7czoxMToiZmxvYXRfaW50cm8iO3M6MDoiIjtzOjE5OiJpbWFnZV9pbnRyb19jYXB0aW9uIjtzOjA6IiI7czoxNDoiaW1hZ2VfZnVsbHRleHQiO3M6MDoiIjtzOjE4OiJpbWFnZV9mdWxsdGV4dF9hbHQiO3M6MDoiIjtzOjE0OiJmbG9hdF9mdWxsdGV4dCI7czowOiIiO3M6MjI6ImltYWdlX2Z1bGx0ZXh0X2NhcHRpb24iO3M6MDoiIjt9czo0OiJ1cmxzIjthOjk6e3M6NDoidXJsYSI7czowOiIiO3M6ODoidXJsYXRleHQiO3M6MDoiIjtzOjc6InRhcmdldGEiO3M6MDoiIjtzOjQ6InVybGIiO3M6MDoiIjtzOjg6InVybGJ0ZXh0IjtzOjA6IiI7czo3OiJ0YXJnZXRiIjtzOjA6IiI7czo0OiJ1cmxjIjtzOjA6IiI7czo4OiJ1cmxjdGV4dCI7czowOiIiO3M6NzoidGFyZ2V0YyI7czowOiIiO31zOjc6ImF0dHJpYnMiO2E6MjI6e3M6MTQ6ImFydGljbGVfbGF5b3V0IjtzOjA6IiI7czoxMDoic2hvd190aXRsZSI7czowOiIiO3M6MTE6ImxpbmtfdGl0bGVzIjtzOjA6IiI7czo5OiJzaG93X3RhZ3MiO3M6MDoiIjtzOjEwOiJzaG93X2ludHJvIjtzOjA6IiI7czoxOToiaW5mb19ibG9ja19wb3NpdGlvbiI7czowOiIiO3M6MjE6ImluZm9fYmxvY2tfc2hvd190aXRsZSI7czowOiIiO3M6MTM6InNob3dfY2F0ZWdvcnkiO3M6MDoiIjtzOjEzOiJsaW5rX2NhdGVnb3J5IjtzOjA6IiI7czoyMDoic2hvd19wYXJlbnRfY2F0ZWdvcnkiO3M6MDoiIjtzOjIwOiJsaW5rX3BhcmVudF9jYXRlZ29yeSI7czowOiIiO3M6MTE6InNob3dfYXV0aG9yIjtzOjA6IiI7czoxMToibGlua19hdXRob3IiO3M6MDoiIjtzOjE2OiJzaG93X2NyZWF0ZV9kYXRlIjtzOjA6IiI7czoxNjoic2hvd19tb2RpZnlfZGF0ZSI7czowOiIiO3M6MTc6InNob3dfcHVibGlzaF9kYXRlIjtzOjA6IiI7czoyMDoic2hvd19pdGVtX25hdmlnYXRpb24iO3M6MDoiIjtzOjk6InNob3dfaGl0cyI7czowOiIiO3M6MTE6InNob3dfbm9hdXRoIjtzOjA6IiI7czoxMzoidXJsc19wb3NpdGlvbiI7czowOiIiO3M6MjA6ImFsdGVybmF0aXZlX3JlYWRtb3JlIjtzOjA6IiI7czoxODoiYXJ0aWNsZV9wYWdlX3RpdGxlIjtzOjA6IiI7fXM6Njoic2NoZW1hIjthOjE6e3M6OToiZXh0ZW5kSmVkIjtzOjA6IiI7fXM6MTA6InB1Ymxpc2hfdXAiO3M6MDoiIjtzOjEyOiJwdWJsaXNoX2Rvd24iO3M6MDoiIjtzOjExOiJmZWF0dXJlZF91cCI7czowOiIiO3M6MTM6ImZlYXR1cmVkX2Rvd24iO3M6MDoiIjtzOjc6ImNyZWF0ZWQiO3M6MDoiIjtzOjEwOiJjcmVhdGVkX2J5IjtzOjA6IiI7czoxNjoiY3JlYXRlZF9ieV9hbGlhcyI7czowOiIiO3M6ODoibW9kaWZpZWQiO3M6MDoiIjtzOjc6InZlcnNpb24iO3M6MDoiIjtzOjQ6ImhpdHMiO3M6MToiMCI7czoyOiJpZCI7aTowO3M6ODoibWV0YWRlc2MiO3M6MDoiIjtzOjc6Im1ldGFrZXkiO3M6MDoiIjtzOjg6Im1ldGFkYXRhIjthOjM6e3M6Njoicm9ib3RzIjtzOjA6IiI7czo2OiJhdXRob3IiO3M6MDoiIjtzOjY6InJpZ2h0cyI7czowOiIiO319fX19fXM6MTQ6IgAqAGluaXRpYWxpemVkIjtiOjA7czoxMjoiACoAc2VwYXJhdG9yIjtzOjE6Ii4iO31zOjQ6InVzZXIiO086MjA6Ikpvb21sYVxDTVNcVXNlclxVc2VyIjoxOntzOjI6ImlkIjtpOjgyO31zOjk6ImNvbV91c2VycyI7Tzo4OiJzdGRDbGFzcyI6MTp7czoxMToibWZhX2NoZWNrZWQiO2k6MTt9fXM6MTQ6IgAqAGluaXRpYWxpemVkIjtiOjA7czoxMjoiACoAc2VwYXJhdG9yIjtzOjE6Ii4iO30=\";',82,'redakteur'),(_binary 'aee9f93f9150ebca7e49cd0c8924d31e',0,1,1769982320,'joomla|s:632:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjM6e3M6Nzoic2Vzc2lvbiI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNzY5OTc5MjUzO3M6NDoibGFzdCI7aToxNzY5OTgyMTk4O3M6Mzoibm93IjtpOjE3Njk5ODIzMTc7fXM6NzoiY291bnRlciI7aToxNDt9czo4OiJyZWdpc3RyeSI7TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjA6e31zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6MTI6IgAqAHNlcGFyYXRvciI7czoxOiIuIjt9czo0OiJ1c2VyIjtPOjIwOiJKb29tbGFcQ01TXFVzZXJcVXNlciI6MTp7czoyOiJpZCI7aTowO319czoxNDoiACoAaW5pdGlhbGl6ZWQiO2I6MDtzOjEyOiIAKgBzZXBhcmF0b3IiO3M6MToiLiI7fQ==\";',0,''),(_binary 'cc30dce50a99453390983b49537460af',1,0,1770019313,'joomla|s:3548:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjQ6e3M6Nzoic2Vzc2lvbiI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNzcwMDE3NTQ3O3M6NDoibGFzdCI7aToxNzcwMDE4NDcxO3M6Mzoibm93IjtpOjE3NzAwMTkzMTA7fXM6NzoiY291bnRlciI7aToyMTtzOjU6InRva2VuIjtzOjMyOiJjYTMyMzIxOTY1MjQzN2ZmYmFkZDE1NTYyZTA0YjAwMyI7fXM6ODoicmVnaXN0cnkiO086MjQ6Ikpvb21sYVxSZWdpc3RyeVxSZWdpc3RyeSI6Mzp7czo3OiIAKgBkYXRhIjtPOjg6InN0ZENsYXNzIjoyOntzOjExOiJjb21fY29udGVudCI7Tzo4OiJzdGRDbGFzcyI6MTp7czo0OiJlZGl0IjtPOjg6InN0ZENsYXNzIjoxOntzOjc6ImFydGljbGUiO086ODoic3RkQ2xhc3MiOjE6e3M6NDoiZGF0YSI7YToyOTp7czo1OiJ0aXRsZSI7czo0OiJkc2RzIjtzOjU6ImFsaWFzIjtzOjM6InNkcyI7czoxMToiYXJ0aWNsZXRleHQiO3M6MTE6IjxwPmRhZGE8L3A+IjtzOjEwOiJ0cmFuc2l0aW9uIjtzOjA6IiI7czo1OiJzdGF0ZSI7czoxOiIxIjtzOjU6ImNhdGlkIjtzOjI6IjExIjtzOjg6ImZlYXR1cmVkIjtzOjE6IjAiO3M6NjoiYWNjZXNzIjtzOjE6IjEiO3M6ODoibGFuZ3VhZ2UiO3M6MToiKiI7czo0OiJub3RlIjtzOjA6IiI7czoxMjoidmVyc2lvbl9ub3RlIjtzOjA6IiI7czo2OiJpbWFnZXMiO2E6ODp7czoxMToiaW1hZ2VfaW50cm8iO3M6MDoiIjtzOjE1OiJpbWFnZV9pbnRyb19hbHQiO3M6MDoiIjtzOjExOiJmbG9hdF9pbnRybyI7czowOiIiO3M6MTk6ImltYWdlX2ludHJvX2NhcHRpb24iO3M6MDoiIjtzOjE0OiJpbWFnZV9mdWxsdGV4dCI7czowOiIiO3M6MTg6ImltYWdlX2Z1bGx0ZXh0X2FsdCI7czowOiIiO3M6MTQ6ImZsb2F0X2Z1bGx0ZXh0IjtzOjA6IiI7czoyMjoiaW1hZ2VfZnVsbHRleHRfY2FwdGlvbiI7czowOiIiO31zOjQ6InVybHMiO2E6OTp7czo0OiJ1cmxhIjtzOjA6IiI7czo4OiJ1cmxhdGV4dCI7czowOiIiO3M6NzoidGFyZ2V0YSI7czowOiIiO3M6NDoidXJsYiI7czowOiIiO3M6ODoidXJsYnRleHQiO3M6MDoiIjtzOjc6InRhcmdldGIiO3M6MDoiIjtzOjQ6InVybGMiO3M6MDoiIjtzOjg6InVybGN0ZXh0IjtzOjA6IiI7czo3OiJ0YXJnZXRjIjtzOjA6IiI7fXM6NzoiYXR0cmlicyI7YToyMjp7czoxNDoiYXJ0aWNsZV9sYXlvdXQiO3M6MDoiIjtzOjEwOiJzaG93X3RpdGxlIjtzOjA6IiI7czoxMToibGlua190aXRsZXMiO3M6MDoiIjtzOjk6InNob3dfdGFncyI7czowOiIiO3M6MTA6InNob3dfaW50cm8iO3M6MDoiIjtzOjE5OiJpbmZvX2Jsb2NrX3Bvc2l0aW9uIjtzOjA6IiI7czoyMToiaW5mb19ibG9ja19zaG93X3RpdGxlIjtzOjA6IiI7czoxMzoic2hvd19jYXRlZ29yeSI7czowOiIiO3M6MTM6ImxpbmtfY2F0ZWdvcnkiO3M6MDoiIjtzOjIwOiJzaG93X3BhcmVudF9jYXRlZ29yeSI7czowOiIiO3M6MjA6ImxpbmtfcGFyZW50X2NhdGVnb3J5IjtzOjA6IiI7czoxMToic2hvd19hdXRob3IiO3M6MDoiIjtzOjExOiJsaW5rX2F1dGhvciI7czowOiIiO3M6MTY6InNob3dfY3JlYXRlX2RhdGUiO3M6MDoiIjtzOjE2OiJzaG93X21vZGlmeV9kYXRlIjtzOjA6IiI7czoxNzoic2hvd19wdWJsaXNoX2RhdGUiO3M6MDoiIjtzOjIwOiJzaG93X2l0ZW1fbmF2aWdhdGlvbiI7czowOiIiO3M6OToic2hvd19oaXRzIjtzOjA6IiI7czoxMToic2hvd19ub2F1dGgiO3M6MDoiIjtzOjEzOiJ1cmxzX3Bvc2l0aW9uIjtzOjA6IiI7czoyMDoiYWx0ZXJuYXRpdmVfcmVhZG1vcmUiO3M6MDoiIjtzOjE4OiJhcnRpY2xlX3BhZ2VfdGl0bGUiO3M6MDoiIjt9czo2OiJzY2hlbWEiO2E6MTp7czo5OiJleHRlbmRKZWQiO3M6MDoiIjt9czoxMDoicHVibGlzaF91cCI7czowOiIiO3M6MTI6InB1Ymxpc2hfZG93biI7czowOiIiO3M6MTE6ImZlYXR1cmVkX3VwIjtzOjA6IiI7czoxMzoiZmVhdHVyZWRfZG93biI7czowOiIiO3M6NzoiY3JlYXRlZCI7czowOiIiO3M6MTA6ImNyZWF0ZWRfYnkiO3M6MDoiIjtzOjE2OiJjcmVhdGVkX2J5X2FsaWFzIjtzOjA6IiI7czo4OiJtb2RpZmllZCI7czowOiIiO3M6NzoidmVyc2lvbiI7czowOiIiO3M6NDoiaGl0cyI7czoxOiIwIjtzOjI6ImlkIjtpOjA7czo4OiJtZXRhZGVzYyI7czowOiIiO3M6NzoibWV0YWtleSI7czowOiIiO3M6ODoibWV0YWRhdGEiO2E6Mzp7czo2OiJyb2JvdHMiO3M6MDoiIjtzOjY6ImF1dGhvciI7czowOiIiO3M6NjoicmlnaHRzIjtzOjA6IiI7fX19fX1zOjExOiJjb21fbW9kdWxlcyI7Tzo4OiJzdGRDbGFzcyI6MTp7czo0OiJlZGl0IjtPOjg6InN0ZENsYXNzIjoxOntzOjY6Im1vZHVsZSI7Tzo4OiJzdGRDbGFzcyI6Mjp7czoyOiJpZCI7YToxOntpOjA7aToxMDM7fXM6NDoiZGF0YSI7Tjt9fX19czoxNDoiACoAaW5pdGlhbGl6ZWQiO2I6MDtzOjEyOiIAKgBzZXBhcmF0b3IiO3M6MToiLiI7fXM6NDoidXNlciI7TzoyMDoiSm9vbWxhXENNU1xVc2VyXFVzZXIiOjE6e3M6MjoiaWQiO2k6ODI7fXM6OToiY29tX3VzZXJzIjtPOjg6InN0ZENsYXNzIjoxOntzOjExOiJtZmFfY2hlY2tlZCI7aToxO319czoxNDoiACoAaW5pdGlhbGl6ZWQiO2I6MDtzOjEyOiIAKgBzZXBhcmF0b3IiO3M6MToiLiI7fQ==\";',82,'redakteur'),(_binary 'd57184f542060653d0f00161924f7bbd',NULL,1,1770017548,'joomla|s:780:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjQ6e3M6Nzoic2Vzc2lvbiI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo3OiJjb3VudGVyIjtpOjEzO3M6NToidGltZXIiO086ODoic3RkQ2xhc3MiOjM6e3M6NToic3RhcnQiO2k6MTc3MDAxNzQxMztzOjQ6Imxhc3QiO2k6MTc3MDAxNzU0NjtzOjM6Im5vdyI7aToxNzcwMDE3NTQ3O31zOjU6InRva2VuIjtzOjMyOiJmYTdjZGI3OTE4OWZjMjBiNGJhYTZkY2VlMjNkNjJhMiI7fXM6ODoicmVnaXN0cnkiO086MjQ6Ikpvb21sYVxSZWdpc3RyeVxSZWdpc3RyeSI6Mzp7czo3OiIAKgBkYXRhIjtPOjg6InN0ZENsYXNzIjowOnt9czoxNDoiACoAaW5pdGlhbGl6ZWQiO2I6MDtzOjEyOiIAKgBzZXBhcmF0b3IiO3M6MToiLiI7fXM6NDoidXNlciI7TzoyMDoiSm9vbWxhXENNU1xVc2VyXFVzZXIiOjE6e3M6MjoiaWQiO2k6ODE7fXM6OToiY29tX3VzZXJzIjtPOjg6InN0ZENsYXNzIjoxOntzOjExOiJtZmFfY2hlY2tlZCI7aToxO319czoxNDoiACoAaW5pdGlhbGl6ZWQiO2I6MDtzOjEyOiIAKgBzZXBhcmF0b3IiO3M6MToiLiI7fQ==\";',0,''),(_binary 'ffdd51adc4590063fd8f384813dd6bdc',1,1,1769979951,'joomla|s:628:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjM6e3M6Nzoic2Vzc2lvbiI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo3OiJjb3VudGVyIjtpOjE7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNzY5OTc5OTUwO3M6NDoibGFzdCI7aToxNzY5OTc5OTUwO3M6Mzoibm93IjtpOjE3Njk5Nzk5NTA7fX1zOjg6InJlZ2lzdHJ5IjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjM6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6MDp7fXM6MTQ6IgAqAGluaXRpYWxpemVkIjtiOjA7czoxMjoiACoAc2VwYXJhdG9yIjtzOjE6Ii4iO31zOjQ6InVzZXIiO086MjA6Ikpvb21sYVxDTVNcVXNlclxVc2VyIjoxOntzOjI6ImlkIjtpOjA7fX1zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6MTI6IgAqAHNlcGFyYXRvciI7czoxOiIuIjt9\";',0,'');
 /*!40000 ALTER TABLE `lcoa2_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1943,28 +1944,28 @@ CREATE TABLE `lcoa2_tags` (
   `lft` int NOT NULL DEFAULT '0',
   `rgt` int NOT NULL DEFAULT '0',
   `level` int unsigned NOT NULL DEFAULT '0',
-  `path` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `path` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
-  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `description` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `published` tinyint NOT NULL DEFAULT '0',
   `checked_out` int unsigned DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `access` int unsigned NOT NULL DEFAULT '0',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metadesc` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The meta description for the page.',
-  `metakey` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'The keywords for the page.',
-  `metadata` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded metadata properties.',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `metadesc` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The meta description for the page.',
+  `metakey` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'The keywords for the page.',
+  `metadata` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded metadata properties.',
   `created_user_id` int unsigned NOT NULL DEFAULT '0',
   `created_time` datetime NOT NULL,
-  `created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `created_by_alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `modified_user_id` int unsigned NOT NULL DEFAULT '0',
   `modified_time` datetime NOT NULL,
-  `images` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `urls` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `images` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `urls` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `hits` int unsigned NOT NULL DEFAULT '0',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `version` int unsigned NOT NULL DEFAULT '1',
   `publish_up` datetime DEFAULT NULL,
   `publish_down` datetime DEFAULT NULL,
@@ -1998,11 +1999,11 @@ DROP TABLE IF EXISTS `lcoa2_template_overrides`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_template_overrides` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `template` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `hash_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `template` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `hash_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `extension_id` int DEFAULT '0',
   `state` tinyint NOT NULL DEFAULT '0',
-  `action` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `action` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `client_id` tinyint unsigned NOT NULL DEFAULT '0',
   `created_date` datetime NOT NULL,
   `modified_date` datetime DEFAULT NULL,
@@ -2030,13 +2031,13 @@ DROP TABLE IF EXISTS `lcoa2_template_styles`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_template_styles` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `template` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `template` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `client_id` tinyint unsigned NOT NULL DEFAULT '0',
-  `home` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `home` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `inheritable` tinyint NOT NULL DEFAULT '0',
-  `parent` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `parent` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_template` (`template`),
   KEY `idx_client_id` (`client_id`),
@@ -2064,11 +2065,11 @@ DROP TABLE IF EXISTS `lcoa2_tuf_metadata`;
 CREATE TABLE `lcoa2_tuf_metadata` (
   `id` int NOT NULL AUTO_INCREMENT,
   `update_site_id` int DEFAULT '0',
-  `root` text COLLATE utf8mb4_unicode_ci,
-  `targets` text COLLATE utf8mb4_unicode_ci,
-  `snapshot` text COLLATE utf8mb4_unicode_ci,
-  `timestamp` text COLLATE utf8mb4_unicode_ci,
-  `mirrors` text COLLATE utf8mb4_unicode_ci,
+  `root` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `targets` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `snapshot` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `timestamp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `mirrors` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Secure TUF Updates';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -2079,7 +2080,7 @@ CREATE TABLE `lcoa2_tuf_metadata` (
 
 LOCK TABLES `lcoa2_tuf_metadata` WRITE;
 /*!40000 ALTER TABLE `lcoa2_tuf_metadata` DISABLE KEYS */;
-INSERT INTO `lcoa2_tuf_metadata` VALUES (1,1,'{\"signed\":{\"_type\":\"root\",\"spec_version\":\"1.0\",\"version\":12,\"expires\":\"2026-12-16T13:18:16Z\",\"keys\":{\"00e432b504508246e2bd536dd6c13e55e8b3256f0be9f767fae26da6c2a28663\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"250f8d293c49817a83909dead96ad82b62f7ac16844cf589f8d2f0e0b15cab21\"}},\"07eb082f367c034a95878687f6648aa76d93652b6ee73e58817053d89af6c44f\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"9b2af2d9b9727227735253d795bd27ea8f0e294a5f3603e822dc5052b44802b9\"}},\"179d107f20a2354ac5bd9a1f32a2df1763c0059617f0c132bebeb4816a1a8637\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"159a4195cbafce2bb959f09ab2b36a2127b8967f94d389f65f1e7892fccfe8b8\"}},\"192ad7343e7d431533d9577fd957b6f924680177db4dc6c0e146dad6810a90a4\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"042b66e1431a1f5c2c15b4a16ea60f23f466851b58e9ff057dbfc2a5e0d821d1\"}},\"1b1b1dd55b2c1c7258714cf1c1ae06f23e4607b28c762d016a9d81c48ffe5669\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"a18e5ebabc19d5d5984b601a292ece61ba3662ab2d071dc520da5bd4f8948799\"}},\"273e94e5477e306ad6de75be1524860e219e265ff9a57c81ababd0691e45706c\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"1cb6702338830ef1c9e76a022fed27172d475bbaace754d8141ebc96dad8b15f\"}},\"2dcaf3d0e552f150792f7c636d45429246dcfa34ac35b46a44f5c87cd17d457e\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"cb0a7a131961a20edea051d6dc2b091fb650bd399bd8514adb67b3c60db9f8f9\"}},\"31dd7c7290d664c9b88c0dead2697175293ea7df81b7f24153a37370fd3901c3\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"589d029a68b470deff1ca16dbf3eea6b5b3fcba0ae7bb52c468abc7fb058b2a2\"}},\"9e41a9d62d94c6a1c8a304f62c5bd72d84a9f286f27e8327cedeacb09e5156cc\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"6043c8bacc76ac5c9750f45454dd865c6ca1fc57d69e14cc192cfd420f6a66a9\"}},\"9eabc37383b243cd236375c66693db385911914b52556e1ec05fc70ed45e1bfe\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"a4b8509488f1c29ab0b1f610e7452fbec78b4f33f1fba5a418d6ff087c567429\"}},\"a1a4b7fdbeedfdeff12d7776de098a2f8de8d2ab7bfe10062a281b3819b078c1\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"ea764b0b475b3c396627ac6689cbd8f54a5f93e87b6f5e3eb44a7ccafb542ff3\"}},\"a599a27a3ec4d520059c591338759dc401006b1c4cb1db85a286e667253d28b6\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"45e416d24d13a60ace5ab028827d5cfc8ba177bb9466bf2acd8efa6e3547911a\"}},\"bfee044dd4574a281c9b7c0b6829913ef292c66c0512d1091a298cfca8493da9\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"6eb44460e5914e8e0df726ddb90bd1f3771b8ce5af19b40fb01ac5a85b023a6f\"}},\"e2229942b0fc1e6d7f82adf258e5bdadac10046d1470b7ec459c9eb4e076026b\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"ad1950e117b29ebe7a38635a2e574123e07571e4f9a011783e053b5f15d2562a\"}},\"ecc851a051c8d6439331ff0a37c7727321fc39896a34f950f73638b8a7cb472e\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"5d451915bc2b93a0e4e4745bc6a8b292d58996d50e0fb66c78c7827152a65879\"}}},\"roles\":{\"root\":{\"keyids\":[\"1b1b1dd55b2c1c7258714cf1c1ae06f23e4607b28c762d016a9d81c48ffe5669\",\"2dcaf3d0e552f150792f7c636d45429246dcfa34ac35b46a44f5c87cd17d457e\",\"192ad7343e7d431533d9577fd957b6f924680177db4dc6c0e146dad6810a90a4\"],\"threshold\":1},\"snapshot\":{\"keyids\":[\"07eb082f367c034a95878687f6648aa76d93652b6ee73e58817053d89af6c44f\",\"2dcaf3d0e552f150792f7c636d45429246dcfa34ac35b46a44f5c87cd17d457e\",\"ecc851a051c8d6439331ff0a37c7727321fc39896a34f950f73638b8a7cb472e\",\"e2229942b0fc1e6d7f82adf258e5bdadac10046d1470b7ec459c9eb4e076026b\",\"bfee044dd4574a281c9b7c0b6829913ef292c66c0512d1091a298cfca8493da9\",\"9eabc37383b243cd236375c66693db385911914b52556e1ec05fc70ed45e1bfe\",\"273e94e5477e306ad6de75be1524860e219e265ff9a57c81ababd0691e45706c\",\"00e432b504508246e2bd536dd6c13e55e8b3256f0be9f767fae26da6c2a28663\",\"179d107f20a2354ac5bd9a1f32a2df1763c0059617f0c132bebeb4816a1a8637\",\"a1a4b7fdbeedfdeff12d7776de098a2f8de8d2ab7bfe10062a281b3819b078c1\",\"192ad7343e7d431533d9577fd957b6f924680177db4dc6c0e146dad6810a90a4\",\"a599a27a3ec4d520059c591338759dc401006b1c4cb1db85a286e667253d28b6\"],\"threshold\":1},\"targets\":{\"keyids\":[\"31dd7c7290d664c9b88c0dead2697175293ea7df81b7f24153a37370fd3901c3\",\"ecc851a051c8d6439331ff0a37c7727321fc39896a34f950f73638b8a7cb472e\",\"e2229942b0fc1e6d7f82adf258e5bdadac10046d1470b7ec459c9eb4e076026b\",\"bfee044dd4574a281c9b7c0b6829913ef292c66c0512d1091a298cfca8493da9\",\"9eabc37383b243cd236375c66693db385911914b52556e1ec05fc70ed45e1bfe\",\"273e94e5477e306ad6de75be1524860e219e265ff9a57c81ababd0691e45706c\",\"00e432b504508246e2bd536dd6c13e55e8b3256f0be9f767fae26da6c2a28663\",\"179d107f20a2354ac5bd9a1f32a2df1763c0059617f0c132bebeb4816a1a8637\",\"a1a4b7fdbeedfdeff12d7776de098a2f8de8d2ab7bfe10062a281b3819b078c1\"],\"threshold\":1},\"timestamp\":{\"keyids\":[\"9e41a9d62d94c6a1c8a304f62c5bd72d84a9f286f27e8327cedeacb09e5156cc\"],\"threshold\":1}},\"consistent_snapshot\":true},\"signatures\":[{\"keyid\":\"1b1b1dd55b2c1c7258714cf1c1ae06f23e4607b28c762d016a9d81c48ffe5669\",\"sig\":\"566d6aa10932b36ebda6fbb56f17a683c0044cc1e94947fa26f454319e544bf83ccaaca8197874ef51c2eb51ba252297bc1b4f8c6d8b58ed31f30d6d8e100801\"}]}','{\"signed\":{\"_type\":\"targets\",\"spec_version\":\"1.0\",\"version\":81,\"expires\":\"2026-04-20T15:43:15Z\",\"targets\":{\"Joomla_5.1.2-Stable-Upgrade_Package.zip\":{\"length\":28134889,\"hashes\":{\"sha512\":\"d6b46cdedb9b31d01a607fe4c2f3a830a3265ed6ae5c0cb7b0f836b1b016ee7c639bd8948df00baf1b61a87f2fc71368a80b39e67ef9ec2b8842ee0ab09a620f\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 5.1.2 Release\",\"downloads\":[{\"url\":\"https://downloads.joomla.org/cms/joomla5/5-1-2/Joomla_5.1.2-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/5.1.2/Joomla_5.1.2-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://update.joomla.org/releases/5.1.2/Joomla_5.1.2-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://www.joomla.org/announcements/release-news/5909-joomla-5-1-2-and-joomla-4-4-6-security-and-bug-fix-release.html\",\"title\":\"Joomla! 5.1.2 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 5.1.2\",\"php_minimum\":\"8.1.0\",\"channel\":\"6.x\",\"stability\":\"Stable\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"11.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(5\\\\.[0-4])|^(4\\\\.4)\"},\"type\":\"file\",\"version\":\"5.1.2\"}},\"Joomla_5.3.3-Stable-Update_Package.zip\":{\"length\":29441974,\"hashes\":{\"sha512\":\"396cdba79e1c85138341e00f7e91fcb7d78e6de4126a7f9f76dc5a3973ceaf20dee90bb1b09492669dbaf4d4c9200df46677c09fb7fbd0535d14505d3c7cf3a2\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 5.3.3 Release\",\"downloads\":[{\"url\":\"https://downloads.joomla.org/cms/joomla5/5-3-3/Joomla_5.3.3-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/5.3.3/Joomla_5.3.3-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://update.joomla.org/releases/5.3.3/Joomla_5.3.3-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://www.joomla.org/announcements/release-news/5930-joomla-5-3-3-bugfix-release.html\",\"title\":\"Joomla! 5.3.3 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 5.3.3\",\"php_minimum\":\"8.1.0\",\"channel\":\"5.x\",\"stability\":\"Stable\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"11.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(5\\\\.[0-4])|^(4\\\\.4)\"},\"type\":\"file\",\"version\":\"5.3.3\"}},\"Joomla_5.3.4-Stable-Update_Package.zip\":{\"length\":29854677,\"hashes\":{\"sha512\":\"12a386645464b4f973ec28b40252cca28f56fdbe3f89efa37a4deaebb3334088c427e74bb90fa3068efc2df785a96510befde496f6341bd83f2a1b45b3d693ea\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 5.3.4 Release\",\"downloads\":[{\"url\":\"https://downloads.joomla.org/cms/joomla5/5-3-4/Joomla_5.3.4-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/5.3.4/Joomla_5.3.4-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://update.joomla.org/releases/5.3.4/Joomla_5.3.4-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://www.joomla.org/announcements/release-news/5936-joomla-5-3-4-security-bugfix-release.html\",\"title\":\"Joomla! 5.3.4 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 5.3.4\",\"php_minimum\":\"8.1.0\",\"channel\":\"5.x\",\"stability\":\"Stable\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"11.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(5\\\\.[0-4])|^(4\\\\.4)\"},\"type\":\"file\",\"version\":\"5.3.4\"}},\"Joomla_5.4.0-Stable-Update_Package.zip\":{\"length\":29974846,\"hashes\":{\"sha512\":\"c862b2674acd3f7da6062ea2a0defa35c2c5c9091eaf742106f6cf5793d321ed7a9b99901c7ad15845cef4e4cb7e2806af64794fdcf5a30b7e1c4db60bcd10ae\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 5.4.0 Release\",\"downloads\":[{\"url\":\"https://downloads.joomla.org/cms/joomla5/5-4-0/Joomla_5.4.0-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/5.4.0/Joomla_5.4.0-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://update.joomla.org/releases/5.4.0/Joomla_5.4.0-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://www.joomla.org/announcements/release-news/5939-joomla-6-0-and-joomla-5-4-are-here.html\",\"title\":\"Joomla! 5.4.0 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 5.4.0\",\"php_minimum\":\"8.1.0\",\"channel\":\"5.x\",\"stability\":\"Stable\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"11.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(5\\\\.[0-4])|^(4\\\\.4)\"},\"type\":\"file\",\"version\":\"5.4.0\"}},\"Joomla_5.4.1-Stable-Update_Package.zip\":{\"length\":30009045,\"hashes\":{\"sha512\":\"aeddd1143cd574ff3f6e9bc7d7c67bf5d21dc1b404d98498a691b1fff12f5d245b48424f97155f20e2807e4ee2c1aed7313fae3ab8c0d27a08a20947c166c43e\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 5.4.1 Release\",\"downloads\":[{\"url\":\"https://downloads.joomla.org/cms/joomla5/5-4-1/Joomla_5.4.1-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/5.4.1/Joomla_5.4.1-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://update.joomla.org/releases/5.4.1/Joomla_5.4.1-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://www.joomla.org/announcements/release-news/5941-joomla-6-0-1-and-5-4-1-bugfix-release.html\",\"title\":\"Joomla! 5.4.1 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 5.4.1\",\"php_minimum\":\"8.1.0\",\"channel\":\"5.x\",\"stability\":\"Stable\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"11.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(5\\\\.[0-4])|^(4\\\\.4)\"},\"type\":\"file\",\"version\":\"5.4.1\"}},\"Joomla_5.4.1-rc1-Release_Candidate-Update_Package.zip\":{\"length\":30010108,\"hashes\":{\"sha512\":\"facfd83e03d245c474ca166ebb0bf9635e7b225177c5dd96e18686db67dcd778a68cfaf346cc363761b1df4e5ad3f2d7870f0ea21ecc1a6fbbb46d85a40a00e1\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 5.4.1-rc1 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/5.4.1-rc1/Joomla_5.4.1-rc1-Release_Candidate-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://github.com/joomla/joomla-cms/releases/tag/5.4.1\",\"title\":\"Joomla! 5.4.1-rc1 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 5.4.1-rc1\",\"php_minimum\":\"8.1.0\",\"channel\":\"5.x\",\"stability\":\"RC\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"11.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(5\\\\.[0-4])|^(4\\\\.4)\"},\"type\":\"file\",\"version\":\"5.4.1-rc1\"}},\"Joomla_5.4.1-rc2-Release_Candidate-Update_Package.zip\":{\"length\":30009059,\"hashes\":{\"sha512\":\"9345d1d34e6ae6fd7611bff6c164638df2ad07dbdd985d20f3aec0072147d4aebe74f87c0eaf7e767aa5d8232a624ff1db87bc2950d7d83027bb693a17504a20\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 5.4.1-rc2 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/5.4.1-rc2/Joomla_5.4.1-rc2-Release_Candidate-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://github.com/joomla/joomla-cms/releases/tag/5.4.1-rc2\",\"title\":\"Joomla! 5.4.1-rc2 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 5.4.1-rc2\",\"php_minimum\":\"8.1.0\",\"channel\":\"5.x\",\"stability\":\"RC\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"11.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(5\\\\.[0-4])|^(4\\\\.4)\"},\"type\":\"file\",\"version\":\"5.4.1-rc2\"}},\"Joomla_5.4.2-Stable-Update_Package.zip\":{\"length\":30316442,\"hashes\":{\"sha512\":\"e83add95a43103ec2d6ccada9e33a29fa6feb2d8e27b6bd16376f4a75d9b588c029b1f24c97b0772e3a6eb0e20d2b8e0e3526cf2af242d90c280ef63abeddaa9\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 5.4.2 Release\",\"downloads\":[{\"url\":\"https://downloads.joomla.org/cms/joomla5/5-4-2/Joomla_5.4.2-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/5.4.2/Joomla_5.4.2-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://update.joomla.org/releases/5.4.2/Joomla_5.4.2-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://www.joomla.org/announcements/release-news/5942-joomla-6-0-2-and-5-4-2-security-bugfix-release.html\",\"title\":\"Joomla! 5.4.2 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 5.4.2\",\"php_minimum\":\"8.1.0\",\"channel\":\"5.x\",\"stability\":\"Stable\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"11.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(5\\\\.[0-4])|^(4\\\\.4)\"},\"type\":\"file\",\"version\":\"5.4.2\"}},\"Joomla_5.4.2-rc1-Release_Candidate-Update_Package.zip\":{\"length\":30316061,\"hashes\":{\"sha512\":\"31e53a1a242dfc49fb900e5d6000f6a0235115c13d636d037825b2061df36645da9aa01088d2e33cccb6546fd797a3c76068d5615057d36bc63f06ee5acc2124\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 5.4.2-rc1 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/5.4.2-rc1/Joomla_5.4.2-rc1-Release_Candidate-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://github.com/joomla/joomla-cms/releases/tag/5.4.2-rc1\",\"title\":\"Joomla! 5.4.2-rc1 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 5.4.2-rc1\",\"php_minimum\":\"8.1.0\",\"channel\":\"5.x\",\"stability\":\"RC\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"11.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(5\\\\.[0-4])|^(4\\\\.4)\"},\"type\":\"file\",\"version\":\"5.4.2-rc1\"}},\"Joomla_6.0.0-Stable-Update_Package.zip\":{\"length\":30236123,\"hashes\":{\"sha512\":\"ab69bb8305aa23f010695366ef769c99ec5a32343afbb418b6ed03c9ca541ad0222136d3a7ed4a8989f33d638ffdfc4c551e96250e0dbaa3fe45f2c2e8825018\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.0.0 Release\",\"downloads\":[{\"url\":\"https://downloads.joomla.org/cms/joomla6/6-0-0/Joomla_6.0.0-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.0.0/Joomla_6.0.0-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://update.joomla.org/releases/6.0.0/Joomla_6.0.0-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://www.joomla.org/announcements/release-news/5939-joomla-6-0-and-joomla-5-4-are-here.html\",\"title\":\"Joomla! 6.0.0 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.0.0\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"Stable\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.0.0\"}},\"Joomla_6.0.1-Stable-Update_Package.zip\":{\"length\":30247182,\"hashes\":{\"sha512\":\"38f8dd3ff1fd48b9973193a4484591b3b9f4a7516eb7640ff1687d84c81d4dc8cd05f6f58b9f48172bae41a466442f4a5af4a23e3d63869aeb1b05f4fdd6512e\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.0.1 Release\",\"downloads\":[{\"url\":\"https://downloads.joomla.org/cms/joomla6/6-0-1/Joomla_6.0.1-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.0.1/Joomla_6.0.1-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://update.joomla.org/releases/6.0.1/Joomla_6.0.1-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://www.joomla.org/announcements/release-news/5941-joomla-6-0-1-and-5-4-1-bugfix-release.html\",\"title\":\"Joomla! 6.0.1 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.0.1\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"Stable\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.0.1\"}},\"Joomla_6.0.1-rc1-Release_Candidate-Update_Package.zip\":{\"length\":30248231,\"hashes\":{\"sha512\":\"fe48586af9382070dd6275885f931d7bb6eca63129e2a252587c7c48ca9d666d3a38f41a0122698f671657a729467f4eef4fde09dfc97dbfb3c633341b568839\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.0.1-rc1 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.0.1-rc1/Joomla_6.0.1-rc1-Release_Candidate-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://github.com/joomla/joomla-cms/releases/tag/6.0.1-rc1\",\"title\":\"Joomla! 6.0.1-rc1 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.0.1-rc1\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"RC\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.0.1-rc1\"}},\"Joomla_6.0.1-rc2-Release_Candidate-Update_Package.zip\":{\"length\":30247185,\"hashes\":{\"sha512\":\"37aa3600138a3e61250060b6650276bccd975d2dd629a0fb074762024a77a2a94197b1424a49785aa1382d48d4526acc59932fe8ac00e1207d30cc9f82544343\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.0.1-rc2 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.0.1-rc2/Joomla_6.0.1-rc2-Release_Candidate-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://github.com/joomla/joomla-cms/releases/tag/6.0.1-rc2\",\"title\":\"Joomla! 6.0.1-rc2 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.0.1-rc2\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"RC\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.0.1-rc2\"}},\"Joomla_6.0.2-Stable-Update_Package.zip\":{\"length\":30555623,\"hashes\":{\"sha512\":\"c0cff255fcf8e0359453c18365f4906afcce115981a5114e3388da583ad192bde320c8bdd191cd8ca4e55ad5585c9c4cd098c2e1661d8a109d37b94340e4b6a6\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.0.2 Release\",\"downloads\":[{\"url\":\"https://downloads.joomla.org/cms/joomla6/6-0-2/Joomla_6.0.2-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.0.2/Joomla_6.0.2-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://update.joomla.org/releases/6.0.2/Joomla_6.0.2-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://www.joomla.org/announcements/release-news/5942-joomla-6-0-2-and-5-4-2-security-bugfix-release.html\",\"title\":\"Joomla! 6.0.2 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.0.2\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"Stable\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.0.2\"}},\"Joomla_6.0.2-rc1-Release_Candidate-Update_Package.zip\":{\"length\":30555248,\"hashes\":{\"sha512\":\"298fb6c5510b95ed5be9862d9e574220a7cf638105c210bc64aad6677bb84b524cb02b6a9dbc8ca1d02fa936f410f4ed501b0914feab3eb7620b47e68696aaa4\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.0.2-rc1 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.0.2-rc1/Joomla_6.0.2-rc1-Release_Candidate-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://github.com/joomla/joomla-cms/releases/tag/6.0.2-rc1\",\"title\":\"Joomla! 6.0.2-rc1 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.0.2-rc1\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"RC\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.0.2-rc1\"}},\"Joomla_6.1.0-alpha1-Alpha-Update_Package.zip\":{\"length\":30430173,\"hashes\":{\"sha512\":\"e229f74cff44e899ed699781a35bebee9a956728b0fbd7236e6c41f3e63df16b72c2355ef4266ec1561ebddcb4a9127979cfe671dd0b6c0912dc0e5214461a70\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.1.0-alpha1 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.1.0-alpha1/Joomla_6.1.0-alpha1-Alpha-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://developer.joomla.org/news/1014-joomla-6-1-alpha1-test-the-future-of-joomla.html\",\"title\":\"Joomla! 6.1.0-alpha1 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.1.0-alpha1\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"Alpha\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.1.0-alpha1\"}},\"Joomla_6.1.0-alpha2-Alpha-Full_Package.zip\":{\"length\":33107068,\"hashes\":{\"sha512\":\"be9711e1bda18981f077369105399eff9e8ab9203cad43d2c5385689e32db7bc6e11f3b5e406194dd9c2d7f5892bb92c6702cf5436badf3d971150ffcfda0a72\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.1.0-alpha2 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.1.0-alpha2/Joomla_6.1.0-alpha2-Alpha-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://developer.joomla.org/news/1015-joomla-6-1-alpha2-see-how-its-coming-together.html\",\"title\":\"Joomla! 6.1.0-alpha2 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.1.0-alpha2\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"Alpha\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.1.0-alpha2\"}},\"Joomla_6.1.0-alpha2-Alpha-Update_Package.zip\":{\"length\":30736927,\"hashes\":{\"sha512\":\"388790c8b32f624e5b33531f4a41eefa85b5273e76e20a847b01c7eaa59367939317581e5f75ade6c024f25894740c9651ce2faaa330ac8a7fb863434c170879\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.1.0-alpha2 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.1.0-alpha2/Joomla_6.1.0-alpha2-Alpha-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://developer.joomla.org/news/1015-joomla-6-1-alpha2-see-how-its-coming-together.html\",\"title\":\"Joomla! 6.1.0-alpha2 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.1.0-alpha2\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"Alpha\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.1.0-alpha2\"}},\"Joomla_6.1.0-alpha3-Alpha-Full_Package.zip\":{\"length\":33216519,\"hashes\":{\"sha512\":\"16eb1fb81ef4b0c2f3ebca14538945d291623f544d77946e556fc2f17561bda55c256be4f56c0f5034609bbc10e7dcbf0995691b0cd613f5dc58658fe964333b\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.1.0-alpha3 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.1.0-alpha3/Joomla_6.1.0-alpha3-Alpha-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://developer.joomla.org/news/1018-joomla-6-1-alpha3-wrapping-up-the-alpha-phase.html\",\"title\":\"Joomla! 6.1.0-alpha3 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.1.0-alpha3\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"Alpha\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.1.0-alpha3\"}},\"Joomla_6.1.0-alpha3-Alpha-Update_Package.zip\":{\"length\":30842460,\"hashes\":{\"sha512\":\"9290f78cdba43c0bbb4e9b812a1e06cd548e6a4e14b51529d50d5acab3fdb4f7ab5cc6828655596159af41962b51f5a14008a26f06e3f9c5b3781f309cb52a19\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.1.0-alpha3 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.1.0-alpha3/Joomla_6.1.0-alpha3-Alpha-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://developer.joomla.org/news/1018-joomla-6-1-alpha3-wrapping-up-the-alpha-phase.html\",\"title\":\"Joomla! 6.1.0-alpha3 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.1.0-alpha3\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"Alpha\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.1.0-alpha3\"}}}},\"signatures\":[{\"keyid\":\"a1a4b7fdbeedfdeff12d7776de098a2f8de8d2ab7bfe10062a281b3819b078c1\",\"sig\":\"2cb5bfffddb78bbab58bb2e59b4be95705c333d78ea7b0e14110e488f7cb42876d1e09bac4d7f7d2603db3e0e9f5768f454500010c5026a05064bc1c791e7e09\"}]}','{\"signed\":{\"_type\":\"snapshot\",\"spec_version\":\"1.0\",\"version\":92,\"expires\":\"2026-08-18T15:49:18Z\",\"meta\":{\"targets.json\":{\"length\":21685,\"hashes\":{\"sha512\":\"bab309a3229b02493d959a1eac685b9a44015d1cbf48aaa4b48faac9275be5bf7c77b23591da314b1438acdc50497878a6a0962550c81593204775c6df0a7304\"},\"version\":81}}},\"signatures\":[{\"keyid\":\"a1a4b7fdbeedfdeff12d7776de098a2f8de8d2ab7bfe10062a281b3819b078c1\",\"sig\":\"9fc0d75a28e1d6758f5a3af9b8f69f38438bdd0be2a39ace6006bad4ac577a5ef551d626fc53fe6e8c9a313811293a8db099172352142304ef551345e68a3100\"}]}','{\"signed\":{\"_type\":\"timestamp\",\"spec_version\":\"1.0\",\"version\":936,\"expires\":\"2026-02-03T01:06:08Z\",\"meta\":{\"snapshot.json\":{\"length\":532,\"hashes\":{\"sha512\":\"a0e2563c4e3c438130167ed949cbd00220044e764366a8ab5811e05ea59eea2521f5fe148a86f3298fe3d9039c1a96f7fff892b7760daa0abc58007678a2741b\"},\"version\":92}}},\"signatures\":[{\"keyid\":\"9e41a9d62d94c6a1c8a304f62c5bd72d84a9f286f27e8327cedeacb09e5156cc\",\"sig\":\"516a4c81f198243af8d8d0f2dd2de7e3ff75d04401deb02944c0fea49703f1d85c6bb246fbb99f7a4dedd1a88d6e574583d61c33cb3bcd4b0a9eb15e7653400b\"}]}',NULL);
+INSERT INTO `lcoa2_tuf_metadata` VALUES (1,1,'{\"signed\":{\"_type\":\"root\",\"spec_version\":\"1.0\",\"version\":12,\"expires\":\"2026-12-16T13:18:16Z\",\"keys\":{\"00e432b504508246e2bd536dd6c13e55e8b3256f0be9f767fae26da6c2a28663\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"250f8d293c49817a83909dead96ad82b62f7ac16844cf589f8d2f0e0b15cab21\"}},\"07eb082f367c034a95878687f6648aa76d93652b6ee73e58817053d89af6c44f\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"9b2af2d9b9727227735253d795bd27ea8f0e294a5f3603e822dc5052b44802b9\"}},\"179d107f20a2354ac5bd9a1f32a2df1763c0059617f0c132bebeb4816a1a8637\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"159a4195cbafce2bb959f09ab2b36a2127b8967f94d389f65f1e7892fccfe8b8\"}},\"192ad7343e7d431533d9577fd957b6f924680177db4dc6c0e146dad6810a90a4\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"042b66e1431a1f5c2c15b4a16ea60f23f466851b58e9ff057dbfc2a5e0d821d1\"}},\"1b1b1dd55b2c1c7258714cf1c1ae06f23e4607b28c762d016a9d81c48ffe5669\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"a18e5ebabc19d5d5984b601a292ece61ba3662ab2d071dc520da5bd4f8948799\"}},\"273e94e5477e306ad6de75be1524860e219e265ff9a57c81ababd0691e45706c\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"1cb6702338830ef1c9e76a022fed27172d475bbaace754d8141ebc96dad8b15f\"}},\"2dcaf3d0e552f150792f7c636d45429246dcfa34ac35b46a44f5c87cd17d457e\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"cb0a7a131961a20edea051d6dc2b091fb650bd399bd8514adb67b3c60db9f8f9\"}},\"31dd7c7290d664c9b88c0dead2697175293ea7df81b7f24153a37370fd3901c3\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"589d029a68b470deff1ca16dbf3eea6b5b3fcba0ae7bb52c468abc7fb058b2a2\"}},\"9e41a9d62d94c6a1c8a304f62c5bd72d84a9f286f27e8327cedeacb09e5156cc\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"6043c8bacc76ac5c9750f45454dd865c6ca1fc57d69e14cc192cfd420f6a66a9\"}},\"9eabc37383b243cd236375c66693db385911914b52556e1ec05fc70ed45e1bfe\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"a4b8509488f1c29ab0b1f610e7452fbec78b4f33f1fba5a418d6ff087c567429\"}},\"a1a4b7fdbeedfdeff12d7776de098a2f8de8d2ab7bfe10062a281b3819b078c1\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"ea764b0b475b3c396627ac6689cbd8f54a5f93e87b6f5e3eb44a7ccafb542ff3\"}},\"a599a27a3ec4d520059c591338759dc401006b1c4cb1db85a286e667253d28b6\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"45e416d24d13a60ace5ab028827d5cfc8ba177bb9466bf2acd8efa6e3547911a\"}},\"bfee044dd4574a281c9b7c0b6829913ef292c66c0512d1091a298cfca8493da9\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"6eb44460e5914e8e0df726ddb90bd1f3771b8ce5af19b40fb01ac5a85b023a6f\"}},\"e2229942b0fc1e6d7f82adf258e5bdadac10046d1470b7ec459c9eb4e076026b\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"ad1950e117b29ebe7a38635a2e574123e07571e4f9a011783e053b5f15d2562a\"}},\"ecc851a051c8d6439331ff0a37c7727321fc39896a34f950f73638b8a7cb472e\":{\"keytype\":\"ed25519\",\"scheme\":\"ed25519\",\"keyid_hash_algorithms\":[\"sha256\",\"sha512\"],\"keyval\":{\"public\":\"5d451915bc2b93a0e4e4745bc6a8b292d58996d50e0fb66c78c7827152a65879\"}}},\"roles\":{\"root\":{\"keyids\":[\"1b1b1dd55b2c1c7258714cf1c1ae06f23e4607b28c762d016a9d81c48ffe5669\",\"2dcaf3d0e552f150792f7c636d45429246dcfa34ac35b46a44f5c87cd17d457e\",\"192ad7343e7d431533d9577fd957b6f924680177db4dc6c0e146dad6810a90a4\"],\"threshold\":1},\"snapshot\":{\"keyids\":[\"07eb082f367c034a95878687f6648aa76d93652b6ee73e58817053d89af6c44f\",\"2dcaf3d0e552f150792f7c636d45429246dcfa34ac35b46a44f5c87cd17d457e\",\"ecc851a051c8d6439331ff0a37c7727321fc39896a34f950f73638b8a7cb472e\",\"e2229942b0fc1e6d7f82adf258e5bdadac10046d1470b7ec459c9eb4e076026b\",\"bfee044dd4574a281c9b7c0b6829913ef292c66c0512d1091a298cfca8493da9\",\"9eabc37383b243cd236375c66693db385911914b52556e1ec05fc70ed45e1bfe\",\"273e94e5477e306ad6de75be1524860e219e265ff9a57c81ababd0691e45706c\",\"00e432b504508246e2bd536dd6c13e55e8b3256f0be9f767fae26da6c2a28663\",\"179d107f20a2354ac5bd9a1f32a2df1763c0059617f0c132bebeb4816a1a8637\",\"a1a4b7fdbeedfdeff12d7776de098a2f8de8d2ab7bfe10062a281b3819b078c1\",\"192ad7343e7d431533d9577fd957b6f924680177db4dc6c0e146dad6810a90a4\",\"a599a27a3ec4d520059c591338759dc401006b1c4cb1db85a286e667253d28b6\"],\"threshold\":1},\"targets\":{\"keyids\":[\"31dd7c7290d664c9b88c0dead2697175293ea7df81b7f24153a37370fd3901c3\",\"ecc851a051c8d6439331ff0a37c7727321fc39896a34f950f73638b8a7cb472e\",\"e2229942b0fc1e6d7f82adf258e5bdadac10046d1470b7ec459c9eb4e076026b\",\"bfee044dd4574a281c9b7c0b6829913ef292c66c0512d1091a298cfca8493da9\",\"9eabc37383b243cd236375c66693db385911914b52556e1ec05fc70ed45e1bfe\",\"273e94e5477e306ad6de75be1524860e219e265ff9a57c81ababd0691e45706c\",\"00e432b504508246e2bd536dd6c13e55e8b3256f0be9f767fae26da6c2a28663\",\"179d107f20a2354ac5bd9a1f32a2df1763c0059617f0c132bebeb4816a1a8637\",\"a1a4b7fdbeedfdeff12d7776de098a2f8de8d2ab7bfe10062a281b3819b078c1\"],\"threshold\":1},\"timestamp\":{\"keyids\":[\"9e41a9d62d94c6a1c8a304f62c5bd72d84a9f286f27e8327cedeacb09e5156cc\"],\"threshold\":1}},\"consistent_snapshot\":true},\"signatures\":[{\"keyid\":\"1b1b1dd55b2c1c7258714cf1c1ae06f23e4607b28c762d016a9d81c48ffe5669\",\"sig\":\"566d6aa10932b36ebda6fbb56f17a683c0044cc1e94947fa26f454319e544bf83ccaaca8197874ef51c2eb51ba252297bc1b4f8c6d8b58ed31f30d6d8e100801\"}]}','{\"signed\":{\"_type\":\"targets\",\"spec_version\":\"1.0\",\"version\":81,\"expires\":\"2026-04-20T15:43:15Z\",\"targets\":{\"Joomla_5.1.2-Stable-Upgrade_Package.zip\":{\"length\":28134889,\"hashes\":{\"sha512\":\"d6b46cdedb9b31d01a607fe4c2f3a830a3265ed6ae5c0cb7b0f836b1b016ee7c639bd8948df00baf1b61a87f2fc71368a80b39e67ef9ec2b8842ee0ab09a620f\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 5.1.2 Release\",\"downloads\":[{\"url\":\"https://downloads.joomla.org/cms/joomla5/5-1-2/Joomla_5.1.2-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/5.1.2/Joomla_5.1.2-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://update.joomla.org/releases/5.1.2/Joomla_5.1.2-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://www.joomla.org/announcements/release-news/5909-joomla-5-1-2-and-joomla-4-4-6-security-and-bug-fix-release.html\",\"title\":\"Joomla! 5.1.2 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 5.1.2\",\"php_minimum\":\"8.1.0\",\"channel\":\"6.x\",\"stability\":\"Stable\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"11.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(5\\\\.[0-4])|^(4\\\\.4)\"},\"type\":\"file\",\"version\":\"5.1.2\"}},\"Joomla_5.3.3-Stable-Update_Package.zip\":{\"length\":29441974,\"hashes\":{\"sha512\":\"396cdba79e1c85138341e00f7e91fcb7d78e6de4126a7f9f76dc5a3973ceaf20dee90bb1b09492669dbaf4d4c9200df46677c09fb7fbd0535d14505d3c7cf3a2\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 5.3.3 Release\",\"downloads\":[{\"url\":\"https://downloads.joomla.org/cms/joomla5/5-3-3/Joomla_5.3.3-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/5.3.3/Joomla_5.3.3-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://update.joomla.org/releases/5.3.3/Joomla_5.3.3-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://www.joomla.org/announcements/release-news/5930-joomla-5-3-3-bugfix-release.html\",\"title\":\"Joomla! 5.3.3 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 5.3.3\",\"php_minimum\":\"8.1.0\",\"channel\":\"5.x\",\"stability\":\"Stable\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"11.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(5\\\\.[0-4])|^(4\\\\.4)\"},\"type\":\"file\",\"version\":\"5.3.3\"}},\"Joomla_5.3.4-Stable-Update_Package.zip\":{\"length\":29854677,\"hashes\":{\"sha512\":\"12a386645464b4f973ec28b40252cca28f56fdbe3f89efa37a4deaebb3334088c427e74bb90fa3068efc2df785a96510befde496f6341bd83f2a1b45b3d693ea\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 5.3.4 Release\",\"downloads\":[{\"url\":\"https://downloads.joomla.org/cms/joomla5/5-3-4/Joomla_5.3.4-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/5.3.4/Joomla_5.3.4-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://update.joomla.org/releases/5.3.4/Joomla_5.3.4-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://www.joomla.org/announcements/release-news/5936-joomla-5-3-4-security-bugfix-release.html\",\"title\":\"Joomla! 5.3.4 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 5.3.4\",\"php_minimum\":\"8.1.0\",\"channel\":\"5.x\",\"stability\":\"Stable\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"11.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(5\\\\.[0-4])|^(4\\\\.4)\"},\"type\":\"file\",\"version\":\"5.3.4\"}},\"Joomla_5.4.0-Stable-Update_Package.zip\":{\"length\":29974846,\"hashes\":{\"sha512\":\"c862b2674acd3f7da6062ea2a0defa35c2c5c9091eaf742106f6cf5793d321ed7a9b99901c7ad15845cef4e4cb7e2806af64794fdcf5a30b7e1c4db60bcd10ae\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 5.4.0 Release\",\"downloads\":[{\"url\":\"https://downloads.joomla.org/cms/joomla5/5-4-0/Joomla_5.4.0-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/5.4.0/Joomla_5.4.0-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://update.joomla.org/releases/5.4.0/Joomla_5.4.0-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://www.joomla.org/announcements/release-news/5939-joomla-6-0-and-joomla-5-4-are-here.html\",\"title\":\"Joomla! 5.4.0 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 5.4.0\",\"php_minimum\":\"8.1.0\",\"channel\":\"5.x\",\"stability\":\"Stable\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"11.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(5\\\\.[0-4])|^(4\\\\.4)\"},\"type\":\"file\",\"version\":\"5.4.0\"}},\"Joomla_5.4.1-Stable-Update_Package.zip\":{\"length\":30009045,\"hashes\":{\"sha512\":\"aeddd1143cd574ff3f6e9bc7d7c67bf5d21dc1b404d98498a691b1fff12f5d245b48424f97155f20e2807e4ee2c1aed7313fae3ab8c0d27a08a20947c166c43e\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 5.4.1 Release\",\"downloads\":[{\"url\":\"https://downloads.joomla.org/cms/joomla5/5-4-1/Joomla_5.4.1-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/5.4.1/Joomla_5.4.1-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://update.joomla.org/releases/5.4.1/Joomla_5.4.1-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://www.joomla.org/announcements/release-news/5941-joomla-6-0-1-and-5-4-1-bugfix-release.html\",\"title\":\"Joomla! 5.4.1 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 5.4.1\",\"php_minimum\":\"8.1.0\",\"channel\":\"5.x\",\"stability\":\"Stable\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"11.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(5\\\\.[0-4])|^(4\\\\.4)\"},\"type\":\"file\",\"version\":\"5.4.1\"}},\"Joomla_5.4.1-rc1-Release_Candidate-Update_Package.zip\":{\"length\":30010108,\"hashes\":{\"sha512\":\"facfd83e03d245c474ca166ebb0bf9635e7b225177c5dd96e18686db67dcd778a68cfaf346cc363761b1df4e5ad3f2d7870f0ea21ecc1a6fbbb46d85a40a00e1\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 5.4.1-rc1 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/5.4.1-rc1/Joomla_5.4.1-rc1-Release_Candidate-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://github.com/joomla/joomla-cms/releases/tag/5.4.1\",\"title\":\"Joomla! 5.4.1-rc1 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 5.4.1-rc1\",\"php_minimum\":\"8.1.0\",\"channel\":\"5.x\",\"stability\":\"RC\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"11.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(5\\\\.[0-4])|^(4\\\\.4)\"},\"type\":\"file\",\"version\":\"5.4.1-rc1\"}},\"Joomla_5.4.1-rc2-Release_Candidate-Update_Package.zip\":{\"length\":30009059,\"hashes\":{\"sha512\":\"9345d1d34e6ae6fd7611bff6c164638df2ad07dbdd985d20f3aec0072147d4aebe74f87c0eaf7e767aa5d8232a624ff1db87bc2950d7d83027bb693a17504a20\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 5.4.1-rc2 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/5.4.1-rc2/Joomla_5.4.1-rc2-Release_Candidate-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://github.com/joomla/joomla-cms/releases/tag/5.4.1-rc2\",\"title\":\"Joomla! 5.4.1-rc2 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 5.4.1-rc2\",\"php_minimum\":\"8.1.0\",\"channel\":\"5.x\",\"stability\":\"RC\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"11.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(5\\\\.[0-4])|^(4\\\\.4)\"},\"type\":\"file\",\"version\":\"5.4.1-rc2\"}},\"Joomla_5.4.2-Stable-Update_Package.zip\":{\"length\":30316442,\"hashes\":{\"sha512\":\"e83add95a43103ec2d6ccada9e33a29fa6feb2d8e27b6bd16376f4a75d9b588c029b1f24c97b0772e3a6eb0e20d2b8e0e3526cf2af242d90c280ef63abeddaa9\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 5.4.2 Release\",\"downloads\":[{\"url\":\"https://downloads.joomla.org/cms/joomla5/5-4-2/Joomla_5.4.2-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/5.4.2/Joomla_5.4.2-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://update.joomla.org/releases/5.4.2/Joomla_5.4.2-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://www.joomla.org/announcements/release-news/5942-joomla-6-0-2-and-5-4-2-security-bugfix-release.html\",\"title\":\"Joomla! 5.4.2 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 5.4.2\",\"php_minimum\":\"8.1.0\",\"channel\":\"5.x\",\"stability\":\"Stable\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"11.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(5\\\\.[0-4])|^(4\\\\.4)\"},\"type\":\"file\",\"version\":\"5.4.2\"}},\"Joomla_5.4.2-rc1-Release_Candidate-Update_Package.zip\":{\"length\":30316061,\"hashes\":{\"sha512\":\"31e53a1a242dfc49fb900e5d6000f6a0235115c13d636d037825b2061df36645da9aa01088d2e33cccb6546fd797a3c76068d5615057d36bc63f06ee5acc2124\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 5.4.2-rc1 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/5.4.2-rc1/Joomla_5.4.2-rc1-Release_Candidate-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://github.com/joomla/joomla-cms/releases/tag/5.4.2-rc1\",\"title\":\"Joomla! 5.4.2-rc1 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 5.4.2-rc1\",\"php_minimum\":\"8.1.0\",\"channel\":\"5.x\",\"stability\":\"RC\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"11.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(5\\\\.[0-4])|^(4\\\\.4)\"},\"type\":\"file\",\"version\":\"5.4.2-rc1\"}},\"Joomla_6.0.0-Stable-Update_Package.zip\":{\"length\":30236123,\"hashes\":{\"sha512\":\"ab69bb8305aa23f010695366ef769c99ec5a32343afbb418b6ed03c9ca541ad0222136d3a7ed4a8989f33d638ffdfc4c551e96250e0dbaa3fe45f2c2e8825018\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.0.0 Release\",\"downloads\":[{\"url\":\"https://downloads.joomla.org/cms/joomla6/6-0-0/Joomla_6.0.0-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.0.0/Joomla_6.0.0-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://update.joomla.org/releases/6.0.0/Joomla_6.0.0-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://www.joomla.org/announcements/release-news/5939-joomla-6-0-and-joomla-5-4-are-here.html\",\"title\":\"Joomla! 6.0.0 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.0.0\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"Stable\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.0.0\"}},\"Joomla_6.0.1-Stable-Update_Package.zip\":{\"length\":30247182,\"hashes\":{\"sha512\":\"38f8dd3ff1fd48b9973193a4484591b3b9f4a7516eb7640ff1687d84c81d4dc8cd05f6f58b9f48172bae41a466442f4a5af4a23e3d63869aeb1b05f4fdd6512e\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.0.1 Release\",\"downloads\":[{\"url\":\"https://downloads.joomla.org/cms/joomla6/6-0-1/Joomla_6.0.1-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.0.1/Joomla_6.0.1-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://update.joomla.org/releases/6.0.1/Joomla_6.0.1-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://www.joomla.org/announcements/release-news/5941-joomla-6-0-1-and-5-4-1-bugfix-release.html\",\"title\":\"Joomla! 6.0.1 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.0.1\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"Stable\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.0.1\"}},\"Joomla_6.0.1-rc1-Release_Candidate-Update_Package.zip\":{\"length\":30248231,\"hashes\":{\"sha512\":\"fe48586af9382070dd6275885f931d7bb6eca63129e2a252587c7c48ca9d666d3a38f41a0122698f671657a729467f4eef4fde09dfc97dbfb3c633341b568839\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.0.1-rc1 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.0.1-rc1/Joomla_6.0.1-rc1-Release_Candidate-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://github.com/joomla/joomla-cms/releases/tag/6.0.1-rc1\",\"title\":\"Joomla! 6.0.1-rc1 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.0.1-rc1\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"RC\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.0.1-rc1\"}},\"Joomla_6.0.1-rc2-Release_Candidate-Update_Package.zip\":{\"length\":30247185,\"hashes\":{\"sha512\":\"37aa3600138a3e61250060b6650276bccd975d2dd629a0fb074762024a77a2a94197b1424a49785aa1382d48d4526acc59932fe8ac00e1207d30cc9f82544343\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.0.1-rc2 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.0.1-rc2/Joomla_6.0.1-rc2-Release_Candidate-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://github.com/joomla/joomla-cms/releases/tag/6.0.1-rc2\",\"title\":\"Joomla! 6.0.1-rc2 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.0.1-rc2\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"RC\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.0.1-rc2\"}},\"Joomla_6.0.2-Stable-Update_Package.zip\":{\"length\":30555623,\"hashes\":{\"sha512\":\"c0cff255fcf8e0359453c18365f4906afcce115981a5114e3388da583ad192bde320c8bdd191cd8ca4e55ad5585c9c4cd098c2e1661d8a109d37b94340e4b6a6\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.0.2 Release\",\"downloads\":[{\"url\":\"https://downloads.joomla.org/cms/joomla6/6-0-2/Joomla_6.0.2-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.0.2/Joomla_6.0.2-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"},{\"url\":\"https://update.joomla.org/releases/6.0.2/Joomla_6.0.2-Stable-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://www.joomla.org/announcements/release-news/5942-joomla-6-0-2-and-5-4-2-security-bugfix-release.html\",\"title\":\"Joomla! 6.0.2 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.0.2\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"Stable\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.0.2\"}},\"Joomla_6.0.2-rc1-Release_Candidate-Update_Package.zip\":{\"length\":30555248,\"hashes\":{\"sha512\":\"298fb6c5510b95ed5be9862d9e574220a7cf638105c210bc64aad6677bb84b524cb02b6a9dbc8ca1d02fa936f410f4ed501b0914feab3eb7620b47e68696aaa4\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.0.2-rc1 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.0.2-rc1/Joomla_6.0.2-rc1-Release_Candidate-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://github.com/joomla/joomla-cms/releases/tag/6.0.2-rc1\",\"title\":\"Joomla! 6.0.2-rc1 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.0.2-rc1\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"RC\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.0.2-rc1\"}},\"Joomla_6.1.0-alpha1-Alpha-Update_Package.zip\":{\"length\":30430173,\"hashes\":{\"sha512\":\"e229f74cff44e899ed699781a35bebee9a956728b0fbd7236e6c41f3e63df16b72c2355ef4266ec1561ebddcb4a9127979cfe671dd0b6c0912dc0e5214461a70\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.1.0-alpha1 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.1.0-alpha1/Joomla_6.1.0-alpha1-Alpha-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://developer.joomla.org/news/1014-joomla-6-1-alpha1-test-the-future-of-joomla.html\",\"title\":\"Joomla! 6.1.0-alpha1 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.1.0-alpha1\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"Alpha\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.1.0-alpha1\"}},\"Joomla_6.1.0-alpha2-Alpha-Full_Package.zip\":{\"length\":33107068,\"hashes\":{\"sha512\":\"be9711e1bda18981f077369105399eff9e8ab9203cad43d2c5385689e32db7bc6e11f3b5e406194dd9c2d7f5892bb92c6702cf5436badf3d971150ffcfda0a72\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.1.0-alpha2 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.1.0-alpha2/Joomla_6.1.0-alpha2-Alpha-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://developer.joomla.org/news/1015-joomla-6-1-alpha2-see-how-its-coming-together.html\",\"title\":\"Joomla! 6.1.0-alpha2 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.1.0-alpha2\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"Alpha\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.1.0-alpha2\"}},\"Joomla_6.1.0-alpha2-Alpha-Update_Package.zip\":{\"length\":30736927,\"hashes\":{\"sha512\":\"388790c8b32f624e5b33531f4a41eefa85b5273e76e20a847b01c7eaa59367939317581e5f75ade6c024f25894740c9651ce2faaa330ac8a7fb863434c170879\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.1.0-alpha2 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.1.0-alpha2/Joomla_6.1.0-alpha2-Alpha-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://developer.joomla.org/news/1015-joomla-6-1-alpha2-see-how-its-coming-together.html\",\"title\":\"Joomla! 6.1.0-alpha2 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.1.0-alpha2\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"Alpha\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.1.0-alpha2\"}},\"Joomla_6.1.0-alpha3-Alpha-Full_Package.zip\":{\"length\":33216519,\"hashes\":{\"sha512\":\"16eb1fb81ef4b0c2f3ebca14538945d291623f544d77946e556fc2f17561bda55c256be4f56c0f5034609bbc10e7dcbf0995691b0cd613f5dc58658fe964333b\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.1.0-alpha3 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.1.0-alpha3/Joomla_6.1.0-alpha3-Alpha-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://developer.joomla.org/news/1018-joomla-6-1-alpha3-wrapping-up-the-alpha-phase.html\",\"title\":\"Joomla! 6.1.0-alpha3 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.1.0-alpha3\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"Alpha\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.1.0-alpha3\"}},\"Joomla_6.1.0-alpha3-Alpha-Update_Package.zip\":{\"length\":30842460,\"hashes\":{\"sha512\":\"9290f78cdba43c0bbb4e9b812a1e06cd548e6a4e14b51529d50d5acab3fdb4f7ab5cc6828655596159af41962b51f5a14008a26f06e3f9c5b3781f309cb52a19\"},\"custom\":{\"client\":\"site\",\"description\":\"Joomla! 6.1.0-alpha3 Release\",\"downloads\":[{\"url\":\"https://github.com/joomla/joomla-cms/releases/download/6.1.0-alpha3/Joomla_6.1.0-alpha3-Alpha-Update_Package.zip\",\"format\":\"zip\",\"type\":\"full\"}],\"element\":\"joomla\",\"infourl\":{\"url\":\"https://developer.joomla.org/news/1018-joomla-6-1-alpha3-wrapping-up-the-alpha-phase.html\",\"title\":\"Joomla! 6.1.0-alpha3 Release\"},\"maintainer\":\"Joomla! Production Department\",\"maintainerurl\":\"https://www.joomla.org\",\"name\":\"Joomla! 6.1.0-alpha3\",\"php_minimum\":\"8.3.0\",\"channel\":\"6.x\",\"stability\":\"Alpha\",\"supported_databases\":{\"mariadb\":\"10.4\",\"mysql\":\"8.0.13\",\"postgresql\":\"12.0\"},\"targetplatform\":{\"name\":\"joomla\",\"version\":\"(6\\\\.[0-4])|^(5\\\\.4)\"},\"type\":\"file\",\"version\":\"6.1.0-alpha3\"}}}},\"signatures\":[{\"keyid\":\"a1a4b7fdbeedfdeff12d7776de098a2f8de8d2ab7bfe10062a281b3819b078c1\",\"sig\":\"2cb5bfffddb78bbab58bb2e59b4be95705c333d78ea7b0e14110e488f7cb42876d1e09bac4d7f7d2603db3e0e9f5768f454500010c5026a05064bc1c791e7e09\"}]}','{\"signed\":{\"_type\":\"snapshot\",\"spec_version\":\"1.0\",\"version\":92,\"expires\":\"2026-08-18T15:49:18Z\",\"meta\":{\"targets.json\":{\"length\":21685,\"hashes\":{\"sha512\":\"bab309a3229b02493d959a1eac685b9a44015d1cbf48aaa4b48faac9275be5bf7c77b23591da314b1438acdc50497878a6a0962550c81593204775c6df0a7304\"},\"version\":81}}},\"signatures\":[{\"keyid\":\"a1a4b7fdbeedfdeff12d7776de098a2f8de8d2ab7bfe10062a281b3819b078c1\",\"sig\":\"9fc0d75a28e1d6758f5a3af9b8f69f38438bdd0be2a39ace6006bad4ac577a5ef551d626fc53fe6e8c9a313811293a8db099172352142304ef551345e68a3100\"}]}','{\"signed\":{\"_type\":\"timestamp\",\"spec_version\":\"1.0\",\"version\":937,\"expires\":\"2026-02-04T01:06:57Z\",\"meta\":{\"snapshot.json\":{\"length\":532,\"hashes\":{\"sha512\":\"a0e2563c4e3c438130167ed949cbd00220044e764366a8ab5811e05ea59eea2521f5fe148a86f3298fe3d9039c1a96f7fff892b7760daa0abc58007678a2741b\"},\"version\":92}}},\"signatures\":[{\"keyid\":\"9e41a9d62d94c6a1c8a304f62c5bd72d84a9f286f27e8327cedeacb09e5156cc\",\"sig\":\"f7e2b51b5d0945350ed1ef0c13d0ec3d34201ace1377d73160fd35793df2346970545bd68a1ed4d3b296fb20fc6aeb3fb9e132926fb62a08387343e064d0560f\"}]}',NULL);
 /*!40000 ALTER TABLE `lcoa2_tuf_metadata` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2120,34 +2121,34 @@ DROP TABLE IF EXISTS `lcoa2_ucm_content`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_ucm_content` (
   `core_content_id` int unsigned NOT NULL AUTO_INCREMENT,
-  `core_type_alias` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'FK to the content types table',
-  `core_title` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `core_type_alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'FK to the content types table',
+  `core_title` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `core_alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
-  `core_body` mediumtext COLLATE utf8mb4_unicode_ci,
+  `core_body` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `core_state` tinyint NOT NULL DEFAULT '0',
   `core_checked_out_time` datetime DEFAULT NULL,
   `core_checked_out_user_id` int unsigned DEFAULT NULL,
   `core_access` int unsigned NOT NULL DEFAULT '0',
-  `core_params` text COLLATE utf8mb4_unicode_ci,
+  `core_params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `core_featured` tinyint unsigned NOT NULL DEFAULT '0',
-  `core_metadata` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'JSON encoded metadata properties.',
+  `core_metadata` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'JSON encoded metadata properties.',
   `core_created_user_id` int unsigned NOT NULL DEFAULT '0',
-  `core_created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `core_created_by_alias` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `core_created_time` datetime NOT NULL,
   `core_modified_user_id` int unsigned NOT NULL DEFAULT '0' COMMENT 'Most recent user that modified',
   `core_modified_time` datetime NOT NULL,
-  `core_language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `core_language` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `core_publish_up` datetime DEFAULT NULL,
   `core_publish_down` datetime DEFAULT NULL,
   `core_content_item_id` int unsigned NOT NULL DEFAULT '0' COMMENT 'ID from the individual type table',
   `asset_id` int unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
-  `core_images` text COLLATE utf8mb4_unicode_ci,
-  `core_urls` text COLLATE utf8mb4_unicode_ci,
+  `core_images` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `core_urls` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `core_hits` int unsigned NOT NULL DEFAULT '0',
   `core_version` int unsigned NOT NULL DEFAULT '1',
   `core_ordering` int NOT NULL DEFAULT '0',
-  `core_metakey` text COLLATE utf8mb4_unicode_ci,
-  `core_metadesc` text COLLATE utf8mb4_unicode_ci,
+  `core_metakey` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `core_metadesc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `core_catid` int unsigned NOT NULL DEFAULT '0',
   `core_type_id` int unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`core_content_id`),
@@ -2184,12 +2185,12 @@ DROP TABLE IF EXISTS `lcoa2_update_sites`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_update_sites` (
   `update_site_id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `type` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `location` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `location` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `enabled` int DEFAULT '0',
   `last_check_timestamp` bigint DEFAULT '0',
-  `extra_query` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `extra_query` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
   `checked_out` int unsigned DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   PRIMARY KEY (`update_site_id`)
@@ -2202,7 +2203,7 @@ CREATE TABLE `lcoa2_update_sites` (
 
 LOCK TABLES `lcoa2_update_sites` WRITE;
 /*!40000 ALTER TABLE `lcoa2_update_sites` DISABLE KEYS */;
-INSERT INTO `lcoa2_update_sites` VALUES (1,'Joomla! Core','tuf','https://update.joomla.org/cms/',1,1769980294,'',NULL,NULL),(2,'Accredited Joomla! Translations','collection','https://update.joomla.org/language/translationlist_6.xml',1,1769980260,'',NULL,NULL),(3,'Joomla! Update Component','extension','https://update.joomla.org/core/extensions/com_joomlaupdate.xml',1,1769980295,'',NULL,NULL);
+INSERT INTO `lcoa2_update_sites` VALUES (1,'Joomla! Core','tuf','https://update.joomla.org/cms/',1,1770017447,'',NULL,NULL),(2,'Accredited Joomla! Translations','collection','https://update.joomla.org/language/translationlist_6.xml',1,1770017448,'',NULL,NULL),(3,'Joomla! Update Component','extension','https://update.joomla.org/core/extensions/com_joomlaupdate.xml',1,1770017448,'',NULL,NULL);
 /*!40000 ALTER TABLE `lcoa2_update_sites` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2241,20 +2242,20 @@ CREATE TABLE `lcoa2_updates` (
   `update_id` int NOT NULL AUTO_INCREMENT,
   `update_site_id` int DEFAULT '0',
   `extension_id` int DEFAULT '0',
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `element` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `type` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `folder` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `element` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `folder` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
   `client_id` tinyint DEFAULT '0',
-  `version` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `data` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `detailsurl` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `infourl` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `changelogurl` text COLLATE utf8mb4_unicode_ci,
-  `extra_query` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `version` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `data` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `detailsurl` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `infourl` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `changelogurl` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `extra_query` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
   PRIMARY KEY (`update_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=242 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Available Updates';
+) ENGINE=InnoDB AUTO_INCREMENT=322 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Available Updates';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2263,7 +2264,7 @@ CREATE TABLE `lcoa2_updates` (
 
 LOCK TABLES `lcoa2_updates` WRITE;
 /*!40000 ALTER TABLE `lcoa2_updates` DISABLE KEYS */;
-INSERT INTO `lcoa2_updates` VALUES (201,2,0,'Afrikaans','','pkg_af-ZA','package','',0,'6.0.3.1','','https://update.joomla.org/language/details6/af-ZA_details.xml','','',''),(202,2,0,'Belarusian','','pkg_be-BY','package','',0,'6.0.3.1','','https://update.joomla.org/language/details6/be-BY_details.xml','','',''),(203,2,0,'Catalan','','pkg_ca-ES','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/ca-ES_details.xml','','',''),(204,2,0,'Chinese, Simplified','','pkg_zh-CN','package','',0,'6.0.1.3','','https://update.joomla.org/language/details6/zh-CN_details.xml','','',''),(205,2,0,'Czech','','pkg_cs-CZ','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/cs-CZ_details.xml','','',''),(206,2,0,'Danish','','pkg_da-DK','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/da-DK_details.xml','','',''),(207,2,0,'Dutch','','pkg_nl-NL','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/nl-NL_details.xml','','',''),(208,2,0,'English, Australia','','pkg_en-AU','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/en-AU_details.xml','','',''),(209,2,0,'English, Canada','','pkg_en-CA','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/en-CA_details.xml','','',''),(210,2,0,'English, New Zealand','','pkg_en-NZ','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/en-NZ_details.xml','','',''),(211,2,0,'English, USA','','pkg_en-US','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/en-US_details.xml','','',''),(212,2,0,'Finnish','','pkg_fi-FI','package','',0,'6.0.1.1','','https://update.joomla.org/language/details6/fi-FI_details.xml','','',''),(213,2,0,'Flemish','','pkg_nl-BE','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/nl-BE_details.xml','','',''),(214,2,0,'French','','pkg_fr-FR','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/fr-FR_details.xml','','',''),(215,2,0,'Georgian','','pkg_ka-GE','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/ka-GE_details.xml','','',''),(216,2,0,'German','','pkg_de-DE','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/de-DE_details.xml','','',''),(217,2,0,'German, Austria','','pkg_de-AT','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/de-AT_details.xml','','',''),(218,2,0,'German, Liechtenstein','','pkg_de-LI','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/de-LI_details.xml','','',''),(219,2,0,'German, Luxembourg','','pkg_de-LU','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/de-LU_details.xml','','',''),(220,2,0,'German, Switzerland','','pkg_de-CH','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/de-CH_details.xml','','',''),(221,2,0,'Greek','','pkg_el-GR','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/el-GR_details.xml','','',''),(222,2,0,'Hungarian','','pkg_hu-HU','package','',0,'6.0.0.1','','https://update.joomla.org/language/details6/hu-HU_details.xml','','',''),(223,2,0,'Italian','','pkg_it-IT','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/it-IT_details.xml','','',''),(224,2,0,'Japanese','','pkg_ja-JP','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/ja-JP_details.xml','','',''),(225,2,0,'Lithuanian','','pkg_lt-LT','package','',0,'6.0.3.1','','https://update.joomla.org/language/details6/lt-LT_details.xml','','',''),(226,2,0,'Norwegian Bokmål','','pkg_nb-NO','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/nb-NO_details.xml','','',''),(227,2,0,'Persian Farsi','','pkg_fa-IR','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/fa-IR_details.xml','','',''),(228,2,0,'Polish','','pkg_pl-PL','package','',0,'6.0.0.1','','https://update.joomla.org/language/details6/pl-PL_details.xml','','',''),(229,2,0,'Romanian','','pkg_ro-RO','package','',0,'6.0.0.1','','https://update.joomla.org/language/details6/ro-RO_details.xml','','',''),(230,2,0,'Russian','','pkg_ru-RU','package','',0,'6.0.1.1','','https://update.joomla.org/language/details6/ru-RU_details.xml','','',''),(231,2,0,'Serbian, Cyrillic','','pkg_sr-RS','package','',0,'6.0.1.1','','https://update.joomla.org/language/details6/sr-RS_details.xml','','',''),(232,2,0,'Serbian, Latin','','pkg_sr-YU','package','',0,'6.0.1.1','','https://update.joomla.org/language/details6/sr-YU_details.xml','','',''),(233,2,0,'Slovak','','pkg_sk-SK','package','',0,'6.0.2.2','','https://update.joomla.org/language/details6/sk-SK_details.xml','','',''),(234,2,0,'Slovenian','','pkg_sl-SI','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/sl-SI_details.xml','','',''),(235,2,0,'Spanish','','pkg_es-ES','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/es-ES_details.xml','','',''),(236,2,0,'Swedish','','pkg_sv-SE','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/sv-SE_details.xml','','',''),(237,2,0,'Tamil, India','','pkg_ta-IN','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/ta-IN_details.xml','','',''),(238,2,0,'Thai','','pkg_th-TH','package','',0,'6.0.0.2','','https://update.joomla.org/language/details6/th-TH_details.xml','','',''),(239,2,0,'Turkish','','pkg_tr-TR','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/tr-TR_details.xml','','',''),(240,2,0,'Ukrainian','','pkg_uk-UA','package','',0,'6.0.0.1','','https://update.joomla.org/language/details6/uk-UA_details.xml','','',''),(241,1,246,'Joomla! 6.0.2','Joomla! 6.0.2 Release','joomla','file','',0,'6.0.2','','https://update.joomla.org/cms/','https://www.joomla.org/announcements/release-news/5942-joomla-6-0-2-and-5-4-2-security-bugfix-release.html',NULL,'');
+INSERT INTO `lcoa2_updates` VALUES (282,2,0,'Afrikaans','','pkg_af-ZA','package','',0,'6.0.3.1','','https://update.joomla.org/language/details6/af-ZA_details.xml','','',''),(283,2,0,'Belarusian','','pkg_be-BY','package','',0,'6.0.3.1','','https://update.joomla.org/language/details6/be-BY_details.xml','','',''),(284,2,0,'Catalan','','pkg_ca-ES','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/ca-ES_details.xml','','',''),(285,2,0,'Chinese, Simplified','','pkg_zh-CN','package','',0,'6.0.1.3','','https://update.joomla.org/language/details6/zh-CN_details.xml','','',''),(286,2,0,'Czech','','pkg_cs-CZ','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/cs-CZ_details.xml','','',''),(287,2,0,'Danish','','pkg_da-DK','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/da-DK_details.xml','','',''),(288,2,0,'Dutch','','pkg_nl-NL','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/nl-NL_details.xml','','',''),(289,2,0,'English, Australia','','pkg_en-AU','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/en-AU_details.xml','','',''),(290,2,0,'English, Canada','','pkg_en-CA','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/en-CA_details.xml','','',''),(291,2,0,'English, New Zealand','','pkg_en-NZ','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/en-NZ_details.xml','','',''),(292,2,0,'English, USA','','pkg_en-US','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/en-US_details.xml','','',''),(293,2,0,'Finnish','','pkg_fi-FI','package','',0,'6.0.1.1','','https://update.joomla.org/language/details6/fi-FI_details.xml','','',''),(294,2,0,'Flemish','','pkg_nl-BE','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/nl-BE_details.xml','','',''),(295,2,0,'French','','pkg_fr-FR','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/fr-FR_details.xml','','',''),(296,2,0,'Georgian','','pkg_ka-GE','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/ka-GE_details.xml','','',''),(297,2,0,'German','','pkg_de-DE','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/de-DE_details.xml','','',''),(298,2,0,'German, Austria','','pkg_de-AT','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/de-AT_details.xml','','',''),(299,2,0,'German, Liechtenstein','','pkg_de-LI','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/de-LI_details.xml','','',''),(300,2,0,'German, Luxembourg','','pkg_de-LU','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/de-LU_details.xml','','',''),(301,2,0,'German, Switzerland','','pkg_de-CH','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/de-CH_details.xml','','',''),(302,2,0,'Greek','','pkg_el-GR','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/el-GR_details.xml','','',''),(303,2,0,'Hungarian','','pkg_hu-HU','package','',0,'6.0.0.1','','https://update.joomla.org/language/details6/hu-HU_details.xml','','',''),(304,2,0,'Italian','','pkg_it-IT','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/it-IT_details.xml','','',''),(305,2,0,'Japanese','','pkg_ja-JP','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/ja-JP_details.xml','','',''),(306,2,0,'Lithuanian','','pkg_lt-LT','package','',0,'6.0.3.1','','https://update.joomla.org/language/details6/lt-LT_details.xml','','',''),(307,2,0,'Norwegian Bokmål','','pkg_nb-NO','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/nb-NO_details.xml','','',''),(308,2,0,'Persian Farsi','','pkg_fa-IR','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/fa-IR_details.xml','','',''),(309,2,0,'Polish','','pkg_pl-PL','package','',0,'6.0.0.1','','https://update.joomla.org/language/details6/pl-PL_details.xml','','',''),(310,2,0,'Romanian','','pkg_ro-RO','package','',0,'6.0.0.1','','https://update.joomla.org/language/details6/ro-RO_details.xml','','',''),(311,2,0,'Russian','','pkg_ru-RU','package','',0,'6.0.1.1','','https://update.joomla.org/language/details6/ru-RU_details.xml','','',''),(312,2,0,'Serbian, Cyrillic','','pkg_sr-RS','package','',0,'6.0.1.1','','https://update.joomla.org/language/details6/sr-RS_details.xml','','',''),(313,2,0,'Serbian, Latin','','pkg_sr-YU','package','',0,'6.0.1.1','','https://update.joomla.org/language/details6/sr-YU_details.xml','','',''),(314,2,0,'Slovak','','pkg_sk-SK','package','',0,'6.0.2.2','','https://update.joomla.org/language/details6/sk-SK_details.xml','','',''),(315,2,0,'Slovenian','','pkg_sl-SI','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/sl-SI_details.xml','','',''),(316,2,0,'Spanish','','pkg_es-ES','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/es-ES_details.xml','','',''),(317,2,0,'Swedish','','pkg_sv-SE','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/sv-SE_details.xml','','',''),(318,2,0,'Tamil, India','','pkg_ta-IN','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/ta-IN_details.xml','','',''),(319,2,0,'Thai','','pkg_th-TH','package','',0,'6.0.0.2','','https://update.joomla.org/language/details6/th-TH_details.xml','','',''),(320,2,0,'Turkish','','pkg_tr-TR','package','',0,'6.0.2.1','','https://update.joomla.org/language/details6/tr-TR_details.xml','','',''),(321,2,0,'Ukrainian','','pkg_uk-UA','package','',0,'6.0.0.1','','https://update.joomla.org/language/details6/uk-UA_details.xml','','','');
 /*!40000 ALTER TABLE `lcoa2_updates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2276,11 +2277,11 @@ DROP TABLE IF EXISTS `lcoa2_user_keys`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_user_keys` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `series` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `time` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `uastring` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `series` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `time` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uastring` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `series` (`series`),
   KEY `user_id` (`user_id`)
@@ -2306,10 +2307,10 @@ DROP TABLE IF EXISTS `lcoa2_user_mfa`;
 CREATE TABLE `lcoa2_user_mfa` (
   `id` int NOT NULL AUTO_INCREMENT,
   `user_id` int unsigned NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `method` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `method` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `default` tinyint NOT NULL DEFAULT '0',
-  `options` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `options` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_on` datetime NOT NULL,
   `last_used` datetime DEFAULT NULL,
   `tries` int NOT NULL DEFAULT '0',
@@ -2339,8 +2340,8 @@ CREATE TABLE `lcoa2_user_notes` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int unsigned NOT NULL DEFAULT '0',
   `catid` int unsigned NOT NULL DEFAULT '0',
-  `subject` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `body` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `state` tinyint NOT NULL DEFAULT '0',
   `checked_out` int unsigned DEFAULT NULL,
   `checked_out_time` datetime DEFAULT NULL,
@@ -2375,8 +2376,8 @@ DROP TABLE IF EXISTS `lcoa2_user_profiles`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_user_profiles` (
   `user_id` int NOT NULL,
-  `profile_key` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `profile_value` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `profile_key` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `profile_value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `ordering` int NOT NULL DEFAULT '0',
   UNIQUE KEY `idx_user_id_profile_key` (`user_id`,`profile_key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Simple user profile storage table';
@@ -2428,7 +2429,7 @@ CREATE TABLE `lcoa2_usergroups` (
   `parent_id` int unsigned NOT NULL DEFAULT '0' COMMENT 'Adjacency List Reference Id',
   `lft` int NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
   `rgt` int NOT NULL DEFAULT '0' COMMENT 'Nested set rgt.',
-  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_usergroup_parent_title_lookup` (`parent_id`,`title`),
   KEY `idx_usergroup_title_lookup` (`title`),
@@ -2456,22 +2457,22 @@ DROP TABLE IF EXISTS `lcoa2_users`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_users` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `username` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `password` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `username` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `block` tinyint NOT NULL DEFAULT '0',
   `sendEmail` tinyint DEFAULT '0',
   `registerDate` datetime NOT NULL,
   `lastvisitDate` datetime DEFAULT NULL,
-  `activation` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `activation` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `lastResetTime` datetime DEFAULT NULL COMMENT 'Date of last password reset',
   `resetCount` int NOT NULL DEFAULT '0' COMMENT 'Count of password resets since lastResetTime',
-  `otpKey` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Two factor authentication encrypted keys',
-  `otep` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Backup Codes',
+  `otpKey` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Two factor authentication encrypted keys',
+  `otep` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Backup Codes',
   `requireReset` tinyint NOT NULL DEFAULT '0' COMMENT 'Require user to reset password on next login',
-  `authProvider` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Name of used authentication plugin',
+  `authProvider` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Name of used authentication plugin',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_username` (`username`),
   KEY `idx_name` (`name`(100)),
@@ -2486,7 +2487,7 @@ CREATE TABLE `lcoa2_users` (
 
 LOCK TABLES `lcoa2_users` WRITE;
 /*!40000 ALTER TABLE `lcoa2_users` DISABLE KEYS */;
-INSERT INTO `lcoa2_users` VALUES (81,'Admin User','admin','admin@campus.local','$2y$10$uUWimp76stQN1Rc69BvYcuePzcdnf6HTf9LJlB0xy24cn8Zm376d2',0,1,'2026-01-26 07:54:16','2026-02-01 21:05:41','0','',NULL,0,'','',0,''),(82,'Max Mustermann','redakteur','redakteur@campus.local','$2y$10$kNsZgTR3WWd0Hd7I7iSskeCBFom3uq7aW79hzhP6O5XCgjbyHMPrC',0,0,'2026-01-26 08:09:30','2026-02-01 21:07:44','','{\"admin_style\":\"\",\"colorScheme\":\"\",\"allowTourAutoStart\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"timezone\":\"\",\"a11y_mono\":\"0\",\"a11y_contrast\":\"0\",\"a11y_highlight\":\"0\",\"a11y_font\":\"0\"}',NULL,0,'','',0,''),(83,'Club Admin','clubadmin','clubadmin@campus.local','$2y$10$.te2VIXwPqHQXzpY.gSUv.Q192vmiVkoHwZIrIyu5iw8IuFIY7C2S',0,0,'2026-01-26 08:11:41',NULL,'','{\"admin_style\":\"\",\"colorScheme\":\"\",\"allowTourAutoStart\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"timezone\":\"\",\"a11y_mono\":\"0\",\"a11y_contrast\":\"0\",\"a11y_highlight\":\"0\",\"a11y_font\":\"0\"}',NULL,0,'','',0,''),(84,'testredakteur','testred','test@sad.com','$2y$10$fqxR/0VpuHh14iLB2BD2Su4VIg/KHhgpQtFZJn.RnRmKI6u1rNCN2',0,0,'2026-02-01 19:46:26','2026-02-01 19:47:51','','{\"admin_style\":\"\",\"colorScheme\":\"\",\"allowTourAutoStart\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"timezone\":\"\",\"a11y_mono\":\"0\",\"a11y_contrast\":\"0\",\"a11y_highlight\":\"0\",\"a11y_font\":\"0\"}',NULL,0,'','',0,'');
+INSERT INTO `lcoa2_users` VALUES (81,'Admin User','admin','admin@campus.local','$2y$10$uUWimp76stQN1Rc69BvYcuePzcdnf6HTf9LJlB0xy24cn8Zm376d2',0,1,'2026-01-26 07:54:16','2026-02-02 07:32:27','0','',NULL,0,'','',0,''),(82,'Max Mustermann','redakteur','redakteur@campus.local','$2y$10$kNsZgTR3WWd0Hd7I7iSskeCBFom3uq7aW79hzhP6O5XCgjbyHMPrC',0,0,'2026-01-26 08:09:30','2026-02-02 07:32:55','','{\"admin_style\":\"\",\"colorScheme\":\"\",\"allowTourAutoStart\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"timezone\":\"\",\"a11y_mono\":\"0\",\"a11y_contrast\":\"0\",\"a11y_highlight\":\"0\",\"a11y_font\":\"0\"}',NULL,0,'','',0,''),(83,'Club Admin','clubadmin','clubadmin@campus.local','$2y$10$.te2VIXwPqHQXzpY.gSUv.Q192vmiVkoHwZIrIyu5iw8IuFIY7C2S',0,0,'2026-01-26 08:11:41',NULL,'','{\"admin_style\":\"\",\"colorScheme\":\"\",\"allowTourAutoStart\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"timezone\":\"\",\"a11y_mono\":\"0\",\"a11y_contrast\":\"0\",\"a11y_highlight\":\"0\",\"a11y_font\":\"0\"}',NULL,0,'','',0,''),(84,'testredakteur','testred','test@sad.com','$2y$10$fqxR/0VpuHh14iLB2BD2Su4VIg/KHhgpQtFZJn.RnRmKI6u1rNCN2',0,0,'2026-02-01 19:46:26','2026-02-01 19:47:51','','{\"admin_style\":\"\",\"colorScheme\":\"\",\"allowTourAutoStart\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"timezone\":\"\",\"a11y_mono\":\"0\",\"a11y_contrast\":\"0\",\"a11y_highlight\":\"0\",\"a11y_font\":\"0\"}',NULL,0,'','',0,'');
 /*!40000 ALTER TABLE `lcoa2_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2499,9 +2500,9 @@ DROP TABLE IF EXISTS `lcoa2_viewlevels`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_viewlevels` (
   `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
-  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `ordering` int NOT NULL DEFAULT '0',
-  `rules` varchar(5120) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded access control.',
+  `rules` varchar(5120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded access control.',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_assetgroup_title_lookup` (`title`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2525,10 +2526,10 @@ DROP TABLE IF EXISTS `lcoa2_webauthn_credentials`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lcoa2_webauthn_credentials` (
-  `id` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Credential ID',
-  `user_id` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User handle',
-  `label` varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Human readable label',
-  `credential` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Credential source data, JSON format',
+  `id` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Credential ID',
+  `user_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User handle',
+  `label` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Human readable label',
+  `credential` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Credential source data, JSON format',
   PRIMARY KEY (`id`(100)),
   KEY `user_id` (`user_id`(100))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2553,7 +2554,7 @@ DROP TABLE IF EXISTS `lcoa2_workflow_associations`;
 CREATE TABLE `lcoa2_workflow_associations` (
   `item_id` int NOT NULL DEFAULT '0' COMMENT 'Extension table id value',
   `stage_id` int NOT NULL COMMENT 'Foreign Key to #__workflow_stages.id',
-  `extension` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `extension` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`item_id`,`extension`),
   KEY `idx_item_stage_extension` (`item_id`,`stage_id`,`extension`),
   KEY `idx_item_id` (`item_id`),
@@ -2585,8 +2586,8 @@ CREATE TABLE `lcoa2_workflow_stages` (
   `ordering` int NOT NULL DEFAULT '0',
   `workflow_id` int NOT NULL,
   `published` tinyint NOT NULL DEFAULT '0',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `default` tinyint NOT NULL DEFAULT '0',
   `checked_out_time` datetime DEFAULT NULL,
   `checked_out` int unsigned DEFAULT NULL,
@@ -2622,11 +2623,11 @@ CREATE TABLE `lcoa2_workflow_transitions` (
   `ordering` int NOT NULL DEFAULT '0',
   `workflow_id` int NOT NULL,
   `published` tinyint NOT NULL DEFAULT '0',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `from_stage_id` int NOT NULL,
   `to_stage_id` int NOT NULL,
-  `options` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `options` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `checked_out_time` datetime DEFAULT NULL,
   `checked_out` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -2660,9 +2661,9 @@ CREATE TABLE `lcoa2_workflows` (
   `id` int NOT NULL AUTO_INCREMENT,
   `asset_id` int DEFAULT '0',
   `published` tinyint NOT NULL DEFAULT '0',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `extension` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `extension` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `default` tinyint NOT NULL DEFAULT '0',
   `ordering` int NOT NULL DEFAULT '0',
   `created` datetime NOT NULL,
@@ -2703,4 +2704,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-02-01 21:48:48
+-- Dump completed on 2026-02-07 11:47:21
