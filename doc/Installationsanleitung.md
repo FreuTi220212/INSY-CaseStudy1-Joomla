@@ -1,35 +1,75 @@
-## **Installationsschritte**
+# **Installationsschritte**
 
-1. Projekt aktualisieren bzw. Github Repo clonen
+1. Github Repo clonen oder mit pull aktualisieren
 
-https://github.com/FreuTi220212/INSY-CaseStudy1-Joomla
+    - clone
 
-Zuerst holt man sich den neuesten Stand (inklusive der backup.sql):
+    ```
+    git clone https://github.com/FreuTi220212/INSY-CaseStudy1-Joomla.git
+    ```
 
-PowerShell: git pull
+    - pull
 
-2. Container starten
+    ```
+    git pull
+    ```
 
-Es fährt die Umgebung
-hoch. Wenn es schon läuft, schadet ein Neustart nicht:
+2. Docker und container starten
 
-PowerShell: docker compose up -d
+    - Wenn Docker Desktop genützt wird, den zuerst öffnen
+
+    - Dann Container starten mit 
+
+    ```
+    docker compose up -d
+    ```
 
 3. Den Namen des Datenbank-Containers finden
 
-Da der Name vom Ordnernamen abhängt, muss man kurz checken, wie der Container heißt:
+    Da der Name vom Ordnernamen abhängt, muss man kurz checken, wie der Container heißt:
 
-PowerShell: docker ps (Man sucht den Namen unter NAMES, der auf -db-1 endet).
+    PowerShell:
+
+    ```
+    docker ps
+    ```
+
+    Man sucht den Namen unter NAMES, der auf -db-1 endet.
+
+    Zum Beispiel
+
+    ```
+    insy-casestudy1-joomla-db-1
+    ```
 
 4. Die Daten importieren
 
-PowerShell: docker cp
-./backup.sql [DB_CONTAINER_NAME]:/var/lib/mysql/backup.sql
+    PowerShell: 
+    
+    ```
+    docker cp ./backup.sql [DB_CONTAINER_NAME]:/var/lib/mysql/backup.sql
+    ```
 
-SQL-Befehl zum Importieren ausführen
+    Zum Beispiel
 
-PowerShell: docker compose exec -T db /usr/bin/mysql -u root -proot joomla_db -e "pfad"/mysql
+    ```
+    docker cp ./backup.sql insy-casestudy1-joomla-db-1:/var/lib/mysql/backup.sql
+    ```
 
-5. Homepage öffnen
+    Dann SQL-Befehl zum Importieren ausführen
 
-Browser: localhost:8080
+    ```
+    docker compose exec -T db /usr/bin/mysql -u root -proot joomla_db -e "source /var/lib/mysql/backup.sql"
+    ```
+
+5. Homepage und Administrator Login öffnen
+
+    Browser: 
+
+    ```
+    localhost:8080
+    ```
+
+    ```
+    localhost:8080/administrator
+    ```
