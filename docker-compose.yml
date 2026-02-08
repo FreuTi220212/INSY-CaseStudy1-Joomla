@@ -14,7 +14,7 @@ services:
       JOOMLA_DB_PASSWORD: joomla_password_2024
       JOOMLA_DB_NAME: joomla_db
     volumes:
-      - ./joomla:/var/www/html  # ← GEÄNDERT: Lokaler Ordner statt Volume
+      - joomla_data:/var/www/html  # ← ZURÜCK zu Volume (schnell!)
     depends_on:
       - joomladb
     networks:
@@ -31,7 +31,7 @@ services:
       MYSQL_USER: joomla
       MYSQL_PASSWORD: joomla_password_2024
     volumes:
-      - db_data:/var/lib/mysql  # Database bleibt als Volume (ist ok)
+      - db_data:/var/lib/mysql
     networks:
       - joomla_network
 
@@ -53,7 +53,7 @@ services:
 
 # Persistent volumes
 volumes:
-  # joomla_data:  # ← ENTFERNT, wird nicht mehr gebraucht
+  joomla_data:  # ← WIEDER da!
   db_data:
 
 # Network isolation

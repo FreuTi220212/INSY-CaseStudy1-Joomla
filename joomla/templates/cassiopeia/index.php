@@ -129,6 +129,7 @@ $wa->getAsset('style', 'fontawesome')->setAttribute('rel', 'lazy-stylesheet');
 <head>
     <jdoc:include type="metas" />
     <jdoc:include type="styles" />
+  <link rel="stylesheet" href="<?php echo $this->baseurl; ?>/media/templates/site/cassiopeia/css/custom.css">
     <jdoc:include type="scripts" />
 </head>
 
@@ -240,7 +241,11 @@ $wa->getAsset('style', 'fontawesome')->setAttribute('rel', 'lazy-stylesheet');
     <?php if ($this->countModules('footer', true)) : ?>
         <footer class="container-footer footer full-width">
             <div class="grid-child">
-                <jdoc:include type="modules" name="footer" style="none" />
+                <?php if ($this->countModules('footer')) : ?>
+</div></div> <!-- Container schließen -->
+<jdoc:include type="modules" name="footer" style="none" />
+<div class="container"><div class="row"> <!-- Container wieder öffnen -->
+<?php endif; ?>
             </div>
         </footer>
     <?php endif; ?>

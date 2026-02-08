@@ -15552,3 +15552,22 @@ body:not(.has-sidebar-right) .site-grid .container-component {
   --template-bg-dark-80: hsl(var(--hue), 40%, 20%);
   --template-bg-dark-90: hsl(var(--hue), 40%, 10%);
 }
+
+
+/* ========================================
+   CUSTOM CAMPUS CLUB STYLING
+   ======================================== */
+
+/* Footer Full Width Fix */
+.position-footer,
+#footer,
+footer,
+[class*="footer"] {
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  box-sizing: border-box !important;
+}

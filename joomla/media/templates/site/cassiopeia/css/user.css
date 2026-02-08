@@ -1,0 +1,294 @@
+/* ========================================
+   Campus Club Portal - Custom Styling
+   ======================================== */
+
+/* Hauptfarben definieren */
+:root {
+  --campus-red: #8B1538;
+  --campus-dark-red: #6B0F2A;
+  --campus-light: #f8f9fa;
+}
+
+/* Header & Navigation */
+.container-header {
+  background: linear-gradient(135deg, var(--campus-red) 0%, var(--campus-dark-red) 100%);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  padding: 20px 0;
+}
+
+.navbar-brand {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff !important;
+  letter-spacing: 1px;
+}
+
+/* Main Menu */
+.navbar-nav .nav-link {
+  font-weight: 500;
+  padding: 10px 18px !important;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  color: rgba(255,255,255,0.9) !important;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  background-color: rgba(255,255,255,0.2);
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+/* Buttons */
+.btn-primary,
+button[type="submit"] {
+  background-color: var(--campus-red) !important;
+  border-color: var(--campus-red) !important;
+  border-radius: 8px;
+  padding: 10px 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover,
+button[type="submit"]:hover {
+  background-color: var(--campus-dark-red) !important;
+  border-color: var(--campus-dark-red) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(139, 21, 56, 0.4);
+}
+
+/* Cards & Articles */
+.card,
+.item-page,
+article {
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  margin-bottom: 25px;
+}
+
+.card:hover,
+article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.card-header {
+  background: linear-gradient(135deg, var(--campus-red), var(--campus-dark-red));
+  color: #fff;
+  border-radius: 12px 12px 0 0 !important;
+  font-weight: 600;
+}
+
+/* Überschriften */
+h1, h2, h3, h4 {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+h1 {
+  border-bottom: 3px solid var(--campus-red);
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: var(--campus-red);
+}
+
+/* Links */
+a {
+  color: var(--campus-red);
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--campus-dark-red);
+  text-decoration: underline;
+}
+
+/* Sidebar */
+.sidebar-right,
+.sidebar-left {
+  background: var(--campus-light);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.moduletable {
+  margin-bottom: 25px;
+}
+
+.moduletable h3 {
+  background: var(--campus-red);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+/* Content Area */
+.container-main {
+  padding: 40px 0;
+}
+
+.item-page {
+  padding: 30px;
+  background: #fff;
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+  background: transparent;
+  padding: 15px 0;
+  font-size: 14px;
+}
+
+.breadcrumb-item.active {
+  color: var(--campus-red);
+}
+
+/* Forms */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px 15px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--campus-red);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(139, 21, 56, 0.1);
+}
+
+/* Tables */
+table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th {
+  background: var(--campus-red);
+  color: #fff;
+  font-weight: 600;
+}
+
+tr:hover {
+  background: rgba(139, 21, 56, 0.05);
+}
+
+/* Alerts & Messages */
+.alert {
+  border-radius: 8px;
+  border: none;
+  padding: 15px 20px;
+}
+
+.alert-success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.alert-info {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.alert-warning {
+  background: #fff3cd;
+  color: #856404;
+}
+
+/* Login Module */
+.login {
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Pagination */
+.pagination .page-link {
+  color: var(--campus-red);
+  border-radius: 6px;
+  margin: 0 3px;
+}
+
+.pagination .page-link:hover {
+  background: var(--campus-red);
+  color: #fff;
+}
+
+.pagination .active .page-link {
+  background: var(--campus-red);
+  border-color: var(--campus-red);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-nav .nav-link {
+    padding: 8px 12px !important;
+  }
+  
+  h1 {
+    font-size: 28px;
+  }
+  
+  .card,
+  .item-page {
+    padding: 20px;
+  }
+}
+
+/* Footer Full Width Fix */
+.moduletable[class*="footer"] {
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+}
+
+/* RESET - alle borders weg erstmal */
+.com-content-category-blog__item,
+.items-leading > div,
+article.item {
+  padding: 30px 0;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* Berichte-Seite: ALLE Artikel bekommen Border */
+.com-content-category-blog .com-content-category-blog__item {
+  border-bottom: 2px solid #e0e0e0 !important;
+}
+
+/* Berichte-Seite: Letzter Artikel im LETZTEN Container keine Border */
+.com-content-category-blog .com-content-category-blog__items:last-of-type .com-content-category-blog__item:last-child {
+  border-bottom: none !important;
+}
+
+/* Erster Artikel - kein top padding */
+.com-content-category-blog__items > .com-content-category-blog__item:first-child {
+  padding-top: 0;
+}
+
+/* Titel */
+article h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
