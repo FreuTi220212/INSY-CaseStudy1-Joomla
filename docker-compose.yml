@@ -1,27 +1,62 @@
+version: '3.8'
+
 services:
+  # Joomla Webserver
   joomla:
-    image: joomla:latest
+    image: joomla:5.4.2-php8.2-apache
+    container_name: joomla
+    restart: always
     ports:
       - "8080:80"
     environment:
-      JOOMLA_DB_HOST: db
+      JOOMLA_DB_HOST: joomladb
       JOOMLA_DB_USER: joomla
-      JOOMLA_DB_PASSWORD: joomla
+      JOOMLA_DB_PASSWORD: joomla_password_2024
       JOOMLA_DB_NAME: joomla_db
     volumes:
-      - ./joomla:/var/www/html
+      - joomla_data:/var/www/html  # Persistent storage
     depends_on:
-      - db
+      - joomladb
+    networks:
+      - joomla_network
 
-  db:
-    image: mysql:8.0
+  # Database server
+  joomladb:
+    image: mariadb:11.2
+    container_name: joomla_db
+    restart: always
     environment:
+      MYSQL_ROOT_PASSWORD: root_password_2024
       MYSQL_DATABASE: joomla_db
       MYSQL_USER: joomla
-      MYSQL_PASSWORD: joomla
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: joomla_password_2024
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data:/var/lib/mysql  # Database persistence
+    networks:
+      - joomla_network
 
+  # Database management interface
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: joomla_phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: joomladb
+      PMA_USER: joomla
+      PMA_PASSWORD: joomla_password_2024
+    depends_on:
+      - joomladb
+    networks:
+      - joomla_network
+
+# Persistent volumes
 volumes:
+  joomla_data:
   db_data:
+
+# Network isolation
+networks:
+  joomla_network:
+    driver: bridge
