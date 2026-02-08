@@ -1,75 +1,50 @@
 # **Installationsschritte**
 
-1. Github Repo clonen oder mit pull aktualisieren
+## 1. Repository clonen
+```bash
+git clone https://github.com/FreuTi220212/INSY-CaseStudy1-Joomla.git
+cd INSY-CaseStudy1-Joomla
+```
 
-    - clone
+## 2. Docker starten
 
-    ```
-    git clone https://github.com/FreuTi220212/INSY-CaseStudy1-Joomla.git
-    ```
+Falls **Docker Desktop** verwendet wird, dieses zuerst öffnen.
+```bash
+docker compose up -d
+```
 
-    - pull
+⏳ *Warte ca. 1 Minute bis alle Container laufen*
 
-    ```
-    git pull
-    ```
+## 3. Datenbank importieren
 
-2. Docker und container starten
+**Container-Name finden:**
+```bash
+docker ps
+```
+Suche den Container mit `-joomladb-1` oder `-db-1` am Ende.
 
-    - Wenn Docker Desktop genützt wird, den zuerst öffnen
+**Backup importieren** (ersetze `[CONTAINER_NAME]`):
+```bash
+docker exec -i [CONTAINER_NAME] mysql -u root -proot_password_2024 joomla_db < backup.sql
+```
 
-    - Dann Container starten mit 
+**Beispiel:**
+```bash
+docker exec -i insy-casestudy1-joomla-joomladb-1 mysql -u root -proot_password_2024 joomla_db < backup.sql
+```
 
-    ```
-    docker compose up -d
-    ```
+## 4. Joomla öffnen
 
-3. Den Namen des Datenbank-Containers finden
+- **Frontend:** http://localhost:8080
+- **Backend:** http://localhost:8080/administrator
+- **phpMyAdmin:** http://localhost:8081 *(optional)*
 
-    Da der Name vom Ordnernamen abhängt, muss man kurz checken, wie der Container heißt:
+## Login-Daten
 
-    PowerShell:
+**Administrator:**
+- User: `admin`
+- Passwort: `admin1234567`
 
-    ```
-    docker ps
-    ```
-
-    Man sucht den Namen unter NAMES, der auf -db-1 endet.
-
-    Zum Beispiel
-
-    ```
-    insy-casestudy1-joomla-db-1
-    ```
-
-4. Die Daten importieren
-
-    PowerShell: 
-    
-    ```
-    docker cp ./backup.sql [DB_CONTAINER_NAME]:/var/lib/mysql/backup.sql
-    ```
-
-    Zum Beispiel
-
-    ```
-    docker cp ./backup.sql insy-casestudy1-joomla-db-1:/var/lib/mysql/backup.sql
-    ```
-
-    Dann SQL-Befehl zum Importieren ausführen
-
-    ```
-    docker compose exec -T db /usr/bin/mysql -u root -proot joomla_db -e "source /var/lib/mysql/backup.sql"
-    ```
-
-5. Homepage und Administrator Login öffnen
-
-    Browser: 
-
-    ```
-    localhost:8080
-    ```
-
-    ```
-    localhost:8080/administrator
-    ```
+**Redakteur:**
+- User: `redakteur1`
+- Passwort: `redakteur123`
