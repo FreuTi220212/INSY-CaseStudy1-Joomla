@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # Joomla Webserver
   joomla:
-    image: joomla:5.4.2-php8.2-apache
+    image: joomla:5.4.2-php8.2-apache # LTS version
     container_name: joomla
     restart: always
     ports:
@@ -14,7 +14,7 @@ services:
       JOOMLA_DB_PASSWORD: joomla_password_2024
       JOOMLA_DB_NAME: joomla_db
     volumes:
-      - joomla_data:/var/www/html  # Persistent storage
+      - ./joomla:/var/www/html  # ← GEÄNDERT: Lokaler Ordner statt Volume
     depends_on:
       - joomladb
     networks:
@@ -31,7 +31,7 @@ services:
       MYSQL_USER: joomla
       MYSQL_PASSWORD: joomla_password_2024
     volumes:
-      - db_data:/var/lib/mysql  # Database persistence
+      - db_data:/var/lib/mysql  # Database bleibt als Volume (ist ok)
     networks:
       - joomla_network
 
@@ -53,7 +53,7 @@ services:
 
 # Persistent volumes
 volumes:
-  joomla_data:
+  # joomla_data:  # ← ENTFERNT, wird nicht mehr gebraucht
   db_data:
 
 # Network isolation
