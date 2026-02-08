@@ -25,12 +25,12 @@ Suche den Container mit `-joomladb-1` oder `-db-1` am Ende.
 
 **Backup importieren** (ersetze `[CONTAINER_NAME]`):
 ```bash
-docker exec -i [CONTAINER_NAME] mysql -u root -proot_password_2024 joomla_db < backup.sql
+docker exec -i [CONTAINER_NAME] mariadb -u root -proot_password_2024 joomla_db < backup.sql
 ```
 
 **Beispiel:**
 ```bash
-docker exec -i insy-casestudy1-joomla-joomladb-1 mysql -u root -proot_password_2024 joomla_db < backup.sql
+docker exec -i joomla_db mariadb -u root -proot_password_2024 joomla_db < backup.sql
 ```
 
 ## 4. Joomla öffnen
