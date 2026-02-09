@@ -1,7 +1,22 @@
-## Reflexion: Herausforderungen & Learnings
+Reflexion: Herausforderungen & Learnings
+Die technische Umsetzung des Projekts war durch drei zentrale Problemstellungen geprägt, die maßgeblichen Einfluss auf den Entwicklungsverlauf und die Systemarchitektur hatten:
 
-Eine zentrale Herausforderung im Projekt war der Umgang mit der Datenbank innerhalb der Docker-Umgebung. Da die Datenbank in einem Docker-Volume gespeichert ist, konnte sie nicht direkt über GitHub geteilt werden, was zu Problemen bei der Zusammenarbeit führte. Erst durch manuelle Datenbank-Exporte und -Importe konnte ein einheitlicher Projektstand hergestellt werden. Zusätzlich traten Schwierigkeiten auf, wenn Container noch nicht vollständig gestartet waren oder Dienste unerwartet stoppten.
+1. Datenkonsistenz und Docker-Infrastruktur
+Die Nutzung von Docker stellte uns vor Herausforderungen bei der Team-Kollaboration. Da die Datenbank in lokalen Volumes gekapselt war, konnte kein automatisierter Abgleich über das Versionskontrollsystem (GitHub) erfolgen.
 
-Auch das Rechte- und Rollensystem von Joomla stellte eine Herausforderung dar. Die sehr feingranulare Struktur bietet zwar große Flexibilität, ist jedoch komplex und fehleranfällig. Besonders das Zusammenspiel von „Allowed“, „Denied“ und „Inherited“ musste durch mehrfaches Testen verstanden werden, um den gewünschten Freigabe-Workflow korrekt umzusetzen.
+Problem: Inkonsistente Datenstände zwischen den Entwicklern.
 
-Insgesamt zeigte das Projekt, dass Joomla ein leistungsfähiges, aber vergleichsweise komplexes CMS ist, das eine strukturierte Herangehensweise und gute Dokumentation erfordert. Als wichtigste Learnings ergaben sich ein besseres Verständnis für Docker-basierte Systeme, Datenpersistenz sowie die Bedeutung von sauber konfigurierten Benutzerrechten und klarer Teamkommunikation.
+Lösung: Etablierung eines Workflows für manuelle Datenbank-Exporte und -Importe sowie die Optimierung der Container-Abhängigkeiten, um Start-Fehler der Dienste zu minimieren.
+
+2. Software-Stabilität und Versionsmanagement
+Der Einsatz der neuesten Joomla-Version (5.x) erwies sich aufgrund funktionaler Mängel als kontraproduktiv. Kritische Bugs im Workflow-Plugin sowie im UI-Rendering (verschwindende Buttons) behinderten die Implementierung der Kernprozesse. Zudem traten unvorhersehbare Permission-Fehler auf.
+
+Konsequenz: Um die Projektabgabe nicht zu gefährden, wurde ein Downgrade auf die stabilere LTS-Version vollzogen. Dies unterstreicht das Learning, dass Stabilität in produktiven Umgebungen Vorrang vor der Nutzung neuester Features haben muss.
+
+3. Konfiguration des Berechtigungssystems (ACL)
+Das feingranulare Access Control List (ACL)-System von Joomla erforderte eine hohe Einarbeitungszeit. Das komplexe Zusammenspiel von „Allowed“, „Denied“ und „Inherited“ führte anfangs zu Fehlkonfigurationen im Freigabeprozess.
+
+Learning: Eine präzise Dokumentation der Rollen-Matrix vor der technischen Umsetzung ist essenziell, um die Vererbung von Rechten innerhalb der Zugriffsebene fehlerfrei abzubilden.
+
+Fazit
+Das Projekt verdeutlichte die Notwendigkeit einer robusten Versionsstrategie. Die wichtigsten Erkenntnisse liegen im sicheren Umgang mit Docker-basierten Datenbanken, der Priorisierung von LTS-Software für geschäftskritische Workflows und der systematischen Konfiguration komplexer Berechtigungsstrukturen.
